@@ -2,10 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  eslint: {
-    // Linting is run separately via `npm run lint`
-    ignoreDuringBuilds: false,
-  },
+  // Note: the `eslint` config option was removed in Next.js 16 (`next build`
+  // no longer runs linting at all). Linting is run separately via
+  // `npm run lint`, which is unaffected by this.
   async headers() {
     return [
       {

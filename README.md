@@ -1,6 +1,6 @@
 # RayGumo API
 
-A lightweight, scalable **Game Content API** built with **Next.js 15 (App Router) + TypeScript**, designed to serve game content to WhatsApp bots (Baileys-based) and future websites from a single deployment.
+A lightweight, scalable **Game Content API** built with **Next.js 16 (App Router) + TypeScript**, designed to serve game content to WhatsApp bots (Baileys-based) and future websites from a single deployment.
 
 This is an **MVP (Minimum Viable Product)**. Right now it serves exactly one game — **Quiz** — but the architecture is deliberately built so that adding more games later (anime guess, riddles, true/false, character guess...) requires no changes to the API route structure, only new self-contained game modules.
 
@@ -28,7 +28,7 @@ No database is required. All content lives in a JSON file inside the repo.
 
 ## Tech Stack
 
-- Next.js 15+ (App Router, Route Handlers)
+- Next.js 16+ (App Router, Route Handlers)
 - TypeScript (strict mode)
 - ESLint (`next/core-web-vitals`, `next/typescript`)
 - Zero external database — flat JSON file storage
@@ -82,7 +82,7 @@ src/
 
 ## Installation
 
-Requires Node.js 18.18+ (Next.js 15 requirement).
+Requires Node.js 20.9+ (Next.js 16 requirement).
 
 ```bash
 git clone <your-repo-url> raygumo-api
