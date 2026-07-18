@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of Japan?",
+    "answer": "Tokyo",
+    "category": "geography",
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "Which planet is known as the Red Planet?",
+    "answer": "Mars",
+    "category": "science",
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "Who wrote the play 'Romeo and Juliet'?",
+    "answer": "William Shakespeare",
+    "category": "literature",
+    "difficulty": "medium"
+  },
+  {
+    "id": 4,
+    "question": "What is the chemical symbol for gold?",
+    "answer": "Au",
+    "category": "science",
+    "difficulty": "medium"
+  },
+  {
+    "id": 5,
+    "question": "In what year did the Berlin Wall fall?",
+    "answer": "1989",
+    "category": "history",
+    "difficulty": "hard"
+  }
+]
+
