@@ -18,6 +18,9 @@ export default function HomePage() {
         This is a lightweight backend-only Game Content API. See the project README for the full
         list of endpoints.
       </p>
+      <p>
+        📖 Full developer documentation: <a href="/docs">/docs</a>
+      </p>
       <h2>Quick links</h2>
       <ul>
         <li><code>GET /api/games/quiz/random</code></li>
