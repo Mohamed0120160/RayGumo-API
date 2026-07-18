@@ -21,4 +21,3 @@ export {
 
 export type { QuizQuestion } from "./quiz.types";
 export { isValidQuizQuestion } from "./quiz.validation";
-
