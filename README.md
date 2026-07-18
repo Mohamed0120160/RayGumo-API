@@ -47,18 +47,19 @@ src/
 │   └── api/
 │       ├── [...notfound]/        # Catch-all -> JSON 404 for unknown API routes
 │       └── games/[game]/
-│           ├── random/route.ts   # GET a random item
-│           ├── all/route.ts      # GET all items
-│           ├── count/route.ts    # GET total item count
-│           └── [id]/route.ts     # GET one item by id
+│           ├── random/route.ts          # GET a random item
+│           ├── random-exclude/route.ts  # GET a random item, excluding given ids (anti-repeat)
+│           ├── all/route.ts             # GET all items
+│           ├── count/route.ts           # GET total item count
+│           └── [id]/route.ts            # GET one item by id
 │
 ├── modules/
 │   └── games/
 │       ├── registry.ts           # Maps a game slug -> its module (dispatcher)
 │       └── quiz/                 # The Quiz game module (self-contained)
-│           ├── quiz.service.ts   # getRandomQuestion / getQuestionById / getAllQuestions / getQuestionCount
-│           ├── quiz.types.ts     # QuizQuestion type
-│           ├── quiz.validation.ts# isValidQuizQuestion
+│           ├── quiz.service.ts   # getRandomQuestion / getRandomQuestionExcluding / getQuestionById / getAllQuestions / getQuestionCount
+│           ├── quiz.types.ts     # QuizQuestion type (answers: string[])
+│           ├── quiz.validation.ts# isValidQuizQuestion / validateQuizQuestion
 │           └── index.ts          # Public entry point for the module
 │
 ├── data/
@@ -68,7 +69,7 @@ src/
 ├── lib/
 │   ├── json-db.ts                # Generic JSON storage layer (used by any game module)
 │   ├── response.ts                # ok() / notFound() / badRequest() / serverError()
-│   └── validation.ts              # parseId()
+│   └── validation.ts              # parseId() / parseIdsList()
 │
 ├── types/
 │   ├── api.ts                     # ApiResponse<T> envelope types
@@ -161,6 +162,7 @@ All current endpoints use the `[game]` slug. Only `quiz` is registered right now
 | Endpoint | Method | Description |
 |---|---|---|
 | `/api/games/:game/random` | GET | Returns one random item from the given game |
+| `/api/games/:game/random-exclude?ids=1,2,3` | GET | Returns one random item, excluding the given ids (anti-repeat helper) |
 | `/api/games/:game/all` | GET | Returns every item for the given game |
 | `/api/games/:game/count` | GET | Returns the total item count for the given game |
 | `/api/games/:game/:id` | GET | Returns a single item by numeric id |
@@ -176,11 +178,40 @@ curl http://localhost:3000/api/games/quiz/random
   "success": true,
   "data": {
     "id": 3,
-    "question": "Who wrote the play 'Romeo and Juliet'?",
-    "answer": "William Shakespeare",
-    "category": "literature",
-    "difficulty": "medium"
+    "question": "ما عاصمة اليابان؟",
+    "answers": ["طوكيو"],
+    "category": "جغرافيا"
   }
+}
+```
+
+### `GET /api/games/quiz/random-exclude`
+
+Returns one random question, excluding any ids passed in the `ids` query parameter (comma-separated). The API itself is stateless and does **not** remember which questions were served before — the WhatsApp bot is responsible for tracking used question ids per group/session and passing them on every call.
+
+```bash
+curl "http://localhost:3000/api/games/quiz/random-exclude?ids=1,2,3,4,5"
+```
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 42,
+    "question": "من هو مخترع المصباح الكهربائي؟",
+    "answers": ["توماس إديسون", "إديسون"],
+    "category": "علوم"
+  }
+}
+```
+
+If `ids` is omitted or empty, this behaves exactly like `/random`. If every available question is excluded (the bot has used them all), the endpoint returns a `404 NOT_FOUND` error instead of silently repeating a question — the bot should reset its used-question list for that group when it sees this and try again.
+
+```json
+{
+  "success": false,
+  "message": "لا يوجد أي سؤال متبقٍ بعد استثناء كل الأسئلة المُمرَّرة (كل الأسئلة استُخدمت بالفعل)",
+  "code": "NOT_FOUND"
 }
 ```
 
@@ -190,7 +221,7 @@ curl http://localhost:3000/api/games/quiz/random
 curl http://localhost:3000/api/games/quiz/all
 ```
 
-Returns the full `questions.json` array wrapped in the standard envelope.
+Returns the full `questions.json` array (260 questions) wrapped in the standard envelope.
 
 ### `GET /api/games/quiz/count`
 
@@ -201,7 +232,7 @@ curl http://localhost:3000/api/games/quiz/count
 ```json
 {
   "success": true,
-  "data": { "count": 5 }
+  "data": { "count": 260 }
 }
 ```
 
@@ -216,10 +247,9 @@ curl http://localhost:3000/api/games/quiz/2
   "success": true,
   "data": {
     "id": 2,
-    "question": "Which planet is known as the Red Planet?",
-    "answer": "Mars",
-    "category": "science",
-    "difficulty": "easy"
+    "question": "في أي قارة تقع البرازيل؟",
+    "answers": ["أمريكا الجنوبية"],
+    "category": "جغرافيا"
   }
 }
 ```
@@ -236,24 +266,34 @@ Quiz content lives in a single file:
 src/data/quiz/questions.json
 ```
 
-It's a JSON array. Each question must match this schema:
+It's a JSON array of 260 real Arabic quiz questions across 10 categories (جغرافيا، تاريخ، علوم، فضاء، رياضة، أنمي، ألعاب فيديو، أفلام ومسلسلات، تكنولوجيا، ثقافة عامة). Each question matches this schema:
 
 ```json
 {
   "id": 1,
-  "question": "",
-  "answer": "",
-  "category": "",
-  "difficulty": "easy"
+  "question": "ما عاصمة اليابان؟",
+  "answers": ["طوكيو"],
+  "category": "جغرافيا"
 }
 ```
 
-- `id` — unique positive integer, no duplicates.
-- `question` / `answer` — plain strings.
-- `category` — a free-form topic label (e.g. `"geography"`, `"science"`).
-- `difficulty` — one of `"easy"`, `"medium"`, `"hard"` (exactly these three values).
+- `id` — unique positive integer. **Auto-generated at load time** based on each question's position in the file (1st question → `id: 1`, 2nd → `id: 2`, etc). You never need to add or maintain ids by hand in the JSON source — just add new questions to the file and ids are assigned automatically and consistently on every load.
+- `question` — the question text. Full UTF-8 / Arabic support.
+- `answers` — **an array of strings**, not a single string. A question can have more than one accepted correct answer (e.g. two valid spellings of the same name). Always treat this as an array in the bot, even for questions with only one answer.
+- `category` — a free-form topic label (e.g. `"جغرافيا"`, `"علوم"`).
 
-The file currently ships with a handful of example questions — replace them with your real dataset at any time. No code changes are needed: just edit the JSON, commit, and redeploy.
+Any record missing `question`, `answers` (as a non-empty array of non-empty strings), or `category` is skipped automatically at load time and will not appear in any endpoint — it will not crash the API.
+
+The dataset is the sole source of truth: no sample/demo/placeholder questions ship with this project anymore. To update the content, edit `src/data/quiz/questions.json`, commit, and redeploy — no code changes needed.
+
+### Recommended bot integration (anti-repeat)
+
+Since the API is stateless, use this pattern in the WhatsApp bot to avoid repeating questions within a group:
+
+1. Keep a per-group list of used question ids (in the bot's own database/memory).
+2. Call `GET /api/games/quiz/random-exclude?ids=<comma-separated used ids>` instead of plain `/random`.
+3. Add the returned question's `id` to the group's used-ids list.
+4. If the endpoint returns `404 NOT_FOUND` (all questions exhausted), clear the group's used-ids list and call again.
 
 ---
 
@@ -267,9 +307,9 @@ The route structure (`/api/games/[game]/...`) and storage layer (`lib/json-db.ts
    ```ts
    export const GAME_REGISTRY = ["quiz", "riddles"] as const;
    ```
-4. Wire the new module into `src/modules/games/registry.ts` — add a `"riddles"` case to each of the four dispatch functions (`getRandomItem`, `getAllItems`, `getItemById`, `getItemCount`), calling into your new module's service functions.
+4. Wire the new module into `src/modules/games/registry.ts` — add a `"riddles"` case to each of the five dispatch functions (`getRandomItem`, `getRandomItemExcluding`, `getAllItems`, `getItemById`, `getItemCount`), calling into your new module's service functions.
 
-No route files need to change — `/api/games/riddles/random`, `/all`, `/count`, and `/:id` all work automatically once the registry knows about `"riddles"`.
+No route files need to change — `/api/games/riddles/random`, `/random-exclude`, `/all`, `/count`, and `/:id` all work automatically once the registry knows about `"riddles"`.
 
 ---
 
@@ -281,6 +321,7 @@ The API handles these cases cleanly, always returning the standard JSON error en
 - **Invalid JSON** — if the file's content isn't valid JSON or isn't an array, an `INVALID_JSON`-coded error is raised.
 - **Invalid ID** — non-numeric or non-positive `:id` values are rejected with `400 BAD_REQUEST` before ever touching the data layer.
 - **Empty dataset** — `random` on an empty collection returns `404 NOT_FOUND` instead of crashing.
+- **All questions excluded** — `random-exclude` returns `404 NOT_FOUND` if every available question was excluded via `ids`, instead of silently repeating one.
 - **Unknown game slug** — any `[game]` not present in `GAME_REGISTRY` returns `404 NOT_FOUND`.
 - **Unknown route** — any request under `/api/*` that doesn't match a defined route returns `404` via the catch-all handler, as JSON (not Next.js's default HTML 404 page).
 

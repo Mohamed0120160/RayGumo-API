@@ -102,28 +102,29 @@ raygumo-api/
     │       │   └── route.ts              # يلتقط أي مسار API غير معروف
     │       │
     │       └── games/[game]/
-    │           ├── random/route.ts       # GET عنصر عشوائي
-    │           ├── all/route.ts          # GET كل العناصر
-    │           ├── count/route.ts        # GET العدد الإجمالي
-    │           └── [id]/route.ts         # GET عنصر واحد بالـ id
+    │           ├── random/route.ts          # GET عنصر عشوائي
+    │           ├── random-exclude/route.ts  # GET عنصر عشوائي مع استثناء ids (منع التكرار)
+    │           ├── all/route.ts             # GET كل العناصر
+    │           ├── count/route.ts           # GET العدد الإجمالي
+    │           └── [id]/route.ts            # GET عنصر واحد بالـ id
     │
     ├── modules/
     │   └── games/                        # كل منطق الألعاب
     │       ├── registry.ts               # يربط اسم اللعبة (slug) بوحدتها
     │       └── quiz/                     # وحدة الكويز - اللعبة الوحيدة حاليًا
-    │           ├── quiz.service.ts       # الدوال الأربع: عشوائي/بالـid/الكل/العدد
-    │           ├── quiz.types.ts         # نوع QuizQuestion
+    │           ├── quiz.service.ts       # عشوائي/عشوائي مع استثناء/بالـid/الكل/العدد
+    │           ├── quiz.types.ts         # نوع QuizQuestion (answers: string[])
     │           ├── quiz.validation.ts    # التحقق من شكل سؤال الكويز
     │           └── index.ts              # نقطة الدخول العامة للوحدة
     │
     ├── data/
     │   └── quiz/
-    │       └── questions.json            # بيانات الكويز الفعلية
+    │       └── questions.json            # 260 سؤال كويز عربي حقيقي (id يُولَّد تلقائيًا)
     │
     ├── lib/                              # دوال مساعدة عامة (تخدم أي لعبة مستقبلية)
-    │   ├── json-db.ts                    # طبقة قراءة ملفات JSON
+    │   ├── json-db.ts                    # طبقة قراءة ملفات JSON (خام + مع id جاهز)
     │   ├── response.ts                   # بناء استجابات موحّدة (ok/fail)
-    │   └── validation.ts                 # التحقق من صحة id
+    │   └── validation.ts                 # التحقق من صحة id وقائمة ids
     │
     ├── types/
     │   ├── api.ts                        # شكل الاستجابة الموحّد
@@ -211,6 +212,14 @@ raygumo-api/
 **يُستخدم بواسطة:** حالات تحتاج نفس السؤال بالضبط (مثل إعادة عرضه بعد
 إجابة خاطئة).
 
+#### `src/app/api/games/[game]/random-exclude/route.ts`
+**الغرض:** يرجع عنصرًا عشوائيًا واحدًا، مع استثناء مجموعة من الـ id
+المُمرَّرة عبر `?ids=1,2,3`. مسار جديد لدعم "منع تكرار الأسئلة" - الـ
+API يبقى بلا حالة (stateless)، والبوت هو من يتتبّع الأسئلة المستخدمة
+لكل مجموعة ويمرّرها هنا في كل طلب.
+**يُستخدم بواسطة:** بوت الواتساب، بدلًا من `/random` العادي، عندما
+يريد تجنّب تكرار سؤال استُخدم مؤخرًا في نفس المجموعة.
+
 ---
 
 ### `src/modules/games/` — منطق الألعاب
@@ -218,9 +227,9 @@ raygumo-api/
 #### `src/modules/games/registry.ts`
 **الغرض:** "المُبدّل" (dispatcher) المركزي الذي يربط اسم اللعبة (slug
 مثل "quiz") بوحدة اللعبة الفعلية. كل route.ts في `app/api/games/`
-يستدعي دوال هذا الملف فقط (`getRandomItem`, `getAllItems`,
-`getItemById`, `getItemCount`)، وهو من يقرر داخليًا أي وحدة لعبة
-يستخدم. حاليًا يحتوي فرعًا واحدًا فقط (`"quiz"`) في كل دالة.
+يستدعي دوال هذا الملف فقط (`getRandomItem`, `getRandomItemExcluding`,
+`getAllItems`, `getItemById`, `getItemCount`)، وهو من يقرر داخليًا أي
+وحدة لعبة يستخدم. حاليًا يحتوي فرعًا واحدًا فقط (`"quiz"`) في كل دالة.
 **يُستخدم بواسطة:** كل ملفات `route.ts` تحت `app/api/games/`.
 
 #### `src/modules/games/quiz/` — وحدة الكويز الكاملة
@@ -230,22 +239,30 @@ raygumo-api/
 self-contained) هو القالب الذي يجب اتّباعه لأي لعبة مستقبلية.
 
 ##### `quiz.types.ts`
-**الغرض:** يعرّف شكل `QuizQuestion` (id, question, answer, category,
-difficulty). لا يحتوي أي منطق تنفيذي، فقط تعريفات أنواع.
+**الغرض:** يعرّف شكل `QuizQuestion` (id, question, answers, category).
+لاحظ أن `answers` مصفوفة نصوص (وليس نصًا مفردًا)، لدعم أكثر من إجابة
+صحيحة لنفس السؤال. لا يوجد حقل `difficulty` في هذا الإصدار لأن مجموعة
+البيانات الحقيقية لا تحتوي هذا الحقل. لا يحتوي أي منطق تنفيذي، فقط
+تعريفات أنواع.
 **يُستخدم بواسطة:** بقية ملفات وحدة الكويز، وأي كود خارجي يحتاج نوع
 سؤال الكويز.
 
 ##### `quiz.validation.ts`
-**الغرض:** دالة `isValidQuizQuestion` للتحقق أن كائنًا قادمًا من JSON
-يطابق شكل `QuizQuestion` الصحيح فعلًا.
-**يُستخدم بواسطة:** حاليًا جاهزة للاستخدام المستقبلي (مثلًا عند بناء
-أداة تحقق من صحة `questions.json` قبل النشر).
+**الغرض:** دالة `isValidQuizQuestion` (type guard) ودالة
+`validateQuizQuestion` (ترجع تفاصيل الأخطاء) للتحقق أن كائنًا قادمًا
+من JSON يطابق شكل `QuizQuestion` الصحيح فعلًا: `question` نص غير فارغ،
+`answers` مصفوفة نصوص غير فارغة، `category` نص غير فارغ.
+**يُستخدم بواسطة:** `quiz.service.ts` أثناء تحميل البيانات، لتجاهل أي
+سجل غير صالح بأمان بدل إيقاف الـ API بالكامل.
 
 ##### `quiz.service.ts`
-**الغرض:** المنطق الفعلي لوحدة الكويز - الدوال الأربع المطلوبة:
-`getRandomQuestion()`, `getQuestionById(id)`, `getAllQuestions()`,
-`getQuestionCount()`. كل دالة تستدعي طبقة `lib/json-db.ts` العامة لقراءة
-`questions.json`.
+**الغرض:** المنطق الفعلي لوحدة الكويز:
+`getRandomQuestion()`, `getRandomQuestionExcluding(excludeIds)`,
+`getQuestionById(id)`, `getAllQuestions()`, `getQuestionCount()`. هذا
+الملف أيضًا مسؤول عن تحميل البيانات الخام من `questions.json` وتوليد
+الـ `id` تلقائيًا لكل سؤال حسب ترتيبه في الملف، ثم التحقق من صحتها
+وتجاهل أي سجل فاسد، مع تخزين النتيجة في ذاكرة مؤقتة (cache) لتفادي
+إعادة القراءة والتوليد في كل طلب.
 **يُستخدم بواسطة:** `index.ts` (يعيد تصديرها)، وبشكل غير مباشر
 `registry.ts`.
 
@@ -258,10 +275,14 @@ difficulty). لا يحتوي أي منطق تنفيذي، فقط تعريفات 
 ---
 
 ### `src/data/quiz/questions.json`
-**الغرض:** المحتوى الفعلي - مصفوفة JSON من أسئلة الكويز. **هذا هو
-المكان الوحيد الذي تعدّل فيه المحتوى** (تضيف سؤالًا، تصحح إجابة...)
-بدون أي تعديل برمجي.
-**يُستخدم بواسطة:** `quiz.service.ts` عبر `lib/json-db.ts`.
+**الغرض:** المحتوى الفعلي - مصفوفة JSON من 260 سؤال كويز عربي حقيقي
+عبر 10 تصنيفات (جغرافيا، تاريخ، علوم، فضاء، رياضة، أنمي، ألعاب فيديو،
+أفلام ومسلسلات، تكنولوجيا، ثقافة عامة). **هذا هو المكان الوحيد الذي
+تعدّل فيه المحتوى** (تضيف سؤالًا، تصحح إجابة...) بدون أي تعديل برمجي.
+لا حاجة لكتابة `id` يدويًا عند إضافة سؤال - يُولَّد تلقائيًا حسب ترتيب
+السؤال في الملف (انظر `quiz.service.ts`).
+**يُستخدم بواسطة:** `quiz.service.ts` عبر `lib/json-db.ts` (تحديدًا
+دالة `readRawCollection`).
 
 ---
 
@@ -270,9 +291,12 @@ difficulty). لا يحتوي أي منطق تنفيذي، فقط تعريفات 
 #### `src/lib/json-db.ts`
 **الغرض:** "قاعدة بيانات JSON" المصغّرة العامة - تقرأ ملفات JSON بأمان
 (حماية من اجتياز المسار)، مع أخطاء واضحة (NOT_FOUND، INVALID_JSON).
-اسم الملف الافتراضي الذي تقرأه هو `questions.json`، وهذا قابل للتخصيص
-لأي لعبة مستقبلية تستخدم اسم ملف مختلف.
-**يُستخدم بواسطة:** `quiz.service.ts` حاليًا، وأي وحدة لعبة مستقبلية.
+تحتوي `readRawCollection` (قراءة خام بدون افتراض وجود `id` جاهز -
+تستخدمها وحدة الكويز لأن بياناتها الخام لا تحتوي `id`) بالإضافة لدوال
+أقدم عامة (`readCollection`, `getRandomItem`, `getItemById`,
+`getAllItems`) تفترض وجود `id` جاهز، متاحة لأي لعبة مستقبلية تُخزَّن
+بياناتها بـ `id` جاهز من المصدر.
+**يُستخدم بواسطة:** `quiz.service.ts` حاليًا (عبر `readRawCollection`)، وأي وحدة لعبة مستقبلية.
 
 #### `src/lib/response.ts`
 **الغرض:** يبني استجابات HTTP بالشكل الموحّد (`ok()`, `notFound()`,
@@ -280,9 +304,12 @@ difficulty). لا يحتوي أي منطق تنفيذي، فقط تعريفات 
 **يُستخدم بواسطة:** كل ملفات `route.ts` في المشروع بدون استثناء.
 
 #### `src/lib/validation.ts`
-**الغرض:** التحقق من صحة معامل `id` القادم من الرابط (تحويله لرقم صحيح
-موجب، مع رمي خطأ واضح إذا كان غير صالح).
-**يُستخدم بواسطة:** `app/api/games/[game]/[id]/route.ts`.
+**الغرض:** `parseId` للتحقق من صحة معامل `id` القادم من الرابط (تحويله
+لرقم صحيح موجب، مع رمي خطأ واضح إذا كان غير صالح)، و`parseIdsList`
+لتحويل معامل استعلام مثل `?ids=1,2,3` إلى مصفوفة أرقام صحيحة (يُستخدم
+في مسار `random-exclude` الجديد).
+**يُستخدم بواسطة:** `app/api/games/[game]/[id]/route.ts` (`parseId`)
+و`app/api/games/[game]/random-exclude/route.ts` (`parseIdsList`).
 
 ---
 
@@ -328,20 +355,22 @@ RayGumo API (Next.js Route Handler)
     يستدعي quiz.getRandomQuestion() من وحدة الكويز
         ↓
     quiz.service.ts
-    يستدعي getRandomItem("quiz") من lib/json-db.ts
+    يستدعي readRawCollection("quiz") من lib/json-db.ts
+    يولّد id تسلسليًا لكل سؤال حسب ترتيبه في الملف
+    يتحقق من صحة كل سؤال عبر quiz.validation.ts
         ↓
 Quiz JSON Data (طبقة التخزين)
     lib/json-db.ts يقرأ src/data/quiz/questions.json من القرص
     يحوّله من نص JSON إلى مصفوفة JavaScript
-    يختار فهرسًا عشوائيًا ويرجع ذلك السؤال
+    quiz.service.ts يختار فهرسًا عشوائيًا ويرجع ذلك السؤال
         ↓
 API Response (الاستجابة)
     lib/response.ts يغلّف السؤال بالشكل الموحّد:
-    { "success": true, "data": { "id": 3, "question": "...", ... } }
+    { "success": true, "data": { "id": 3, "question": "...", "answers": [...], ... } }
     يُرجع كـ HTTP 200
         ↓
 بوت الواتساب
-    يستقبل استجابة JSON، يقرأ data.question و data.answer
+    يستقبل استجابة JSON، يقرأ data.question ومصفوفة data.answers
         ↓
 Bot Response (رد البوت)
     يرسل السؤال كرسالة واتساب للمستخدم:
@@ -397,25 +426,33 @@ src/data/quiz/questions.json
 {
   "id": 1,
   "question": "",
-  "answer": "",
-  "category": "",
-  "difficulty": "easy"
+  "answers": [""],
+  "category": ""
 }
 ```
 
+لاحظ أن `answers` مصفوفة نصوص دائمًا (حتى لو كانت تحتوي إجابة واحدة
+فقط)، وأن `id` لا يُكتَب يدويًا في الملف - يُولَّد تلقائيًا عند
+التحميل حسب ترتيب كل سؤال (انظر القسم التالي).
+
 ### كيف تُقرأ؟
 
-`src/lib/json-db.ts` هي الطبقة الوحيدة المسؤولة عن القراءة. عند استدعاء
+`src/lib/json-db.ts` مسؤولة عن القراءة الخام الآمنة، و`quiz.service.ts`
+مسؤولة عن توليد الـ `id` والتحقق من الصحة بعدها. عند استدعاء
 `getRandomQuestion()` من وحدة الكويز:
 
 1. تبني المسار الآمن: `src/data/quiz/questions.json`.
-2. تقرأ محتوى الملف كنص من القرص.
+2. تقرأ محتوى الملف كنص من القرص عبر `readRawCollection`.
 3. تحوّله من نص إلى JavaScript عبر `JSON.parse`.
 4. تتأكد أنه مصفوفة فعلًا (وإلا خطأ واضح).
-5. تختار عنصرًا عشوائيًا وترجعه.
+5. تولّد `id` تسلسليًا لكل عنصر حسب ترتيبه (1، 2، 3...).
+6. تتحقق من صحة كل عنصر (`question`/`answers`/`category`) وتتجاهل أي
+   عنصر غير صالح بأمان.
+7. تخزّن النتيجة في ذاكرة مؤقتة (cache) داخل العملية، ثم تختار عنصرًا
+   عشوائيًا منها وترجعه.
 
-هذا يحدث في كل طلب (بدون تخزين مؤقت دائم)، لكن القراءة سريعة جدًا لملف
-بهذا الحجم.
+القراءة والتوليد والتحقق تحدث مرة واحدة فقط لكل عملية تشغيل (lambda
+instance) بفضل الذاكرة المؤقتة، وليس في كل طلب على حدة.
 
 ---
 
@@ -423,31 +460,36 @@ src/data/quiz/questions.json
 
 ### كيف تضيف أسئلة جديدة؟
 
-افتح `src/data/quiz/questions.json` وأضف كائنًا جديدًا للمصفوفة مع `id`
-فريد لم يُستخدم من قبل:
+افتح `src/data/quiz/questions.json` وأضف كائنًا جديدًا في نهاية
+المصفوفة - **بدون** حقل `id` (يُولَّد تلقائيًا حسب ترتيب السؤال في
+الملف):
 
 ```json
 {
-  "id": 6,
   "question": "كم عدد قارات العالم؟",
-  "answer": "سبع قارات",
-  "category": "جغرافيا",
-  "difficulty": "easy"
+  "answers": ["سبع قارات", "سبعة"],
+  "category": "جغرافيا"
 }
 ```
 
-احفظ، اعمل commit و push - هذا كل ما تحتاجه.
+احفظ، اعمل commit و push - هذا كل ما تحتاجه. لاحظ أن `answers` مصفوفة
+حتى لو كانت تحتوي إجابة واحدة فقط، ويمكن أن تحتوي أكثر من إجابة مقبولة
+لنفس السؤال.
 
 ### كيف تستبدل questions.json بالكامل بمجموعة أسئلتك الحقيقية؟
 
 1. جهّز ملف JSON جديد بنفس الشكل تمامًا: مصفوفة من كائنات، كل كائن فيه
-   `id` (رقم فريد)، `question`، `answer`، `category`، و`difficulty`
-   (واحدة من `"easy"` أو `"medium"` أو `"hard"` فقط).
+   `question` (نص)، `answers` (مصفوفة نصوص غير فارغة)، و`category`
+   (نص). لا حاجة لكتابة `id` - يُولَّد تلقائيًا حسب الترتيب.
 2. استبدل محتوى `src/data/quiz/questions.json` بالكامل بملفك الجديد.
-3. تأكد أن كل `id` فريد وغير مكرر عبر كل الأسئلة.
+3. تأكد أن الملف JSON صالح التركيب (مصفوفة صحيحة، بدون فواصل ناقصة أو
+   زائدة).
 4. اعمل commit و push - Vercel تعيد النشر تلقائيًا.
 5. اختبر: `curl https://your-api.vercel.app/api/games/quiz/count` للتأكد
    أن العدد الجديد صحيح.
+
+أي سجل ناقص أو غير صالح في الملف الجديد **لن يوقف الـ API بالكامل** -
+سيُتجاهَل بأمان أثناء التحميل ولن يظهر في أي استجابة.
 
 **نصيحة**: قبل الاستبدال، تحقق أن ملفك JSON صالح (مثلًا عبر أداة أونلاين
 لفحص JSON، أو `python3 -c "import json; json.load(open('questions.json'))"`)
@@ -455,20 +497,28 @@ src/data/quiz/questions.json
 
 ### كيف يجب أن يستدعي البوت الـ API؟
 
-مثال بسيط بلغة JavaScript (كما قد يُستخدم داخل بوت Baileys):
+مثال بسيط بلغة JavaScript (كما قد يُستخدم داخل بوت Baileys)، مع دعم
+منع التكرار عبر `random-exclude`:
 
 ```js
-async function getRandomQuizQuestion() {
-  const response = await fetch("https://your-api.vercel.app/api/games/quiz/random");
+// usedIds: مصفوفة id الأسئلة المستخدمة سابقًا لهذه المجموعة (يديرها البوت بنفسه)
+async function getRandomQuizQuestion(usedIds = []) {
+  const idsParam = usedIds.length ? `?ids=${usedIds.join(",")}` : "";
+  const response = await fetch(
+    `https://your-api.vercel.app/api/games/quiz/random-exclude${idsParam}`
+  );
   const result = await response.json();
 
   if (!result.success) {
-    // تعامل مع الخطأ (مثلًا أرسل رسالة اعتذار للمستخدم)
+    if (result.code === "NOT_FOUND") {
+      // كل الأسئلة استُخدمت - صفّر القائمة وحاول مجددًا
+      return getRandomQuizQuestion([]);
+    }
     console.error("Quiz API error:", result.message);
     return null;
   }
 
-  return result.data; // { id, question, answer, category, difficulty }
+  return result.data; // { id, question, answers, category }
 }
 ```
 
@@ -477,6 +527,9 @@ async function getRandomQuizQuestion() {
 ```bash
 # سؤال عشوائي
 curl https://your-api.vercel.app/api/games/quiz/random
+
+# سؤال عشوائي مع استثناء أسئلة مستخدمة سابقًا (منع التكرار)
+curl "https://your-api.vercel.app/api/games/quiz/random-exclude?ids=1,2,3"
 
 # كل الأسئلة
 curl https://your-api.vercel.app/api/games/quiz/all
@@ -497,10 +550,9 @@ curl https://your-api.vercel.app/api/games/quiz/3
   "success": true,
   "data": {
     "id": 3,
-    "question": "Who wrote the play 'Romeo and Juliet'?",
-    "answer": "William Shakespeare",
-    "category": "literature",
-    "difficulty": "medium"
+    "question": "في أي قارة تقع البرازيل؟",
+    "answers": ["أمريكا الجنوبية"],
+    "category": "جغرافيا"
   }
 }
 ```
@@ -510,7 +562,7 @@ curl https://your-api.vercel.app/api/games/quiz/3
 ```json
 {
   "success": true,
-  "data": { "count": 5 }
+  "data": { "count": 260 }
 }
 ```
 
@@ -570,7 +622,8 @@ export const GAME_REGISTRY = ["quiz", "riddles"] as const;
 
 ### الخطوة 4: اربطها في `modules/games/registry.ts`
 
-أضف فرعًا جديدًا `"riddles"` في كل دالة من الدوال الأربع:
+أضف فرعًا جديدًا `"riddles"` في كل دالة من الدوال الخمس (بما فيها
+`getRandomItemExcluding` لدعم منع التكرار في اللعبة الجديدة أيضًا):
 
 ```ts
 import * as riddles from "./riddles";
@@ -586,13 +639,13 @@ export async function getRandomItem(slug: string) {
 }
 ```
 
-(وبنفس الطريقة لـ `getAllItems`, `getItemById`, `getItemCount`)
+(وبنفس الطريقة لـ `getRandomItemExcluding`, `getAllItems`, `getItemById`, `getItemCount`)
 
 ### الخطوة 5: لا حاجة لأي route جديد!
 
-`/api/games/riddles/random`, `/all`, `/count`, و `/[id]` تعمل تلقائيًا
-بمجرد إتمام الخطوات أعلاه - بنفس ملفات `route.ts` الموجودة فعلًا تحت
-`app/api/games/[game]/`.
+`/api/games/riddles/random`, `/random-exclude`, `/all`, `/count`, و
+`/[id]` تعمل تلقائيًا بمجرد إتمام الخطوات أعلاه - بنفس ملفات
+`route.ts` الموجودة فعلًا تحت `app/api/games/[game]/`.
 
 ---
 
