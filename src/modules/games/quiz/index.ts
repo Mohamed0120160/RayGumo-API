@@ -13,6 +13,7 @@
 
 export {
   getRandomQuestion,
+  getRandomQuestionExcluding,
   getQuestionById,
   getAllQuestions,
   getQuestionCount,
