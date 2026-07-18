@@ -54,6 +54,18 @@ export async function getRandomItem(slug: string) {
   }
 }
 
+/**
+ * تُرجع عنصرًا عشوائيًا واحدًا من اللعبة المحددة، مع استثناء مجموعة من
+ * الـ id المُمرَّرة (تُستخدم من بوت الواتساب لمنع تكرار نفس السؤال).
+ */
+export async function getRandomItemExcluding(slug: string, excludeIds: number[]) {
+  assertValidSlug(slug);
+  switch (slug) {
+    case "quiz":
+      return quiz.getRandomQuestionExcluding(excludeIds);
+  }
+}
+
 /** تُرجع كل عناصر اللعبة المحددة بواسطة slug. */
 export async function getAllItems(slug: string) {
   assertValidSlug(slug);
