@@ -40,3 +40,36 @@ export function parseId(raw: string | undefined | null): number {
   }
   return id;
 }
+
+/**
+ * تحوّل قيمة استعلام (query param) نصية مفصولة بفواصل مثل "1,2,3,4" إلى
+ * مصفوفة أرقام صحيحة، لاستخدامها في GET /api/games/[game]/random-exclude
+ * (مثال: ?ids=1,2,3,4).
+ *
+ * خطوات العمل:
+ *   1. إذا كانت القيمة مفقودة أو فارغة، نرجع مصفوفة فارغة []  (يعني
+ *      "لا يوجد شيء لاستثنائه" - وهذا سلوك طبيعي مقبول، وليس خطأ).
+ *   2. نقسّم النص على الفاصلة "،" أو "," ونزيل الفراغات الزائدة من كل
+ *      جزء.
+ *   3. نتجاهل أي جزء فارغ ينتج عن فواصل متكررة (مثل "1,,2").
+ *   4. نحوّل كل جزء متبقٍ إلى رقم صحيح، ونرمي ValidationError برسالة
+ *      واضحة إذا كان أي جزء غير رقم صحيح صالح.
+ */
+export function parseIdsList(raw: string | undefined | null): number[] {
+  if (raw === undefined || raw === null || raw.trim() === "") {
+    return [];
+  }
+
+  const parts = raw
+    .split(/[,،]/)
+    .map((part) => part.trim())
+    .filter((part) => part !== "");
+
+  return parts.map((part) => {
+    const id = Number(part);
+    if (!Number.isInteger(id) || id <= 0) {
+      throw new ValidationError(`Invalid id value in "ids" parameter: "${part}"`);
+    }
+    return id;
+  });
+}

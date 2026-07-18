@@ -83,6 +83,24 @@ export async function readCollection<T extends WithId>(
   category: string,
   fileName = "questions.json"
 ): Promise<T[]> {
+  return readRawCollection(category, fileName) as Promise<T[]>;
+}
+
+/**
+ * تقرأ ملف JSON الخاص بفئة معينة وتحوّله إلى مصفوفة "خام" (raw) بدون
+ * أي افتراض مسبق عن شكل عناصرها - وتحديدًا بدون افتراض وجود حقل id
+ * جاهز في كل عنصر (على عكس readCollection<T extends WithId>).
+ *
+ * لماذا نحتاجها: بعض مصادر البيانات الحقيقية (مثل quiz - انظر
+ * modules/games/quiz/quiz.service.ts) لا تحتوي id إطلاقًا، ويُولَّد
+ * الـ id لاحقًا في طبقة الخدمة الخاصة باللعبة بعد القراءة. هذه الدالة
+ * تقتصر على القراءة والتحقق من صحة تركيب JSON العام فقط (ملف موجود؟
+ * JSON صالح؟ مصفوفة؟)، دون معرفة أي شيء عن حقول العناصر الداخلية.
+ */
+export async function readRawCollection(
+  category: string,
+  fileName = "questions.json"
+): Promise<unknown[]> {
   const filePath = resolveCollectionPath(category, fileName);
 
   let raw: string;
@@ -107,7 +125,7 @@ export async function readCollection<T extends WithId>(
     throw new JsonDbError(`Collection "${category}" must be a JSON array`, "INVALID_JSON");
   }
 
-  return parsed as T[];
+  return parsed;
 }
 
 /**
