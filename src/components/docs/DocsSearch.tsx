@@ -40,9 +40,9 @@ export function DocsSearch({ open, onClose }: { open: boolean; onClose: () => vo
 
   useEffect(() => {
     if (!open) return;
-    function handleGlobalKey(e: KeyboardEvent) {
+    const handleGlobalKey = (e: globalThis.KeyboardEvent): void => {
       if (e.key === "Escape") onClose();
-    }
+    };
     window.addEventListener("keydown", handleGlobalKey);
     return () => window.removeEventListener("keydown", handleGlobalKey);
   }, [open, onClose]);
@@ -50,14 +50,14 @@ export function DocsSearch({ open, onClose }: { open: boolean; onClose: () => vo
   // فتح البحث بالضغط على "/" من أي مكان في الصفحة (طالما لا يوجد
   // تركيز على حقل إدخال آخر بالفعل)
   useEffect(() => {
-    function handleSlash(e: KeyboardEvent) {
+    const handleSlash = (e: globalThis.KeyboardEvent): void => {
       if (e.key !== "/" || open) return;
       const target = e.target as HTMLElement | null;
       const isTyping = target?.tagName === "INPUT" || target?.tagName === "TEXTAREA";
       if (isTyping) return;
       e.preventDefault();
       inputRef.current?.focus();
-    }
+    };
     window.addEventListener("keydown", handleSlash);
     return () => window.removeEventListener("keydown", handleSlash);
   }, [open]);
