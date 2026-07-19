@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { ALL_DOC_PAGES, type DocPage } from "@/docs-content/nav";
 
 /**
@@ -64,7 +64,7 @@ export function DocsSearch({ open, onClose }: { open: boolean; onClose: () => vo
 
   if (!open) return null;
 
-  function handleKeyDown(e: KeyboardEvent) {
+  function handleKeyDown(e: ReactKeyboardEvent) {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setActiveIndex((i) => Math.min(i + 1, results.length - 1));
