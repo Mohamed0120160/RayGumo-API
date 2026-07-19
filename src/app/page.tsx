@@ -15,11 +15,9 @@ export default function HomePage() {
         Version {APP_CONFIG.version} &middot; {APP_CONFIG.environment}
       </p>
       <p>
-        This is a lightweight backend-only Game Content API. See the project README for the full
-        list of endpoints.
-      </p>
-      <p>
-        📖 Full developer documentation: <a href="/docs">/docs</a>
+        This is a lightweight backend-only Game Content API. See the project{" "}
+        <a href="https://github.com/RayGumo/RayGumo-API#readme">README</a> for the full list of
+        endpoints, request/response examples, and a Baileys WhatsApp bot integration guide.
       </p>
       <h2>Quick links</h2>
       <ul>
