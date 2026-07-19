@@ -1,89 +1,92 @@
 # RayGumo API
 
-A lightweight, scalable **Game Content API** built with **Next.js 16 (App Router) + TypeScript**, designed to serve game content to WhatsApp bots (Baileys-based) and future websites from a single deployment.
+**API خفيف وقابل للتوسّع لمحتوى الألعاب (Game Content API)**، مبني بـ **Next.js 16 (App Router) + TypeScript**، مصمَّم لتقديم محتوى الألعاب لبوتات الواتساب (المبنية على Baileys) وأي مواقع مستقبلية من نشر واحد فقط.
 
-This is an **MVP (Minimum Viable Product)**. Right now it serves exactly one game — **Quiz** — but the architecture is deliberately built so that adding more games later (anime guess, riddles, true/false, character guess...) requires no changes to the API route structure, only new self-contained game modules.
+هذا المشروع في مرحلة **MVP (نسخة أولية قابلة للاستخدام)**. حاليًا يقدّم لعبة واحدة فقط — **Quiz (كويز)** — لكن البنية المعمارية مصمَّمة عمدًا بحيث إضافة ألعاب جديدة مستقبلًا (تخمين أنمي، ألغاز، صح وخطأ، تخمين شخصيات...) لا تتطلب أي تعديل في بنية routes الـ API، بل فقط وحدات ألعاب جديدة مستقلة بذاتها.
 
-RayGumo API is a **content provider only** — it does **not** manage player accounts, XP, levels, rankings, or seasons. That logic belongs in each bot.
+RayGumo API هو **مزوّد محتوى فقط** — هو **لا** يدير حسابات اللاعبين، نقاط الخبرة (XP)، المستويات، الترتيب (rankings)، أو المواسم. هذا المنطق مسؤولية كل بوت على حدة.
 
-No database is required. All content lives in a JSON file inside the repo.
+لا حاجة لقاعدة بيانات. كل المحتوى موجود في ملف JSON داخل المشروع نفسه.
 
----
-
-## Table of Contents
-
-- [Tech Stack](#tech-stack)
-- [Folder Structure](#folder-structure)
-- [Installation](#installation)
-- [Local Development](#local-development)
-- [Environment Variables](#environment-variables)
-- [Standard Response Format](#standard-response-format)
-- [API Reference](#api-reference)
-- [Quiz Data](#quiz-data)
-- [Adding a New Game](#adding-a-new-game)
-- [Error Handling](#error-handling)
-- [Deploying to Vercel](#deploying-to-vercel)
+> 🤖 **مبرمج بوت واتساب وعايز تستخدم الـ API بسرعة؟**
+> روحي مباشرة لملف [`BOT_DEVELOPER_GUIDE.md`](./BOT_DEVELOPER_GUIDE.md) — فيه بس الـ endpoints وأمثلة Baileys الجاهزة للنسخ، من غير أي تفاصيل معمارية داخلية. هذا الملف (`README.md`) للمطوّرين اللي بيشتغلوا على المشروع نفسه.
 
 ---
 
-## Tech Stack
+## جدول المحتويات
+
+- [التقنيات المستخدمة](#التقنيات-المستخدمة)
+- [بنية المجلدات](#بنية-المجلدات)
+- [التثبيت](#التثبيت)
+- [التشغيل المحلي](#التشغيل-المحلي)
+- [متغيرات البيئة](#متغيرات-البيئة)
+- [شكل الاستجابة الموحّد](#شكل-الاستجابة-الموحد)
+- [مرجع الـ API](#مرجع-الـ-api)
+- [بيانات الكويز](#بيانات-الكويز)
+- [إضافة لعبة جديدة](#إضافة-لعبة-جديدة)
+- [التعامل مع الأخطاء](#التعامل-مع-الأخطاء)
+- [النشر على Vercel](#النشر-على-vercel)
+
+---
+
+## التقنيات المستخدمة
 
 - Next.js 16+ (App Router, Route Handlers)
-- TypeScript (strict mode)
+- TypeScript (وضع strict)
 - ESLint (`next/core-web-vitals`, `next/typescript`)
-- Zero external database — flat JSON file storage
-- Zero required environment variables — works out of the box
+- بدون قاعدة بيانات خارجية — تخزين عبر ملف JSON مسطّح
+- بدون أي متغيرات بيئة إلزامية — يعمل فورًا من غير إعدادات
 
 ---
 
-## Folder Structure
+## بنية المجلدات
 
 ```
 src/
 ├── app/
-│   ├── page.tsx                  # Simple landing/info page
+│   ├── page.tsx                  # صفحة هبوط/معلومات بسيطة
 │   ├── layout.tsx
 │   ├── not-found.tsx
 │   └── api/
-│       ├── [...notfound]/        # Catch-all -> JSON 404 for unknown API routes
+│       ├── [...notfound]/        # معالج شامل -> يرجّع JSON 404 لأي مسار API غير موجود
 │       └── games/[game]/
-│           ├── random/route.ts          # GET a random item
-│           ├── random-exclude/route.ts  # GET a random item, excluding given ids (anti-repeat)
-│           ├── all/route.ts             # GET all items
-│           ├── count/route.ts           # GET total item count
-│           └── [id]/route.ts            # GET one item by id
+│           ├── random/route.ts          # GET عنصر عشوائي
+│           ├── random-exclude/route.ts  # GET عنصر عشوائي مع استثناء ids معيّنة (anti-repeat)
+│           ├── all/route.ts             # GET كل العناصر
+│           ├── count/route.ts           # GET إجمالي عدد العناصر
+│           └── [id]/route.ts            # GET عنصر واحد بواسطة id
 │
 ├── modules/
 │   └── games/
-│       ├── registry.ts           # Maps a game slug -> its module (dispatcher)
-│       └── quiz/                 # The Quiz game module (self-contained)
+│       ├── registry.ts           # يربط اسم اللعبة (slug) بوحدتها (dispatcher)
+│       └── quiz/                 # وحدة لعبة الكويز (مستقلة بذاتها)
 │           ├── quiz.service.ts   # getRandomQuestion / getRandomQuestionExcluding / getQuestionById / getAllQuestions / getQuestionCount
-│           ├── quiz.types.ts     # QuizQuestion type (answers: string[])
+│           ├── quiz.types.ts     # نوع QuizQuestion (answers: string[])
 │           ├── quiz.validation.ts# isValidQuizQuestion / validateQuizQuestion
-│           └── index.ts          # Public entry point for the module
+│           └── index.ts          # نقطة الدخول العامة للوحدة
 │
 ├── data/
 │   └── quiz/
-│       └── questions.json        # The actual quiz content
+│       └── questions.json        # محتوى الكويز الفعلي
 │
 ├── lib/
-│   ├── json-db.ts                # Generic JSON storage layer (used by any game module)
+│   ├── json-db.ts                # طبقة تخزين JSON عامة (تُستخدم من أي وحدة لعبة)
 │   ├── response.ts                # ok() / notFound() / badRequest() / serverError()
 │   └── validation.ts              # parseId() / parseIdsList()
 │
 ├── types/
-│   ├── api.ts                     # ApiResponse<T> envelope types
-│   └── games.ts                   # GAME_REGISTRY (list of registered game slugs)
+│   ├── api.ts                     # أنواع ApiResponse<T>
+│   └── games.ts                   # GAME_REGISTRY (قائمة أسماء الألعاب المسجّلة)
 │
 └── config/
-    └── app.ts                     # APP_CONFIG from env vars
+    └── app.ts                     # APP_CONFIG من متغيرات البيئة
 ```
 
 ---
 
-## Installation
+## التثبيت
 
-Requires Node.js 20.9+ (Next.js 16 requirement).
+يتطلب Node.js 20.9+ (متطلب Next.js 16).
 
 ```bash
 git clone <your-repo-url> raygumo-api
@@ -91,48 +94,48 @@ cd raygumo-api
 npm install
 ```
 
-No environment variables are required to run the project — see [Environment Variables](#environment-variables) below.
+لا حاجة لأي متغيرات بيئة لتشغيل المشروع — راجع [متغيرات البيئة](#متغيرات-البيئة) أدناه.
 
 ---
 
-## Local Development
+## التشغيل المحلي
 
 ```bash
 npm run dev
 ```
 
-The API will be available at `http://localhost:3000`. Try:
+الـ API هيكون متاح على `http://localhost:3000`. جرّبي:
 
 ```bash
 curl http://localhost:3000/api/games/quiz/random
 ```
 
-Other useful scripts:
+أوامر أخرى مفيدة:
 
 ```bash
-npm run build   # production build
-npm run start   # run the production build locally
-npm run lint    # run ESLint
+npm run build   # بناء نسخة الإنتاج
+npm run start   # تشغيل نسخة الإنتاج محليًا
+npm run lint    # تشغيل ESLint
 ```
 
 ---
 
-## Environment Variables
+## متغيرات البيئة
 
-| Variable                | Required | Description                                                   |
+| المتغيّر                | إلزامي؟ | الوصف                                                   |
 |--------------------------|----------|-----------------------------------------------------------------|
-| `NEXT_PUBLIC_API_NAME`   | No       | Display name shown on the landing page. Defaults to `RayGumo API`. |
-| `API_VERSION`            | No       | Version string, currently informational only. Defaults to `1.0.0`. |
+| `NEXT_PUBLIC_API_NAME`   | لا       | الاسم الظاهر في صفحة الهبوط. القيمة الافتراضية `RayGumo API`. |
+| `API_VERSION`            | لا       | نص رقم الإصدار، حاليًا معلوماتي فقط. القيمة الافتراضية `1.0.0`. |
 
-That's it — this MVP has no authentication, no third-party API keys, and no required configuration. Copy `.env.example` to `.env.local` only if you want to override the defaults above.
+هذا كل شيء — هذه النسخة الأولية بدون أي مصادقة (authentication)، بدون مفاتيح API خارجية، وبدون أي إعدادات إلزامية. انسخي `.env.example` إلى `.env.local` فقط لو عايزة تغيّري القيم الافتراضية فوق.
 
 ---
 
-## Standard Response Format
+## شكل الاستجابة الموحّد
 
-Every endpoint returns one of two shapes.
+كل endpoint بيرجّع واحد من شكلين فقط.
 
-**Success:**
+**نجاح:**
 
 ```json
 {
@@ -141,7 +144,7 @@ Every endpoint returns one of two shapes.
 }
 ```
 
-**Error:**
+**خطأ:**
 
 ```json
 {
@@ -151,21 +154,21 @@ Every endpoint returns one of two shapes.
 }
 ```
 
-`code` is optional but present on all errors raised through the shared `lib/response.ts` helpers (`NOT_FOUND`, `BAD_REQUEST`, `INTERNAL_ERROR`).
+`code` اختياري لكنه موجود في كل الأخطاء اللي بتمر عبر دوال `lib/response.ts` المشتركة (`NOT_FOUND`, `BAD_REQUEST`, `INTERNAL_ERROR`).
 
 ---
 
-## API Reference
+## مرجع الـ API
 
-All current endpoints use the `[game]` slug. Only `quiz` is registered right now (see `src/types/games.ts`).
+كل الـ endpoints الحالية تستخدم اسم اللعبة `[game]`. حاليًا `quiz` هي اللعبة الوحيدة المسجّلة (راجعي `src/types/games.ts`).
 
-| Endpoint | Method | Description |
+| المسار (Endpoint) | Method | الوصف |
 |---|---|---|
-| `/api/games/:game/random` | GET | Returns one random item from the given game |
-| `/api/games/:game/random-exclude?ids=1,2,3` | GET | Returns one random item, excluding the given ids (anti-repeat helper) |
-| `/api/games/:game/all` | GET | Returns every item for the given game |
-| `/api/games/:game/count` | GET | Returns the total item count for the given game |
-| `/api/games/:game/:id` | GET | Returns a single item by numeric id |
+| `/api/games/:game/random` | GET | ترجّع عنصر عشوائي واحد من اللعبة المحددة |
+| `/api/games/:game/random-exclude?ids=1,2,3` | GET | ترجّع عنصر عشوائي واحد مع استثناء الـ ids الممرّرة (anti-repeat) |
+| `/api/games/:game/all` | GET | ترجّع كل عناصر اللعبة المحددة |
+| `/api/games/:game/count` | GET | ترجّع العدد الإجمالي لعناصر اللعبة |
+| `/api/games/:game/:id` | GET | ترجّع عنصر واحد بواسطة رقمه (id) |
 
 ### `GET /api/games/quiz/random`
 
@@ -187,7 +190,7 @@ curl http://localhost:3000/api/games/quiz/random
 
 ### `GET /api/games/quiz/random-exclude`
 
-Returns one random question, excluding any ids passed in the `ids` query parameter (comma-separated). The API itself is stateless and does **not** remember which questions were served before — the WhatsApp bot is responsible for tracking used question ids per group/session and passing them on every call.
+ترجّع سؤال عشوائي واحد، مع استثناء أي ids ممرّرة في معامل الاستعلام `ids` (مفصولة بفواصل). الـ API نفسه بلا حالة (stateless) تمامًا ولا **يتذكر** أي أسئلة سبق تقديمها — بوت الواتساب هو المسؤول عن تتبّع أرقام الأسئلة المستخدمة لكل مجموعة/جلسة وتمريرها في كل طلب.
 
 ```bash
 curl "http://localhost:3000/api/games/quiz/random-exclude?ids=1,2,3,4,5"
@@ -205,7 +208,7 @@ curl "http://localhost:3000/api/games/quiz/random-exclude?ids=1,2,3,4,5"
 }
 ```
 
-If `ids` is omitted or empty, this behaves exactly like `/random`. If every available question is excluded (the bot has used them all), the endpoint returns a `404 NOT_FOUND` error instead of silently repeating a question — the bot should reset its used-question list for that group when it sees this and try again.
+لو `ids` غير موجود أو فارغ، السلوك بيبقى مطابق تمامًا لـ `/random`. لو كل الأسئلة المتاحة استُثنيت (البوت استخدمها كلها)، الـ endpoint بيرجّع خطأ `404 NOT_FOUND` بدل ما يكرر سؤال بصمت — البوت المفروض يصفّر قائمة الأسئلة المستخدمة لتلك المجموعة عند رؤية هذا الخطأ ويحاول تاني.
 
 ```json
 {
@@ -221,7 +224,7 @@ If `ids` is omitted or empty, this behaves exactly like `/random`. If every avai
 curl http://localhost:3000/api/games/quiz/all
 ```
 
-Returns the full `questions.json` array (260 questions) wrapped in the standard envelope.
+ترجّع مصفوفة `questions.json` كاملة (260 سؤال) داخل الشكل الموحّد.
 
 ### `GET /api/games/quiz/count`
 
@@ -254,19 +257,19 @@ curl http://localhost:3000/api/games/quiz/2
 }
 ```
 
-Unknown `:game` slugs and missing/invalid `:id`s both return an error in the standard envelope (`404` and `400` respectively).
+أي `:game` غير مسجّل وأي `:id` مفقود/غير صالح، الاتنين بيرجّعوا خطأ في الشكل الموحّد (`404` و`400` على الترتيب).
 
 ---
 
-## Quiz Data
+## بيانات الكويز
 
-Quiz content lives in a single file:
+محتوى الكويز موجود في ملف واحد:
 
 ```
 src/data/quiz/questions.json
 ```
 
-It's a JSON array of 260 real Arabic quiz questions across 10 categories (جغرافيا، تاريخ، علوم، فضاء، رياضة، أنمي، ألعاب فيديو، أفلام ومسلسلات، تكنولوجيا، ثقافة عامة). Each question matches this schema:
+عبارة عن مصفوفة JSON فيها 260 سؤال كويز حقيقي بالعربي موزّعين على 10 تصنيفات (جغرافيا، تاريخ، علوم، فضاء، رياضة، أنمي، ألعاب فيديو، أفلام ومسلسلات، تكنولوجيا، ثقافة عامة). كل سؤال مطابق للـ schema ده:
 
 ```json
 {
@@ -277,69 +280,71 @@ It's a JSON array of 260 real Arabic quiz questions across 10 categories (جغر
 }
 ```
 
-- `id` — unique positive integer. **Auto-generated at load time** based on each question's position in the file (1st question → `id: 1`, 2nd → `id: 2`, etc). You never need to add or maintain ids by hand in the JSON source — just add new questions to the file and ids are assigned automatically and consistently on every load.
-- `question` — the question text. Full UTF-8 / Arabic support.
-- `answers` — **an array of strings**, not a single string. A question can have more than one accepted correct answer (e.g. two valid spellings of the same name). Always treat this as an array in the bot, even for questions with only one answer.
-- `category` — a free-form topic label (e.g. `"جغرافيا"`, `"علوم"`).
+- `id` — رقم صحيح موجب فريد. **يتولّد تلقائيًا وقت التحميل** حسب ترتيب السؤال في الملف (السؤال الأول → `id: 1`، الثاني → `id: 2`، وهكذا). مش محتاجة تضيفي أو تديري ids يدويًا في ملف الـ JSON — فقط ضيفي أسئلة جديدة للملف وهيتحدد لها id تلقائيًا وبشكل ثابت في كل تحميل.
+- `question` — نص السؤال. دعم كامل لـ UTF-8/العربي.
+- `answers` — **مصفوفة نصوص**، مش نص واحد. السؤال ممكن يقبل أكتر من إجابة صحيحة (زي تهجئتين مختلفتين لنفس الاسم). دايمًا تعاملي معاها كمصفوفة في البوت، حتى لو السؤال ليه إجابة واحدة بس.
+- `category` — تصنيف حر للموضوع (زي `"جغرافيا"`, `"علوم"`).
 
-Any record missing `question`, `answers` (as a non-empty array of non-empty strings), or `category` is skipped automatically at load time and will not appear in any endpoint — it will not crash the API.
+أي سجل ناقص فيه `question` أو `answers` (كمصفوفة غير فارغة من نصوص غير فارغة) أو `category` بيتجاهل تلقائيًا وقت التحميل ومش هيظهر في أي endpoint — مش هيكسر الـ API.
 
-The dataset is the sole source of truth: no sample/demo/placeholder questions ship with this project anymore. To update the content, edit `src/data/quiz/questions.json`, commit, and redeploy — no code changes needed.
+مجموعة البيانات دي هي المصدر الوحيد للحقيقة: مفيش أي أسئلة تجريبية/placeholder في المشروع دلوقتي. لتحديث المحتوى: عدّلي `src/data/quiz/questions.json`، اعملي commit، وارفعي (redeploy) — بدون أي تعديل كود.
 
-### Recommended bot integration (anti-repeat)
+### نمط مقترح لتكامل البوت (anti-repeat)
 
-Since the API is stateless, use this pattern in the WhatsApp bot to avoid repeating questions within a group:
+بما إن الـ API بلا حالة، استخدمي النمط ده في بوت الواتساب عشان تتفادي تكرار الأسئلة داخل نفس المجموعة:
 
-1. Keep a per-group list of used question ids (in the bot's own database/memory).
-2. Call `GET /api/games/quiz/random-exclude?ids=<comma-separated used ids>` instead of plain `/random`.
-3. Add the returned question's `id` to the group's used-ids list.
-4. If the endpoint returns `404 NOT_FOUND` (all questions exhausted), clear the group's used-ids list and call again.
+1. احتفظي بقائمة لكل مجموعة لأرقام الأسئلة المستخدمة (في قاعدة بيانات/ذاكرة البوت نفسه).
+2. نادي على `GET /api/games/quiz/random-exclude?ids=<الأرقام المستخدمة مفصولة بفواصل>` بدل `/random` العادي.
+3. ضيفي `id` السؤال المُرجَع لقائمة الأرقام المستخدمة لتلك المجموعة.
+4. لو الـ endpoint رجّع `404 NOT_FOUND` (كل الأسئلة اتستنفدت)، صفّري قائمة الأرقام المستخدمة لتلك المجموعة ونادي تاني.
+
+أكواد جاهزة كاملة لهذا النمط (وباقي أمثلة التكامل مع Baileys) موجودة في [`BOT_DEVELOPER_GUIDE.md`](./BOT_DEVELOPER_GUIDE.md).
 
 ---
 
-## Adding a New Game
+## إضافة لعبة جديدة
 
-The route structure (`/api/games/[game]/...`) and storage layer (`lib/json-db.ts`) are already generic. To add a new game (e.g. `riddles`):
+بنية الـ routes (`/api/games/[game]/...`) وطبقة التخزين (`lib/json-db.ts`) عامة (generic) بالفعل. لإضافة لعبة جديدة (مثلًا `riddles`):
 
-1. Create a new self-contained module folder: `src/modules/games/riddles/`, following the same pattern as `src/modules/games/quiz/` (a `*.types.ts`, a `*.service.ts`, optionally a `*.validation.ts`, and an `index.ts`).
-2. Add a `src/data/riddles/questions.json` file with your content.
-3. Register the slug in `src/types/games.ts`:
+1. أنشئي مجلد وحدة جديد مستقل بذاته: `src/modules/games/riddles/`، بنفس نمط `src/modules/games/quiz/` (ملف `*.types.ts`, ملف `*.service.ts`, اختياريًا `*.validation.ts`, و`index.ts`).
+2. ضيفي ملف `src/data/riddles/questions.json` بمحتواك.
+3. سجّلي اسم اللعبة (slug) في `src/types/games.ts`:
    ```ts
    export const GAME_REGISTRY = ["quiz", "riddles"] as const;
    ```
-4. Wire the new module into `src/modules/games/registry.ts` — add a `"riddles"` case to each of the five dispatch functions (`getRandomItem`, `getRandomItemExcluding`, `getAllItems`, `getItemById`, `getItemCount`), calling into your new module's service functions.
+4. اربطي الوحدة الجديدة في `src/modules/games/registry.ts` — ضيفي حالة `"riddles"` لكل دالة من الدوال الخمس (`getRandomItem`, `getRandomItemExcluding`, `getAllItems`, `getItemById`, `getItemCount`)، بحيث تنادي على دوال وحدتك الجديدة.
 
-No route files need to change — `/api/games/riddles/random`, `/random-exclude`, `/all`, `/count`, and `/:id` all work automatically once the registry knows about `"riddles"`.
-
----
-
-## Error Handling
-
-The API handles these cases cleanly, always returning the standard JSON error envelope:
-
-- **Missing file** — if `questions.json` doesn't exist, `lib/json-db.ts` raises a `NOT_FOUND` error.
-- **Invalid JSON** — if the file's content isn't valid JSON or isn't an array, an `INVALID_JSON`-coded error is raised.
-- **Invalid ID** — non-numeric or non-positive `:id` values are rejected with `400 BAD_REQUEST` before ever touching the data layer.
-- **Empty dataset** — `random` on an empty collection returns `404 NOT_FOUND` instead of crashing.
-- **All questions excluded** — `random-exclude` returns `404 NOT_FOUND` if every available question was excluded via `ids`, instead of silently repeating one.
-- **Unknown game slug** — any `[game]` not present in `GAME_REGISTRY` returns `404 NOT_FOUND`.
-- **Unknown route** — any request under `/api/*` that doesn't match a defined route returns `404` via the catch-all handler, as JSON (not Next.js's default HTML 404 page).
+مفيش أي ملف route محتاج تعديل — `/api/games/riddles/random`, `/random-exclude`, `/all`, `/count`, و`/:id` كلها هتشتغل تلقائيًا بمجرد ما الـ registry يعرف عن `"riddles"`.
 
 ---
 
-## Deploying to Vercel
+## التعامل مع الأخطاء
 
-1. Push this repo to GitHub/GitLab/Bitbucket.
-2. Import the repo in the [Vercel dashboard](https://vercel.com/new) — it will auto-detect the Next.js framework.
-3. No environment variables are required for this MVP. Optionally set `NEXT_PUBLIC_API_NAME` / `API_VERSION` in **Project Settings → Environment Variables** if you want custom values.
-4. Deploy. Vercel runs `npm install` then `npm run build` automatically (see `vercel.json`).
-5. Verify with:
+الـ API بيتعامل مع الحالات دي بشكل نظيف، ودايمًا بيرجّع الشكل الموحّد للخطأ في JSON:
+
+- **ملف مفقود** — لو `questions.json` مش موجود، `lib/json-db.ts` بيرمي خطأ `NOT_FOUND`.
+- **JSON غير صالح** — لو محتوى الملف مش JSON صحيح أو مش مصفوفة، بيتم رمي خطأ بكود `INVALID_JSON`.
+- **id غير صالح** — قيم `:id` غير الرقمية أو غير الموجبة بترفض بـ `400 BAD_REQUEST` قبل حتى ما تلمس طبقة البيانات.
+- **مجموعة بيانات فارغة** — `random` على مجموعة فارغة بترجّع `404 NOT_FOUND` بدل ما تكسر.
+- **كل الأسئلة مستثناة** — `random-exclude` بترجّع `404 NOT_FOUND` لو كل الأسئلة المتاحة استُثنيت عبر `ids`، بدل ما تكرر واحدة بصمت.
+- **اسم لعبة غير معروف** — أي `[game]` مش موجود في `GAME_REGISTRY` بيرجّع `404 NOT_FOUND`.
+- **مسار غير معروف** — أي طلب تحت `/api/*` ملوش route معرّف بيرجّع `404` عبر المعالج الشامل، كـ JSON (مش صفحة 404 HTML الافتراضية من Next.js).
+
+---
+
+## النشر على Vercel
+
+1. ارفعي المشروع على GitHub/GitLab/Bitbucket.
+2. استوردي المشروع من [لوحة تحكم Vercel](https://vercel.com/new) — هيتعرّف تلقائيًا على إطار Next.js.
+3. مفيش أي متغيرات بيئة إلزامية لهذه النسخة الأولية. اختياريًا حطي `NEXT_PUBLIC_API_NAME` / `API_VERSION` في **Project Settings → Environment Variables** لو عايزة قيم مخصّصة.
+4. ديبلوي. Vercel بيشغّل `npm install` ثم `npm run build` تلقائيًا (راجعي `vercel.json`).
+5. تأكدي بـ:
    ```bash
    curl https://<your-deployment>.vercel.app/api/games/quiz/random
    ```
 
-### Important production note on JSON storage
+### ملاحظة مهمة عن تخزين JSON في بيئة الإنتاج
 
-Vercel's serverless function filesystem is **read-only** at runtime (except `/tmp`, which is ephemeral and not shared across invocations). This project only *reads* `questions.json` at request time, which works perfectly on Vercel.
+نظام ملفات دوال Vercel الخادمة (serverless) **للقراءة فقط** وقت التشغيل (باستثناء `/tmp`، وهو مؤقت ومش مشترك بين الاستدعاءات). هذا المشروع فقط *بيقرأ* `questions.json` وقت الطلب، وده بيشتغل تمام على Vercel.
 
-To update quiz content in production: edit `src/data/quiz/questions.json`, commit, and redeploy. There is no runtime write/CRUD support by design — this keeps the project simple and fully compatible with Vercel's read-only production filesystem.
+لتحديث محتوى الكويز في الإنتاج: عدّلي `src/data/quiz/questions.json`، اعملي commit، وارفعي (redeploy). لا يوجد دعم للكتابة/CRUD وقت التشغيل بشكل مقصود — ده بيخلي المشروع بسيط ومتوافق تمامًا مع نظام ملفات Vercel للقراءة فقط في الإنتاج.
