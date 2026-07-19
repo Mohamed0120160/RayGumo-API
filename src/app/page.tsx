@@ -16,7 +16,7 @@ export default function HomePage() {
       </p>
       <p>
         This is a lightweight backend-only Game Content API. See the project{" "}
-        <a href="https://github.com/RayGumo/RayGumo-API#readme">README</a> for the full list of
+        <a href="https://github.com/Mohamed0120160/RayGumo-API#readme">README</a> for the full list of
         endpoints, request/response examples, and a Baileys WhatsApp bot integration guide.
       </p>
       <h2>Quick links</h2>
