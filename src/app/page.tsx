@@ -25,6 +25,10 @@ export default function HomePage() {
         <li><code>GET /api/games/quiz/all</code></li>
         <li><code>GET /api/games/quiz/count</code></li>
         <li><code>GET /api/games/quiz/:id</code></li>
+        <li><code>GET /api/games/true-false/random</code></li>
+        <li><code>GET /api/games/true-false/all</code></li>
+        <li><code>GET /api/games/true-false/count</code></li>
+        <li><code>GET /api/games/true-false/:id</code></li>
       </ul>
     </main>
   );
