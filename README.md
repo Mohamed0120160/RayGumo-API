@@ -197,7 +197,7 @@ npm run lint    # تشغيل ESLint
 
 كل الـ endpoints الحالية تستخدم اسم اللعبة `[game]`. حاليًا `quiz` و`true-false` و`riddles` هي الألعاب الثلاث المسجّلة (راجعي `src/types/games.ts`). كل الأمثلة تحت مبنية على `quiz`، لكن نفس الروابط والشكل تنطبق حرفيًا على `true-false` و`riddles` (فقط استبدلي `quiz` باسم اللعبة المطلوبة في المسار).
 
-> 🔗 **ملاحظة عن رابط الألغاز المختصر:** لعبة الألغاز متاحة أيضًا على مسار مختصر `/api/riddles/...` (بدل `/api/games/riddles/...`)، عبر `rewrite` داخلي معرّف في `next.config.ts`. المساران يعملان معًا بنفس النتيجة تمامًا؛ استخدمي أيّهما تفضّلين. راجعي قسم [Riddles API (ألغاز)](#riddles-api-ألغاز) بالأسفل للتفاصيل الكاملة.
+> 🔗 راجعي قسم [Riddles API (ألغاز)](#riddles-api-ألغاز) بالأسفل للتفاصيل الكاملة عن كل endpoints هذه اللعبة.
 
 | المسار (Endpoint) | Method | الوصف |
 |---|---|---|
@@ -431,20 +431,20 @@ src/data/riddles/questions.json
 
 ### الـ Endpoints
 
-لعبة الألغاز متاحة على مسارين متطابقين تمامًا في النتيجة: المسار العام `/api/games/riddles/...` (نفس نمط كل الألعاب)، والمسار المختصر `/api/riddles/...` (مُعرَّف كـ `rewrite` داخلي في `next.config.ts` خصيصًا لهذه اللعبة). استخدمي أيّهما تفضّلين — كلاهما ينفّذ نفس الكود بالضبط.
+لعبة الألغاز متاحة على نفس المسار العام المشترك بين كل الألعاب: `/api/games/riddles/...` (نفس نمط `quiz` و`true-false` تمامًا).
 
 | المسار (Endpoint) | Method | الوصف |
 |---|---|---|
-| `/api/riddles/random` | GET | ترجّع لغزًا عشوائيًا واحدًا |
-| `/api/riddles/random-exclude?ids=1,5,8,20` | GET | ترجّع لغزًا عشوائيًا واحدًا مع استثناء الـ ids الممرّرة (anti-repeat) |
-| `/api/riddles/all` | GET | ترجّع كل الألغاز |
-| `/api/riddles/count` | GET | ترجّع العدد الإجمالي للألغاز |
-| `/api/riddles/:id` | GET | ترجّع لغزًا واحدًا بواسطة رقمه (id) |
+| `/api/games/riddles/random` | GET | ترجّع لغزًا عشوائيًا واحدًا |
+| `/api/games/riddles/random-exclude?ids=1,5,8,20` | GET | ترجّع لغزًا عشوائيًا واحدًا مع استثناء الـ ids الممرّرة (anti-repeat) |
+| `/api/games/riddles/all` | GET | ترجّع كل الألغاز |
+| `/api/games/riddles/count` | GET | ترجّع العدد الإجمالي للألغاز |
+| `/api/games/riddles/:id` | GET | ترجّع لغزًا واحدًا بواسطة رقمه (id) |
 
-#### `GET /api/riddles/random`
+#### `GET /api/games/riddles/random`
 
 ```bash
-curl http://localhost:3000/api/riddles/random
+curl http://localhost:3000/api/games/riddles/random
 ```
 
 ```json
@@ -458,12 +458,12 @@ curl http://localhost:3000/api/riddles/random
 }
 ```
 
-#### `GET /api/riddles/random-exclude`
+#### `GET /api/games/riddles/random-exclude`
 
 ترجّع لغزًا عشوائيًا واحدًا، مع استثناء أي `id` ممرّرة في معامل الاستعلام `ids` (مفصولة بفواصل). الـ API نفسه بلا حالة (stateless) تمامًا ولا **يتذكر** أي ألغاز سبق تقديمها — بوت الواتساب هو المسؤول عن تتبّع أرقام الألغاز المستخدمة لكل مجموعة/جلسة وتمريرها في كل طلب. هذا هو نظام منع التكرار (anti-repeat) الذي تعتمد عليه البوتات: كل لغز له `id` فريد وثابت، فيرسل البوت قائمة كل الـ `id` المستخدمة سابقًا مع كل طلب جديد.
 
 ```bash
-curl "http://localhost:3000/api/riddles/random-exclude?ids=1,5,8,20"
+curl "http://localhost:3000/api/games/riddles/random-exclude?ids=1,5,8,20"
 ```
 
 ```json
@@ -487,18 +487,18 @@ curl "http://localhost:3000/api/riddles/random-exclude?ids=1,5,8,20"
 }
 ```
 
-#### `GET /api/riddles/all`
+#### `GET /api/games/riddles/all`
 
 ```bash
-curl http://localhost:3000/api/riddles/all
+curl http://localhost:3000/api/games/riddles/all
 ```
 
 ترجّع مصفوفة `questions.json` كاملة (300 لغز) داخل الشكل الموحّد.
 
-#### `GET /api/riddles/count`
+#### `GET /api/games/riddles/count`
 
 ```bash
-curl http://localhost:3000/api/riddles/count
+curl http://localhost:3000/api/games/riddles/count
 ```
 
 ```json
@@ -508,10 +508,10 @@ curl http://localhost:3000/api/riddles/count
 }
 ```
 
-#### `GET /api/riddles/:id`
+#### `GET /api/games/riddles/:id`
 
 ```bash
-curl http://localhost:3000/api/riddles/125
+curl http://localhost:3000/api/games/riddles/125
 ```
 
 ```json
@@ -529,10 +529,10 @@ curl http://localhost:3000/api/riddles/125
 
 ### نظام منع التكرار (anti-repeat)
 
-نفس نمط الكويز و"صح أو خطأ" بالضبط — استخدمي `GET /api/riddles/random-exclude?ids=1,2,3` بدل `/random` العادي، وتتبّعي أرقام الألغاز (`id`) المستخدمة لكل مجموعة في البوت نفسه:
+نفس نمط الكويز و"صح أو خطأ" بالضبط — استخدمي `GET /api/games/riddles/random-exclude?ids=1,2,3` بدل `/random` العادي، وتتبّعي أرقام الألغاز (`id`) المستخدمة لكل مجموعة في البوت نفسه:
 
 1. احتفظي بقائمة لكل مجموعة لأرقام الألغاز المستخدمة (في قاعدة بيانات/ذاكرة البوت نفسه).
-2. نادي على `GET /api/riddles/random-exclude?ids=<الأرقام المستخدمة مفصولة بفواصل>` بدل `/random` العادي.
+2. نادي على `GET /api/games/riddles/random-exclude?ids=<الأرقام المستخدمة مفصولة بفواصل>` بدل `/random` العادي.
 3. ضيفي `id` اللغز المُرجَع لقائمة الأرقام المستخدمة لتلك المجموعة.
 4. لو الـ endpoint رجّع `404 NOT_FOUND` (كل الألغاز اتستنفدت)، صفّري قائمة الأرقام المستخدمة لتلك المجموعة ونادي تاني.
 
@@ -554,7 +554,7 @@ curl http://localhost:3000/api/riddles/125
    ```
 4. اربطي الوحدة الجديدة في `src/modules/games/registry.ts` — ضيفي حالة `"anime"` لكل دالة من الدوال الخمس (`getRandomItem`, `getRandomItemExcluding`, `getAllItems`, `getItemById`, `getItemCount`)، بحيث تنادي على دوال وحدتك الجديدة.
 
-مفيش أي ملف route محتاج تعديل — `/api/games/anime/random`, `/random-exclude`, `/all`, `/count`, و`/:id` كلها هتشتغل تلقائيًا بمجرد ما الـ registry يعرف عن `"anime"`. لو حبيتِ رابطًا مختصرًا زي `/api/anime/...` (بدل `/api/games/anime/...`)، ضيفي قاعدة `rewrite` إضافية في `next.config.ts` بنفس أسلوب قاعدة الألغاز الموجودة هناك حاليًا.
+مفيش أي ملف route محتاج تعديل — `/api/games/anime/random`, `/random-exclude`, `/all`, `/count`, و`/:id` كلها هتشتغل تلقائيًا بمجرد ما الـ registry يعرف عن `"anime"`. لو حبيتِ رابطًا مختصرًا زي `/api/anime/...` (بدل `/api/games/anime/...`)، تقدري تضيفي قاعدة `rewrite` في `next.config.ts` تربطه بالمسار العام.
 
 ---
 
