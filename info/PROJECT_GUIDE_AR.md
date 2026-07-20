@@ -674,9 +674,8 @@ export async function getRandomItem(slug: string) {
 
 ### الخطوة 6 (اختيارية): رابط مختصر بدون `/games/`
 
-لو حابة رابطًا مختصرًا زي `/api/anime/...` (بدل `/api/games/anime/...`)
-— بنفس أسلوب `/api/riddles/...` الموجود حاليًا — ضيفي قاعدتي `rewrite`
-في `next.config.ts`:
+لو حابة رابطًا مختصرًا زي `/api/anime/...` (بدل `/api/games/anime/...`)،
+تقدري تضيفي قاعدتي `rewrite` في `next.config.ts`:
 
 ```ts
 async rewrites() {
@@ -718,11 +717,11 @@ async rewrites() {
 | `/api/games/true-false/all` | GET | يرجع كل أسئلة "صح أو خطأ" |
 | `/api/games/true-false/count` | GET | يرجع العدد الإجمالي لأسئلة "صح أو خطأ" |
 | `/api/games/true-false/:id` | GET | يرجع سؤال "صح أو خطأ" واحد محدد بواسطة id |
-| `/api/riddles/random` (أو `/api/games/riddles/random`) | GET | يرجع لغزًا عشوائيًا واحدًا |
-| `/api/riddles/random-exclude?ids=1,2,3` | GET | لغز عشوائي مع استثناء ids (anti-repeat) |
-| `/api/riddles/all` | GET | يرجع كل الألغاز |
-| `/api/riddles/count` | GET | يرجع العدد الإجمالي للألغاز |
-| `/api/riddles/:id` | GET | يرجع لغزًا واحدًا محددًا بواسطة id |
+| `/api/games/riddles/random` | GET | يرجع لغزًا عشوائيًا واحدًا |
+| `/api/games/riddles/random-exclude?ids=1,2,3` | GET | لغز عشوائي مع استثناء ids (anti-repeat) |
+| `/api/games/riddles/all` | GET | يرجع كل الألغاز |
+| `/api/games/riddles/count` | GET | يرجع العدد الإجمالي للألغاز |
+| `/api/games/riddles/:id` | GET | يرجع لغزًا واحدًا محددًا بواسطة id |
 | `/api/*` (أي مسار آخر) | GET | 404 بشكل JSON موحّد |
 
 ---
