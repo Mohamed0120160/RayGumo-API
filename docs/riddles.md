@@ -12,11 +12,11 @@
 - [بنية البيانات](#بنية-البيانات)
 - [نظام الـ id](#نظام-الـ-id)
 - [الـ Endpoints](#الـ-endpoints)
-  - [GET /api/riddles/random](#get-apiriddlesrandom)
-  - [GET /api/riddles/random-exclude](#get-apiriddlesrandom-exclude)
-  - [GET /api/riddles/all](#get-apiriddlesall)
-  - [GET /api/riddles/count](#get-apiriddlescount)
-  - [GET /api/riddles/:id](#get-apiriddlesid)
+  - [GET /api/games/riddles/random](#get-apigamesriddlesrandom)
+  - [GET /api/games/riddles/random-exclude](#get-apigamesriddlesrandom-exclude)
+  - [GET /api/games/riddles/all](#get-apigamesriddlesall)
+  - [GET /api/games/riddles/count](#get-apigamesriddlescount)
+  - [GET /api/games/riddles/:id](#get-apigamesriddlesid)
 - [شكل الاستجابة الموحّد](#شكل-الاستجابة-الموحد)
 - [تكامل Baileys جاهز للنسخ](#تكامل-baileys-جاهز-للنسخ)
 - [منع تكرار نفس اللغز (Anti-Repeat)](#منع-تكرار-نفس-اللغز-anti-repeat)
@@ -81,21 +81,16 @@ src/data/riddles/questions.json
 
 ## الـ Endpoints
 
-جميع الـ endpoints التالية متاحة على مسارين متطابقين تمامًا في النتيجة:
+جميع الـ endpoints التالية متاحة على المسار العام المشترك بين كل الألعاب: `/api/games/riddles/...` (نفس نمط `quiz` و`true-false` تمامًا).
 
-- المسار المختصر: `/api/riddles/...` (مُعرَّف كـ `rewrite` داخلي في `next.config.ts` خصيصًا لهذه اللعبة).
-- المسار العام المشترك بين كل الألعاب: `/api/games/riddles/...`.
-
-كلاهما ينفّذ نفس الكود بالضبط. كل الأمثلة بالأسفل تستخدم المسار المختصر `/api/riddles/...`.
-
-### `GET /api/riddles/random`
+### `GET /api/games/riddles/random`
 
 ترجع لغزًا عشوائيًا واحدًا.
 
 **مثال الطلب:**
 
 ```bash
-curl https://raygumo-api.vercel.app/api/riddles/random
+curl https://raygumo-api.vercel.app/api/games/riddles/random
 ```
 
 **مثال الاستجابة (200):**
@@ -113,18 +108,18 @@ curl https://raygumo-api.vercel.app/api/riddles/random
 
 ---
 
-### `GET /api/riddles/random-exclude`
+### `GET /api/games/riddles/random-exclude`
 
 ترجع لغزًا عشوائيًا واحدًا، مع استثناء أي `id` موجود ضمن قائمة معامل الاستعلام `ids` (مفصولة بفواصل). هذا هو آلية منع التكرار (anti-repeat) في اللعبة.
 
-`GET /api/riddles/random-exclude?ids=1,5,8,20`
+`GET /api/games/riddles/random-exclude?ids=1,5,8,20`
 
 **لماذا هذا الـ endpoint موجود:** الـ API بلا حالة تمامًا — لا يخزّن أي معلومة دائمة عن الألغاز التي عُرضت سابقًا. البوت (مثلًا بوت واتساب) هو المسؤول عن تتبّع الألغاز المستخدمة لكل مستخدم/مجموعة، ثم إرسال قائمة تلك الـ `id` مع كل طلب حتى لا يتكرر نفس اللغز.
 
 **مثال الطلب:**
 
 ```bash
-curl "https://raygumo-api.vercel.app/api/riddles/random-exclude?ids=1,5,8,20"
+curl "https://raygumo-api.vercel.app/api/games/riddles/random-exclude?ids=1,5,8,20"
 ```
 
 **مثال الاستجابة (200) — لغز غير موجود ضمن `1,5,8,20`:**
@@ -149,14 +144,14 @@ curl "https://raygumo-api.vercel.app/api/riddles/random-exclude?ids=1,5,8,20"
 
 ---
 
-### `GET /api/riddles/all`
+### `GET /api/games/riddles/all`
 
 ترجع كل الألغاز كمصفوفة كاملة (300 لغز حاليًا).
 
 **مثال الطلب:**
 
 ```bash
-curl https://raygumo-api.vercel.app/api/riddles/all
+curl https://raygumo-api.vercel.app/api/games/riddles/all
 ```
 
 **مثال الاستجابة (200) — مختصرة:**
@@ -173,14 +168,14 @@ curl https://raygumo-api.vercel.app/api/riddles/all
 
 ---
 
-### `GET /api/riddles/count`
+### `GET /api/games/riddles/count`
 
 ترجع العدد الإجمالي للألغاز المتاحة حاليًا.
 
 **مثال الطلب:**
 
 ```bash
-curl https://raygumo-api.vercel.app/api/riddles/count
+curl https://raygumo-api.vercel.app/api/games/riddles/count
 ```
 
 **مثال الاستجابة (200):**
@@ -196,14 +191,14 @@ curl https://raygumo-api.vercel.app/api/riddles/count
 
 ---
 
-### `GET /api/riddles/:id`
+### `GET /api/games/riddles/:id`
 
 ترجع لغزًا واحدًا محددًا بالضبط عبر رقمه (`id`)، بدل لغز عشوائي.
 
 **مثال الطلب:**
 
 ```bash
-curl https://raygumo-api.vercel.app/api/riddles/125
+curl https://raygumo-api.vercel.app/api/games/riddles/125
 ```
 
 **مثال الاستجابة (200):**
@@ -277,7 +272,7 @@ curl https://raygumo-api.vercel.app/api/riddles/125
 const API_BASE = process.env.RAYGUMO_API_URL ?? "https://raygumo-api.vercel.app";
 
 async function getRandomRiddle() {
-  const res = await fetch(`${API_BASE}/api/riddles/random`);
+  const res = await fetch(`${API_BASE}/api/games/riddles/random`);
   const json = await res.json();
   if (!json.success) throw new Error(json.message);
   return json.data; // { id, question, answers }
@@ -336,7 +331,7 @@ const API_BASE = process.env.RAYGUMO_API_URL ?? "https://raygumo-api.vercel.app"
 async function getNextRiddle(groupId) {
   const usedIds = [...getUsedIds(groupId)];
   const idsParam = usedIds.join(",");
-  const url = `${API_BASE}/api/riddles/random-exclude${idsParam ? `?ids=${idsParam}` : ""}`;
+  const url = `${API_BASE}/api/games/riddles/random-exclude${idsParam ? `?ids=${idsParam}` : ""}`;
 
   const res = await fetch(url);
   const json = await res.json();
