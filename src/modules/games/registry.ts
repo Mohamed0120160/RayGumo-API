@@ -10,7 +10,8 @@
  * الطلب عن لعبة quiz، إذًا استخدم دوال وحدة الكويز".
  *
  * لإضافة لعبة جديدة مستقبلًا (مثل anime):
- *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/.
+ *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/ أو
+ *      true-false/.
  *   2. أضف "anime" في GAME_REGISTRY داخل src/types/games.ts.
  *   3. أضف حالة جديدة هنا في كل دالة (switch/if) تربط "anime" بوحدة
  *      anime الجديدة.
@@ -20,6 +21,7 @@
  */
 
 import * as quiz from "./quiz";
+import * as trueFalse from "./true-false";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -43,14 +45,15 @@ function assertValidSlug(slug: string): asserts slug is GameSlug {
 
 /**
  * تُرجع عنصرًا عشوائيًا واحدًا من اللعبة المحددة بواسطة slug.
- * حاليًا يوجد فرع واحد فقط (quiz)؛ أي لعبة تُضاف مستقبلًا تحتاج فرعًا
- * جديدًا هنا.
+ * أي لعبة تُضاف مستقبلًا تحتاج فرعًا جديدًا هنا.
  */
 export async function getRandomItem(slug: string) {
   assertValidSlug(slug);
   switch (slug) {
     case "quiz":
       return quiz.getRandomQuestion();
+    case "true-false":
+      return trueFalse.getRandomQuestion();
   }
 }
 
@@ -63,6 +66,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
   switch (slug) {
     case "quiz":
       return quiz.getRandomQuestionExcluding(excludeIds);
+    case "true-false":
+      return trueFalse.getRandomQuestionExcluding(excludeIds);
   }
 }
 
@@ -72,6 +77,8 @@ export async function getAllItems(slug: string) {
   switch (slug) {
     case "quiz":
       return quiz.getAllQuestions();
+    case "true-false":
+      return trueFalse.getAllQuestions();
   }
 }
 
@@ -81,6 +88,8 @@ export async function getItemById(slug: string, id: number) {
   switch (slug) {
     case "quiz":
       return quiz.getQuestionById(id);
+    case "true-false":
+      return trueFalse.getQuestionById(id);
   }
 }
 
@@ -90,6 +99,8 @@ export async function getItemCount(slug: string) {
   switch (slug) {
     case "quiz":
       return quiz.getQuestionCount();
+    case "true-false":
+      return trueFalse.getQuestionCount();
   }
 }
 
