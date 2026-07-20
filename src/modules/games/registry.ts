@@ -9,9 +9,10 @@
  * عن بعضها. هذا الملف هو "المُبدّل" (dispatcher) الذي يقرر: "بما أن
  * الطلب عن لعبة quiz، إذًا استخدم دوال وحدة الكويز".
  *
- * لإضافة لعبة جديدة مستقبلًا (مثل anime):
+ * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "riddles" (الألغاز) هي
+ * أحدث مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن اعتبارها مرجعًا.
  *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/ أو
- *      true-false/.
+ *      true-false/ أو riddles/.
  *   2. أضف "anime" في GAME_REGISTRY داخل src/types/games.ts.
  *   3. أضف حالة جديدة هنا في كل دالة (switch/if) تربط "anime" بوحدة
  *      anime الجديدة.
@@ -22,6 +23,7 @@
 
 import * as quiz from "./quiz";
 import * as trueFalse from "./true-false";
+import * as riddles from "./riddles";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -54,6 +56,8 @@ export async function getRandomItem(slug: string) {
       return quiz.getRandomQuestion();
     case "true-false":
       return trueFalse.getRandomQuestion();
+    case "riddles":
+      return riddles.getRandomRiddle();
   }
 }
 
@@ -68,6 +72,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return quiz.getRandomQuestionExcluding(excludeIds);
     case "true-false":
       return trueFalse.getRandomQuestionExcluding(excludeIds);
+    case "riddles":
+      return riddles.getRandomRiddleExcluding(excludeIds);
   }
 }
 
@@ -79,6 +85,8 @@ export async function getAllItems(slug: string) {
       return quiz.getAllQuestions();
     case "true-false":
       return trueFalse.getAllQuestions();
+    case "riddles":
+      return riddles.getAllRiddles();
   }
 }
 
@@ -90,6 +98,8 @@ export async function getItemById(slug: string, id: number) {
       return quiz.getQuestionById(id);
     case "true-false":
       return trueFalse.getQuestionById(id);
+    case "riddles":
+      return riddles.getRiddleById(id);
   }
 }
 
@@ -101,6 +111,8 @@ export async function getItemCount(slug: string) {
       return quiz.getQuestionCount();
     case "true-false":
       return trueFalse.getQuestionCount();
+    case "riddles":
+      return riddles.getRiddleCount();
   }
 }
 
