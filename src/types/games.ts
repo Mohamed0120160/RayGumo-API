@@ -4,8 +4,8 @@
  * الرابط (مثل "quiz" في /api/games/quiz/random) بوحدة اللعبة الفعلية
  * داخل src/modules/games/<game>/.
  *
- * حاليًا يوجد لعبة واحدة مسجّلة فقط: quiz. لإضافة لعبة جديدة مستقبلًا
- * (anime, riddles...) يجب:
+ * حاليًا يوجد لعبتان مسجّلتان: quiz وtrue-false. لإضافة لعبة جديدة
+ * مستقبلًا (anime, riddles...) يجب:
  *   1. إنشاء وحدة جديدة كاملة في src/modules/games/<game>/ بنفس نمط
  *      وحدة quiz (service + types + validation + index).
  *   2. إضافة اسمها هنا في GAME_REGISTRY.
@@ -19,9 +19,9 @@
  * قائمة أسماء (slugs) كل الألعاب المسجّلة فعليًا في المشروع حاليًا.
  * هذا الثابت هو "مصدر الحقيقة الوحيد" لمعرفة أي الألعاب متاحة.
  */
-export const GAME_REGISTRY = ["quiz"] as const;
+export const GAME_REGISTRY = ["quiz", "true-false"] as const;
 
-/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" فقط). */
+/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false"). */
 export type GameSlug = (typeof GAME_REGISTRY)[number];
 
 /**
