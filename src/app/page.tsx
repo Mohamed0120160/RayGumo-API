@@ -29,11 +29,11 @@ export default function HomePage() {
         <li><code>GET /api/games/true-false/all</code></li>
         <li><code>GET /api/games/true-false/count</code></li>
         <li><code>GET /api/games/true-false/:id</code></li>
-        <li><code>GET /api/riddles/random</code></li>
-        <li><code>GET /api/riddles/random-exclude</code></li>
-        <li><code>GET /api/riddles/all</code></li>
-        <li><code>GET /api/riddles/count</code></li>
-        <li><code>GET /api/riddles/:id</code></li>
+        <li><code>GET /api/games/riddles/random</code></li>
+        <li><code>GET /api/games/riddles/random-exclude</code></li>
+        <li><code>GET /api/games/riddles/all</code></li>
+        <li><code>GET /api/games/riddles/count</code></li>
+        <li><code>GET /api/games/riddles/:id</code></li>
       </ul>
     </main>
   );
