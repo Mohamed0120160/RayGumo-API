@@ -603,51 +603,63 @@ curl https://your-api.vercel.app/api/games/quiz/3
 
 ## إضافة لعبة جديدة مستقبلًا
 
-رغم أن الكويز هي اللعبة الوحيدة حاليًا، المعمارية جاهزة تمامًا لإضافة
-ألعاب جديدة بدون تغيير بنية روابط الـ API. مثال: إضافة لعبة `riddles`
-(ألغاز):
+المعمارية جاهزة تمامًا لإضافة ألعاب جديدة بدون تغيير بنية روابط الـ
+API. الألعاب المسجّلة حاليًا هي `quiz`، `true-false`، و`riddles` (ألغاز)
+— وقد أُضيفت `riddles` بالفعل بنفس الخطوات الموضّحة هنا، فيمكن اعتبارها
+مثالًا حيًا كاملًا. لإضافة لعبة جديدة أخرى (مثال: `anime`):
 
 ### الخطوة 1: أنشئ وحدة اللعبة الجديدة
 
-أنشئ `src/modules/games/riddles/` بنفس نمط `quiz/` بالضبط:
+أنشئ `src/modules/games/anime/` بنفس نمط `quiz/` أو `true-false/` أو
+`riddles/` بالضبط:
 
 ```
-riddles/
-├── riddles.service.ts     # getRandomRiddle, getRiddleById, getAllRiddles, getRiddleCount
-├── riddles.types.ts       # RiddleItem type
-├── riddles.validation.ts  # isValidRiddle
-└── index.ts                # نقطة الدخول العامة
+anime/
+├── anime.service.ts     # getRandomX, getXById, getAllX, getXCount, getRandomXExcluding
+├── anime.types.ts       # نوع العنصر (Anime مثلًا)
+├── anime.validation.ts  # isValidAnime
+└── index.ts              # نقطة الدخول العامة
 ```
+
+> ملاحظة: وحدة `riddles` الفعلية في المشروع الآن (`src/modules/games/riddles/`)
+> تتبع بالضبط نمط `true-false` — أي أن `id` مخزَّن مسبقًا ومرقّم داخل
+> `questions.json` نفسه، وليس مولَّدًا تلقائيًا بالترتيب كما في الكويز.
+> اختاري النمط المناسب (`quiz`-style أو `true-false`/`riddles`-style)
+> حسب طبيعة بياناتك.
 
 ### الخطوة 2: أنشئ ملف بيانات اللعبة
 
 ```
-src/data/riddles/questions.json
+src/data/anime/questions.json
 ```
 
-بمصفوفة أسئلة/ألغاز بنفس نمط الكويز.
+بمصفوفة عناصر بنفس نمط الكويز أو الألغاز.
 
 ### الخطوة 3: سجّل اللعبة في `types/games.ts`
 
 ```ts
-export const GAME_REGISTRY = ["quiz", "riddles"] as const;
+export const GAME_REGISTRY = ["quiz", "true-false", "riddles", "anime"] as const;
 ```
 
 ### الخطوة 4: اربطها في `modules/games/registry.ts`
 
-أضف فرعًا جديدًا `"riddles"` في كل دالة من الدوال الخمس (بما فيها
+أضف فرعًا جديدًا `"anime"` في كل دالة من الدوال الخمس (بما فيها
 `getRandomItemExcluding` لدعم منع التكرار في اللعبة الجديدة أيضًا):
 
 ```ts
-import * as riddles from "./riddles";
+import * as anime from "./anime";
 
 export async function getRandomItem(slug: string) {
   assertValidSlug(slug);
   switch (slug) {
     case "quiz":
       return quiz.getRandomQuestion();
+    case "true-false":
+      return trueFalse.getRandomQuestion();
     case "riddles":
       return riddles.getRandomRiddle();
+    case "anime":
+      return anime.getRandomX();
   }
 }
 ```
@@ -656,9 +668,27 @@ export async function getRandomItem(slug: string) {
 
 ### الخطوة 5: لا حاجة لأي route جديد!
 
-`/api/games/riddles/random`, `/random-exclude`, `/all`, `/count`, و
+`/api/games/anime/random`, `/random-exclude`, `/all`, `/count`, و
 `/[id]` تعمل تلقائيًا بمجرد إتمام الخطوات أعلاه - بنفس ملفات
 `route.ts` الموجودة فعلًا تحت `app/api/games/[game]/`.
+
+### الخطوة 6 (اختيارية): رابط مختصر بدون `/games/`
+
+لو حابة رابطًا مختصرًا زي `/api/anime/...` (بدل `/api/games/anime/...`)
+— بنفس أسلوب `/api/riddles/...` الموجود حاليًا — ضيفي قاعدتي `rewrite`
+في `next.config.ts`:
+
+```ts
+async rewrites() {
+  return [
+    { source: "/api/anime/:path*", destination: "/api/games/anime/:path*" },
+    { source: "/api/anime", destination: "/api/games/anime" },
+  ];
+},
+```
+
+هذا اختياري تمامًا - كل الألعاب تعمل بشكل كامل عبر `/api/games/[game]/...`
+بدون أي حاجة لرابط مختصر.
 
 ---
 
@@ -679,9 +709,20 @@ export async function getRandomItem(slug: string) {
 | Endpoint | Method | الوصف |
 |---|---|---|
 | `/api/games/quiz/random` | GET | يرجع سؤال كويز عشوائي واحد |
+| `/api/games/quiz/random-exclude?ids=1,2,3` | GET | سؤال كويز عشوائي مع استثناء ids (anti-repeat) |
 | `/api/games/quiz/all` | GET | يرجع كل أسئلة الكويز |
 | `/api/games/quiz/count` | GET | يرجع العدد الإجمالي لأسئلة الكويز |
 | `/api/games/quiz/:id` | GET | يرجع سؤال كويز واحد محدد بواسطة id |
+| `/api/games/true-false/random` | GET | يرجع سؤال "صح أو خطأ" عشوائي واحد |
+| `/api/games/true-false/random-exclude?ids=1,2,3` | GET | سؤال "صح أو خطأ" عشوائي مع استثناء ids |
+| `/api/games/true-false/all` | GET | يرجع كل أسئلة "صح أو خطأ" |
+| `/api/games/true-false/count` | GET | يرجع العدد الإجمالي لأسئلة "صح أو خطأ" |
+| `/api/games/true-false/:id` | GET | يرجع سؤال "صح أو خطأ" واحد محدد بواسطة id |
+| `/api/riddles/random` (أو `/api/games/riddles/random`) | GET | يرجع لغزًا عشوائيًا واحدًا |
+| `/api/riddles/random-exclude?ids=1,2,3` | GET | لغز عشوائي مع استثناء ids (anti-repeat) |
+| `/api/riddles/all` | GET | يرجع كل الألغاز |
+| `/api/riddles/count` | GET | يرجع العدد الإجمالي للألغاز |
+| `/api/riddles/:id` | GET | يرجع لغزًا واحدًا محددًا بواسطة id |
 | `/api/*` (أي مسار آخر) | GET | 404 بشكل JSON موحّد |
 
 ---
