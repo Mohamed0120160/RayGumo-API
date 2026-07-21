@@ -26,6 +26,7 @@ import * as trueFalse from "./true-false";
 import * as riddles from "./riddles";
 import * as eye from "./eye";
 import * as emoji from "./emoji";
+import * as characterGuess from "./character-guess";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -64,6 +65,8 @@ export async function getRandomItem(slug: string) {
       return eye.getRandomEyeItem();
     case "emoji":
       return emoji.getRandomEmojiQuestion();
+    case "character-guess":
+      return characterGuess.getRandomQuestion();
   }
 }
 
@@ -84,6 +87,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return eye.getRandomEyeItemExcluding(excludeIds);
     case "emoji":
       return emoji.getRandomEmojiQuestionExcluding(excludeIds);
+    case "character-guess":
+      return characterGuess.getRandomQuestionExcluding(excludeIds);
   }
 }
 
@@ -101,6 +106,8 @@ export async function getAllItems(slug: string) {
       return eye.getAllEyeItems();
     case "emoji":
       return emoji.getAllEmojiQuestions();
+    case "character-guess":
+      return characterGuess.getAllQuestions();
   }
 }
 
@@ -118,6 +125,8 @@ export async function getItemById(slug: string, id: number) {
       return eye.getEyeItemById(id);
     case "emoji":
       return emoji.getEmojiQuestionById(id);
+    case "character-guess":
+      return characterGuess.getQuestionById(id);
   }
 }
 
@@ -135,6 +144,8 @@ export async function getItemCount(slug: string) {
       return eye.getEyeItemCount();
     case "emoji":
       return emoji.getEmojiQuestionCount();
+    case "character-guess":
+      return characterGuess.getQuestionCount();
   }
 }
 
