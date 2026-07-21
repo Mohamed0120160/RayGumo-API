@@ -122,17 +122,38 @@ raygumo-api/
     │       │   ├── quiz.types.ts         # نوع QuizQuestion (answers: string[])
     │       │   ├── quiz.validation.ts    # التحقق من شكل سؤال الكويز
     │       │   └── index.ts              # نقطة الدخول العامة للوحدة
-    │       └── true-false/               # وحدة لعبة "صح أو خطأ"
-    │           ├── true-false.service.ts    # نفس بنية quiz.service.ts
-    │           ├── true-false.types.ts      # نوع TrueFalseQuestion (answer: boolean)
-    │           ├── true-false.validation.ts # التحقق من شكل سؤال "صح أو خطأ"
+    │       ├── true-false/               # وحدة لعبة "صح أو خطأ"
+    │       │   ├── true-false.service.ts    # نفس بنية quiz.service.ts
+    │       │   ├── true-false.types.ts      # نوع TrueFalseQuestion (answer: boolean)
+    │       │   ├── true-false.validation.ts # التحقق من شكل سؤال "صح أو خطأ"
+    │       │   └── index.ts              # نقطة الدخول العامة للوحدة
+    │       ├── riddles/                  # وحدة لعبة الألغاز
+    │       │   ├── riddles.service.ts       # id مخزَّن مسبقًا في الملف (نمط true-false)
+    │       │   ├── riddles.types.ts         # نوع Riddle (answers: string[])
+    │       │   ├── riddles.validation.ts    # التحقق من شكل اللغز
+    │       │   └── index.ts              # نقطة الدخول العامة للوحدة
+    │       ├── eye/                      # وحدة لعبة "عين" (تخمين صورة)
+    │       │   ├── eye.service.ts           # id مخزَّن مسبقًا في الملف (نمط true-false)
+    │       │   ├── eye.types.ts             # نوع EyeItem (name: string)
+    │       │   ├── eye.validation.ts        # التحقق من شكل عنصر "عين"
+    │       │   └── index.ts              # نقطة الدخول العامة للوحدة
+    │       └── emoji/                    # وحدة لعبة "إيموجي" (تخمين شخصية)
+    │           ├── emoji.service.ts         # id مخزَّن مسبقًا في الملف (نمط true-false)
+    │           ├── emoji.types.ts           # نوع EmojiQuestion (category + answers: string[])
+    │           ├── emoji.validation.ts      # التحقق من شكل سؤال "إيموجي"
     │           └── index.ts              # نقطة الدخول العامة للوحدة
     │
     ├── data/
     │   ├── quiz/
     │   │   └── questions.json            # 260 سؤال كويز عربي حقيقي (id يُولَّد تلقائيًا)
-    │   └── true-false/
-    │       └── questions.json            # 420 سؤال "صح أو خطأ" عربي حقيقي (id مخزَّن يدويًا)
+    │   ├── true-false/
+    │   │   └── questions.json            # 420 سؤال "صح أو خطأ" عربي حقيقي (id مخزَّن يدويًا)
+    │   ├── riddles/
+    │   │   └── questions.json            # 300 لغز عربي حقيقي (id مخزَّن يدويًا)
+    │   ├── eye/
+    │   │   └── questions.json            # 130 عنصر "عين" حقيقي (id مخزَّن يدويًا)
+    │   └── emoji/
+    │       └── questions.json            # 500 سؤال "إيموجي" حقيقي (id مخزَّن يدويًا)
     │
     ├── lib/                              # دوال مساعدة عامة (تخدم أي لعبة مستقبلية)
     │   ├── json-db.ts                    # طبقة قراءة ملفات JSON (خام + مع id جاهز)
@@ -604,9 +625,10 @@ curl https://your-api.vercel.app/api/games/quiz/3
 ## إضافة لعبة جديدة مستقبلًا
 
 المعمارية جاهزة تمامًا لإضافة ألعاب جديدة بدون تغيير بنية روابط الـ
-API. الألعاب المسجّلة حاليًا هي `quiz`، `true-false`، و`riddles` (ألغاز)
-— وقد أُضيفت `riddles` بالفعل بنفس الخطوات الموضّحة هنا، فيمكن اعتبارها
-مثالًا حيًا كاملًا. لإضافة لعبة جديدة أخرى (مثال: `anime`):
+API. الألعاب المسجّلة حاليًا هي `quiz`، `true-false`، `riddles` (ألغاز)،
+`eye` (عين)، و`emoji` (خمّن الشخصية من الإيموجي) — وكل من `riddles`،
+`eye`، و`emoji` أُضيفت بالفعل بنفس الخطوات الموضّحة هنا، فيمكن اعتبار
+أيّ منها مثالًا حيًا كاملًا. لإضافة لعبة جديدة أخرى (مثال: `anime`):
 
 ### الخطوة 1: أنشئ وحدة اللعبة الجديدة
 
@@ -638,7 +660,7 @@ src/data/anime/questions.json
 ### الخطوة 3: سجّل اللعبة في `types/games.ts`
 
 ```ts
-export const GAME_REGISTRY = ["quiz", "true-false", "riddles", "anime"] as const;
+export const GAME_REGISTRY = ["quiz", "true-false", "riddles", "eye", "emoji", "anime"] as const;
 ```
 
 ### الخطوة 4: اربطها في `modules/games/registry.ts`
@@ -658,6 +680,10 @@ export async function getRandomItem(slug: string) {
       return trueFalse.getRandomQuestion();
     case "riddles":
       return riddles.getRandomRiddle();
+    case "eye":
+      return eye.getRandomEyeItem();
+    case "emoji":
+      return emoji.getRandomEmojiQuestion();
     case "anime":
       return anime.getRandomX();
   }
@@ -722,6 +748,16 @@ async rewrites() {
 | `/api/games/riddles/all` | GET | يرجع كل الألغاز |
 | `/api/games/riddles/count` | GET | يرجع العدد الإجمالي للألغاز |
 | `/api/games/riddles/:id` | GET | يرجع لغزًا واحدًا محددًا بواسطة id |
+| `/api/games/eye/random` | GET | يرجع عنصر "عين" عشوائيًا واحدًا (صورة) |
+| `/api/games/eye/random-exclude?ids=1,2,3` | GET | عنصر "عين" عشوائي مع استثناء ids (anti-repeat) |
+| `/api/games/eye/all` | GET | يرجع كل عناصر "عين" |
+| `/api/games/eye/count` | GET | يرجع العدد الإجمالي لعناصر "عين" |
+| `/api/games/eye/:id` | GET | يرجع عنصر "عين" واحدًا محددًا بواسطة id |
+| `/api/games/emoji/random` | GET | يرجع سؤال "إيموجي" عشوائيًا واحدًا |
+| `/api/games/emoji/random-exclude?ids=1,2,3` | GET | سؤال "إيموجي" عشوائي مع استثناء ids (anti-repeat) |
+| `/api/games/emoji/all` | GET | يرجع كل أسئلة "إيموجي" |
+| `/api/games/emoji/count` | GET | يرجع العدد الإجمالي لأسئلة "إيموجي" |
+| `/api/games/emoji/:id` | GET | يرجع سؤال "إيموجي" واحدًا محددًا بواسطة id |
 | `/api/*` (أي مسار آخر) | GET | 404 بشكل JSON موحّد |
 
 ---
