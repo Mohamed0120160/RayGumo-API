@@ -20,14 +20,13 @@
  *       ↓ تقرأ
  *   src/data/sort/questions.json (البيانات الحقيقية على القرص)
  *
- * ملاحظة مهمة عن random/random-exclude: على عكس كل الألعاب الأخرى في
- * المشروع، هاتان الدالتان لا تُرجعان عنصر SortQuestion الكامل، بل
- * SortRandomItem مختصر: id + question واحد فقط (مُختار عشوائيًا من
- * مصفوفة questions)، **بدون** حقل answers إطلاقًا - حتى لا تظهر
- * الإجابة الصحيحة للبوت المستهلك أثناء اللعب الفعلي. أما getAllSortQuestions
- * وgetSortQuestionById فيرجعان العنصر الكامل (بما فيه answers)، بنفس
- * أسلوب باقي الألعاب، لأن الغرض منهما أدوات إدارة المحتوى وليس تشغيل
- * اللعبة الفعلي.
+ * ملاحظة عن random/random-exclude: هاتان الدالتان تُرجعان عنصر
+ * SortRandomItem: id + question واحد فقط (مُختار عشوائيًا من مصفوفة
+ * questions) + answers كاملة - بنفس أسلوب باقي الألعاب في المشروع
+ * (quiz، eye، riddles...) التي ترجع answers دائمًا حتى في الاستجابات
+ * العشوائية. getAllSortQuestions وgetSortQuestionById يرجعان العنصر
+ * الكامل (بما فيه answers ومصفوفة questions كاملة)، لأن الغرض منهما
+ * أدوات إدارة المحتوى.
  */
 
 import { readRawCollection, JsonDbError } from "@/lib/json-db";
@@ -81,19 +80,20 @@ async function loadQuestions(): Promise<SortQuestion[]> {
 
 /**
  * تحوّل عنصر SortQuestion كامل إلى SortRandomItem: تختار عشوائيًا سطرًا
- * واحدًا فقط من مصفوفة questions، وتحذف answers تمامًا من الناتج.
+ * واحدًا فقط من مصفوفة questions، وتُبقي answers كاملة في الناتج (بنفس
+ * أسلوب باقي الألعاب في المشروع).
  */
 function toRandomItem(item: SortQuestion): SortRandomItem {
   const index = pickRandomIndex(item.questions.length);
   // آمن دائمًا: index مضمون أن يكون ضمن حدود المصفوفة لأن كل عنصر
   // اجتاز isValidSortQuestion، أي أن questions.length > 0 دائمًا هنا.
   const question = item.questions[index] as string;
-  return { id: item.id, question };
+  return { id: item.id, question, answers: item.answers };
 }
 
 /**
- * تُرجع سؤال "رتب" عشوائيًا واحدًا، بشكل SortRandomItem المختصر
- * (id + question مفرد، بدون answers).
+ * تُرجع سؤال "رتب" عشوائيًا واحدًا، بشكل SortRandomItem
+ * (id + question مفرد + answers كاملة).
  *
  * الاختيار العشوائي يعتمد على crypto.getRandomValues (عبر
  * pickRandomIndex بالأسفل) بدل Math.random العادية - نفس أسلوب
@@ -111,7 +111,7 @@ export async function getRandomSortQuestion(): Promise<SortRandomItem> {
 }
 
 /**
- * تُرجع سؤال "رتب" عشوائيًا واحدًا (بشكل SortRandomItem المختصر) مع
+ * تُرجع سؤال "رتب" عشوائيًا واحدًا (بشكل SortRandomItem) مع
  * استثناء مجموعة من الـ id المُمرَّرة. يستخدمها بوت الواتساب لمنع تكرار
  * نفس السؤال داخل نفس المجموعة (الـ API نفسه لا يحتفظ بأي حالة/state
  * دائمة عن الأسئلة المستخدمة - البوت هو من يتتبّع ذلك ويرسل قائمة

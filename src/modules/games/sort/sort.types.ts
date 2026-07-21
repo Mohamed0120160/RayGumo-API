@@ -6,7 +6,9 @@
  */
 
 /**
- * شكل عنصر "رتب" الكامل كما يُخزَّن في questions.json.
+ * شكل عنصر "رتب" الكامل كما يُخزَّن في questions.json، وكما يُرجَع في
+ * كل استجابات الـ API (بما فيها `random` و`random-exclude`) - بنفس
+ * أسلوب Quiz API وEye API وRiddles API تمامًا: answers ترجع دائمًا.
  *
  * - id: رقم صحيح موجب فريد يميّز كل سؤال. **مخزَّن مسبقًا داخل
  *   questions.json نفسه** (نفس أسلوب eye.types.ts وriddles.types.ts)،
@@ -20,12 +22,6 @@
  * - answers: مصفوفة الإجابات المقبولة (الكلمة الصحيحة بدون تبعثر)،
  *   بنفس نمط answers في Quiz API. قد تحتوي أكثر من إجابة صحيحة مستقبلًا
  *   (تهجئات مختلفة لنفس الاسم).
- *
- * ملاحظة مهمة: على عكس كل الألعاب الأخرى في المشروع (quiz، eye،
- * riddles...)، حقل `answers` هنا **لا يُرجَع أبدًا** في استجابات
- * `random` و`random-exclude`، حتى لا تظهر الإجابة الصحيحة للبوت مباشرة
- * (انظر SortRandomItem بالأسفل). يظهر answers فقط في `all` و`[id]`
- * حيث الغرض أدوات إدارة المحتوى وليس تشغيل اللعبة الفعلي.
  */
 export interface SortQuestion {
   id: number;
@@ -45,4 +41,5 @@ export interface SortQuestion {
 export interface SortRandomItem {
   id: number;
   question: string;
+  answers: string[];
 }
