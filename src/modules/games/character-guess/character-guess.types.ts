@@ -6,9 +6,9 @@
  */
 
 /**
- * شكل عنصر "خمن الشخصية" الكامل كما يُخزَّن في questions.json (يتضمن
- * answers). هذا الشكل هو ما تُرجعه استجابات [id] وall - أي endpoint لا
- * يحتاج منع غش فيه.
+ * شكل عنصر "خمن الشخصية" الكامل كما يُخزَّن في questions.json وكما
+ * يُرجَع في كل استجابات الـ API (random, random-exclude, [id], all) -
+ * بنفس أسلوب eye.types.ts وemoji.types.ts تمامًا (answers ترجع دائمًا).
  *
  * - id: رقم صحيح موجب فريد يميّز كل سؤال. **مخزَّن مسبقًا داخل
  *   questions.json نفسه** (نفس أسلوب eye.types.ts وriddles.types.ts)،
@@ -24,10 +24,3 @@ export interface CharacterGuessQuestion {
   question: string;
   answers: string[];
 }
-
-/**
- * شكل العنصر "الآمن" (بدون answers) كما يُرجَع في استجابات random
- * وrandom-exclude تحديدًا - لمنع أي غش عبر قراءة الإجابات مباشرة من
- * استجابة الـ API قبل محاولة التخمين.
- */
-export type PublicCharacterGuessQuestion = Omit<CharacterGuessQuestion, "answers">;

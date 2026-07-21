@@ -14,5 +14,5 @@ export {
   JsonDbError,
 } from "./character-guess.service";
 
-export type { CharacterGuessQuestion, PublicCharacterGuessQuestion } from "./character-guess.types";
+export type { CharacterGuessQuestion } from "./character-guess.types";
 export { isValidCharacterGuessQuestion } from "./character-guess.validation";

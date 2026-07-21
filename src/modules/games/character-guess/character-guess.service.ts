@@ -5,8 +5,10 @@
  * من صحة كل عنصر وفرادة الـ id، اختيار عشوائي، اختيار عشوائي مع
  * استثناء، بحث بالـ id، إرجاع الكل، حساب العدد).
  *
- * هذا الملف مطابق لبنية eye.service.ts في التدفّق العام (id مخزَّن
- * مسبقًا في الملف، وليس مولَّدًا بالترتيب كما في quiz.service.ts).
+ * هذا الملف مطابق تمامًا لبنية eye.service.ts (id مخزَّن مسبقًا في
+ * الملف وليس مولَّدًا بالترتيب كما في quiz.service.ts)، بما في ذلك
+ * إرجاع answers في كل الدوال بلا استثناء - بنفس أسلوب eye وemoji وبقية
+ * الألعاب.
  *
  * تدفّق البيانات (Data Flow):
  *   route.ts (يستقبل طلب HTTP)
@@ -18,18 +20,11 @@
  *   lib/json-db.ts (طبقة قراءة JSON خام عامة، بدون أي معرفة بشكل العنصر)
  *       ↓ تقرأ
  *   src/data/character-guess/questions.json (البيانات الحقيقية على القرص)
- *
- * ملاحظة مهمة جدًا - منع الغش: على عكس كل الألعاب الأخرى في المشروع،
- * هذه اللعبة تُخفي answers عمدًا في استجابتي getRandomQuestion و
- * getRandomQuestionExcluding (تُرجعان PublicCharacterGuessQuestion بدون
- * answers)، بينما getQuestionById وgetAllQuestions ترجعان العنصر كاملًا
- * مع answers. هذا الفصل مطلوب صراحة حتى لا يستطيع اللاعب رؤية الإجابة
- * الصحيحة قبل التخمين عبر قراءة استجابة /random مباشرة.
  */
 
 import { readRawCollection, JsonDbError } from "@/lib/json-db";
 import { isValidCharacterGuessQuestion } from "./character-guess.validation";
-import type { CharacterGuessQuestion, PublicCharacterGuessQuestion } from "./character-guess.types";
+import type { CharacterGuessQuestion } from "./character-guess.types";
 
 /** اسم فئة البيانات كما تُخزَّن تحت src/data/ (يطابق اسم المجلد). */
 const CHARACTER_GUESS_CATEGORY = "character-guess";
@@ -76,21 +71,14 @@ async function loadQuestions(): Promise<CharacterGuessQuestion[]> {
   return deduped;
 }
 
-/** تحذف حقل answers من عنصر كامل، لإرجاع نسخة آمنة تمنع الغش. */
-function toPublicQuestion(item: CharacterGuessQuestion): PublicCharacterGuessQuestion {
-  const { id, question } = item;
-  return { id, question };
-}
-
 /**
- * تُرجع سؤال "خمن الشخصية" عشوائيًا واحدًا **بدون answers** (لمنع
- * الغش)، لاستجابة /random.
+ * تُرجع سؤال "خمن الشخصية" عشوائيًا واحدًا (مع answers كاملة).
  *
  * الاختيار العشوائي يعتمد على crypto.getRandomValues (عبر
  * pickRandomIndex بالأسفل) بدل Math.random العادية، لأنها أكثر قوة
  * وأقل قابلية للتنبؤ - نفس أسلوب quiz.service.ts وeye.service.ts بالضبط.
  */
-export async function getRandomQuestion(): Promise<PublicCharacterGuessQuestion> {
+export async function getRandomQuestion(): Promise<CharacterGuessQuestion> {
   const questions = await loadQuestions();
   if (questions.length === 0) {
     throw new JsonDbError(`Collection "${CHARACTER_GUESS_CATEGORY}" is empty`, "NOT_FOUND");
@@ -98,11 +86,11 @@ export async function getRandomQuestion(): Promise<PublicCharacterGuessQuestion>
   const index = pickRandomIndex(questions.length);
   // آمن دائمًا: index مضمون أن يكون ضمن حدود المصفوفة لأنه ناتج عن
   // pickRandomIndex(questions.length) وقد تحققنا أعلاه أن length > 0.
-  return toPublicQuestion(questions[index] as CharacterGuessQuestion);
+  return questions[index] as CharacterGuessQuestion;
 }
 
 /**
- * تُرجع سؤالًا عشوائيًا واحدًا **بدون answers** مع استثناء مجموعة من
+ * تُرجع سؤالًا عشوائيًا واحدًا (مع answers كاملة) مع استثناء مجموعة من
  * الـ id المُمرَّرة. يستخدمها بوت الواتساب لمنع تكرار نفس السؤال داخل
  * نفس المجموعة (الـ API نفسه لا يحتفظ بأي حالة/state دائمة عن الأسئلة
  * المستخدمة - البوت هو من يتتبّع ذلك ويرسل قائمة الاستثناء مع كل طلب).
@@ -112,7 +100,7 @@ export async function getRandomQuestion(): Promise<PublicCharacterGuessQuestion>
  */
 export async function getRandomQuestionExcluding(
   excludeIds: number[]
-): Promise<PublicCharacterGuessQuestion> {
+): Promise<CharacterGuessQuestion> {
   const questions = await loadQuestions();
   const excludeSet = new Set(excludeIds);
   const remaining = questions.filter((q) => !excludeSet.has(q.id));
@@ -126,12 +114,11 @@ export async function getRandomQuestionExcluding(
 
   const index = pickRandomIndex(remaining.length);
   // آمن دائمًا لنفس السبب أعلاه: تحققنا أن remaining.length > 0 قبل هذا السطر.
-  return toPublicQuestion(remaining[index] as CharacterGuessQuestion);
+  return remaining[index] as CharacterGuessQuestion;
 }
 
 /**
- * تبحث عن سؤال "خمن الشخصية" واحد بواسطة id الرقمي الخاص به، **مع
- * answers كاملة** (يستخدمها البوت للتحقق محليًا من إجابة اللاعب).
+ * تبحث عن سؤال "خمن الشخصية" واحد بواسطة id الرقمي الخاص به.
  * ترجع null إذا لم يوجد سؤال بهذا الـ id (وهي حالة طبيعية متوقعة،
  * وليست خطأ - route.ts يقرر كيف يتعامل معها، عادة برد 404).
  */
@@ -140,10 +127,7 @@ export async function getQuestionById(id: number): Promise<CharacterGuessQuestio
   return questions.find((q) => q.id === id) ?? null;
 }
 
-/**
- * تُرجع كل أسئلة "خمن الشخصية" الصالحة **مع answers كاملة** كمصفوفة
- * كاملة. مفيدة لأدوات إدارة المحتوى أو اختبارات المطوّر.
- */
+/** تُرجع كل أسئلة "خمن الشخصية" الصالحة الموجودة في questions.json كمصفوفة كاملة. */
 export async function getAllQuestions(): Promise<CharacterGuessQuestion[]> {
   return loadQuestions();
 }
