@@ -9,8 +9,8 @@
  * عن بعضها. هذا الملف هو "المُبدّل" (dispatcher) الذي يقرر: "بما أن
  * الطلب عن لعبة quiz، إذًا استخدم دوال وحدة الكويز".
  *
- * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "riddles" (الألغاز) هي
- * أحدث مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن اعتبارها مرجعًا.
+ * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "eye" (عين) هي أحدث
+ * مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن اعتبارها مرجعًا.
  *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/ أو
  *      true-false/ أو riddles/.
  *   2. أضف "anime" في GAME_REGISTRY داخل src/types/games.ts.
@@ -24,6 +24,7 @@
 import * as quiz from "./quiz";
 import * as trueFalse from "./true-false";
 import * as riddles from "./riddles";
+import * as eye from "./eye";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -58,6 +59,8 @@ export async function getRandomItem(slug: string) {
       return trueFalse.getRandomQuestion();
     case "riddles":
       return riddles.getRandomRiddle();
+    case "eye":
+      return eye.getRandomEyeItem();
   }
 }
 
@@ -74,6 +77,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return trueFalse.getRandomQuestionExcluding(excludeIds);
     case "riddles":
       return riddles.getRandomRiddleExcluding(excludeIds);
+    case "eye":
+      return eye.getRandomEyeItemExcluding(excludeIds);
   }
 }
 
@@ -87,6 +92,8 @@ export async function getAllItems(slug: string) {
       return trueFalse.getAllQuestions();
     case "riddles":
       return riddles.getAllRiddles();
+    case "eye":
+      return eye.getAllEyeItems();
   }
 }
 
@@ -100,6 +107,8 @@ export async function getItemById(slug: string, id: number) {
       return trueFalse.getQuestionById(id);
     case "riddles":
       return riddles.getRiddleById(id);
+    case "eye":
+      return eye.getEyeItemById(id);
   }
 }
 
@@ -113,6 +122,8 @@ export async function getItemCount(slug: string) {
       return trueFalse.getQuestionCount();
     case "riddles":
       return riddles.getRiddleCount();
+    case "eye":
+      return eye.getEyeItemCount();
   }
 }
 
