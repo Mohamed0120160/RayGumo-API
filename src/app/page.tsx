@@ -44,6 +44,11 @@ export default function HomePage() {
         <li><code>GET /api/games/emoji/all</code></li>
         <li><code>GET /api/games/emoji/count</code></li>
         <li><code>GET /api/games/emoji/:id</code></li>
+        <li><code>GET /api/games/character-guess/random</code></li>
+        <li><code>GET /api/games/character-guess/random-exclude</code></li>
+        <li><code>GET /api/games/character-guess/all</code></li>
+        <li><code>GET /api/games/character-guess/count</code></li>
+        <li><code>GET /api/games/character-guess/:id</code></li>
       </ul>
       <h2>Games</h2>
       <ul>
@@ -54,6 +59,12 @@ export default function HomePage() {
         <li>
           Emoji Game (خمّن الشخصية من الإيموجي) — see{" "}
           <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/emoji.md">docs/emoji.md</a>
+        </li>
+        <li>
+          Character Guess (خمّن الشخصية من الوصف) — see{" "}
+          <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/character-guess.md">
+            docs/character-guess.md
+          </a>
         </li>
       </ul>
     </main>
