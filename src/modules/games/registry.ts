@@ -27,6 +27,7 @@ import * as riddles from "./riddles";
 import * as eye from "./eye";
 import * as emoji from "./emoji";
 import * as characterGuess from "./character-guess";
+import * as sort from "./sort";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -67,6 +68,8 @@ export async function getRandomItem(slug: string) {
       return emoji.getRandomEmojiQuestion();
     case "character-guess":
       return characterGuess.getRandomQuestion();
+    case "sort":
+      return sort.getRandomSortQuestion();
   }
 }
 
@@ -89,6 +92,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return emoji.getRandomEmojiQuestionExcluding(excludeIds);
     case "character-guess":
       return characterGuess.getRandomQuestionExcluding(excludeIds);
+    case "sort":
+      return sort.getRandomSortQuestionExcluding(excludeIds);
   }
 }
 
@@ -108,6 +113,8 @@ export async function getAllItems(slug: string) {
       return emoji.getAllEmojiQuestions();
     case "character-guess":
       return characterGuess.getAllQuestions();
+    case "sort":
+      return sort.getAllSortQuestions();
   }
 }
 
@@ -127,6 +134,8 @@ export async function getItemById(slug: string, id: number) {
       return emoji.getEmojiQuestionById(id);
     case "character-guess":
       return characterGuess.getQuestionById(id);
+    case "sort":
+      return sort.getSortQuestionById(id);
   }
 }
 
@@ -146,6 +155,8 @@ export async function getItemCount(slug: string) {
       return emoji.getEmojiQuestionCount();
     case "character-guess":
       return characterGuess.getQuestionCount();
+    case "sort":
+      return sort.getSortQuestionCount();
   }
 }
 
