@@ -39,6 +39,22 @@ export default function HomePage() {
         <li><code>GET /api/games/eye/all</code></li>
         <li><code>GET /api/games/eye/count</code></li>
         <li><code>GET /api/games/eye/:id</code></li>
+        <li><code>GET /api/games/emoji/random</code></li>
+        <li><code>GET /api/games/emoji/random-exclude</code></li>
+        <li><code>GET /api/games/emoji/all</code></li>
+        <li><code>GET /api/games/emoji/count</code></li>
+        <li><code>GET /api/games/emoji/:id</code></li>
+      </ul>
+      <h2>Games</h2>
+      <ul>
+        <li>Quiz</li>
+        <li>True or False</li>
+        <li>Riddles</li>
+        <li>Eye</li>
+        <li>
+          Emoji Game (خمّن الشخصية من الإيموجي) — see{" "}
+          <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/emoji.md">docs/emoji.md</a>
+        </li>
       </ul>
     </main>
   );
