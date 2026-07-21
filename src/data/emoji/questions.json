@@ -1,1 +1,4830 @@
-
+[
+  {
+    "id": 1,
+    "emoji": "🍖 👒 🏴‍☠️",
+    "category": "One Piece",
+    "answers": [
+      "لوفي",
+      "مونكي دي لوفي",
+      "luffy",
+      "monkey d luffy"
+    ]
+  },
+  {
+    "id": 2,
+    "emoji": "🗡️ 👁️ ⚔️",
+    "category": "One Piece",
+    "answers": [
+      "زورو",
+      "رورونوا زورو",
+      "zoro",
+      "roronoa zoro"
+    ]
+  },
+  {
+    "id": 3,
+    "emoji": "🍊 🗺️ 💰",
+    "category": "One Piece",
+    "answers": [
+      "نامي",
+      "nami"
+    ]
+  },
+  {
+    "id": 4,
+    "emoji": "🎯 👃 😂",
+    "category": "One Piece",
+    "answers": [
+      "اوسوب",
+      "يوسوب",
+      "usopp"
+    ]
+  },
+  {
+    "id": 5,
+    "emoji": "🚬 🔥 👔",
+    "category": "One Piece",
+    "answers": [
+      "سانجي",
+      "فينسموك سانجي",
+      "sanji",
+      "vinsmoke sanji"
+    ]
+  },
+  {
+    "id": 6,
+    "emoji": "🦌 💊 👨‍⚕️",
+    "category": "One Piece",
+    "answers": [
+      "تشوبر",
+      "توني توني تشوبر",
+      "chopper",
+      "tony tony chopper"
+    ]
+  },
+  {
+    "id": 7,
+    "emoji": "📚 ✋ 🌸",
+    "category": "One Piece",
+    "answers": [
+      "روبين",
+      "نيكو روبين",
+      "robin",
+      "nico robin"
+    ]
+  },
+  {
+    "id": 8,
+    "emoji": "🤖 ⚓ 🔧",
+    "category": "One Piece",
+    "answers": [
+      "فرانكي",
+      "franky"
+    ]
+  },
+  {
+    "id": 9,
+    "emoji": "🎻 ☠️ 🎶",
+    "category": "One Piece",
+    "answers": [
+      "بروك",
+      "brook"
+    ]
+  },
+  {
+    "id": 10,
+    "emoji": "🐋 🌊 🐟",
+    "category": "One Piece",
+    "answers": [
+      "جينبي",
+      "jinbe",
+      "jimbei"
+    ]
+  },
+  {
+    "id": 11,
+    "emoji": "👑 🔥 ✊",
+    "category": "One Piece",
+    "answers": [
+      "ايس",
+      "بورتغاس دي ايس",
+      "ace",
+      "portgas d ace"
+    ]
+  },
+  {
+    "id": 12,
+    "emoji": "🪽 🔥 👑",
+    "category": "One Piece",
+    "answers": [
+      "سابو",
+      "sabo"
+    ]
+  },
+  {
+    "id": 13,
+    "emoji": "🏴‍☠️ 👨‍🦳 🌊",
+    "category": "One Piece",
+    "answers": [
+      "اللحية البيضاء",
+      "وايت بيرد",
+      "whitebeard",
+      "edward newgate"
+    ]
+  },
+  {
+    "id": 14,
+    "emoji": "🦅 👁️ 🗡️",
+    "category": "One Piece",
+    "answers": [
+      "ميهوك",
+      "دراكيول ميهوك",
+      "mihawk",
+      "dracule mihawk"
+    ]
+  },
+  {
+    "id": 15,
+    "emoji": "🦩 😈 🧵",
+    "category": "One Piece",
+    "answers": [
+      "دوفلامينغو",
+      "دونكيهوت دوفلامينغو",
+      "doflamingo",
+      "donquixote doflamingo"
+    ]
+  },
+  {
+    "id": 16,
+    "emoji": "❤️‍🔥 👨‍⚕️ 🗡️",
+    "category": "One Piece",
+    "answers": [
+      "لاو",
+      "ترافالغار لاو",
+      "law",
+      "trafalgar law"
+    ]
+  },
+  {
+    "id": 17,
+    "emoji": "🦾 🧲 ⚙️",
+    "category": "One Piece",
+    "answers": [
+      "كيد",
+      "يوستاس كيد",
+      "kid",
+      "eustass kid"
+    ]
+  },
+  {
+    "id": 18,
+    "emoji": "🍩 🔥 🥊",
+    "category": "One Piece",
+    "answers": [
+      "كاتاكوري",
+      "شارلوت كاتاكوري",
+      "katakuri",
+      "charlotte katakuri"
+    ]
+  },
+  {
+    "id": 19,
+    "emoji": "🐉 ⚡ 👑",
+    "category": "One Piece",
+    "answers": [
+      "كايدو",
+      "kaido"
+    ]
+  },
+  {
+    "id": 20,
+    "emoji": "👩‍👧‍👦 🍰 👑",
+    "category": "One Piece",
+    "answers": [
+      "بيغ مام",
+      "big mom",
+      "charlotte linlin"
+    ]
+  },
+  {
+    "id": 21,
+    "emoji": "🦊 🍜 🍃",
+    "category": "Naruto",
+    "answers": [
+      "ناروتو",
+      "ناروتو اوزوماكي",
+      "naruto",
+      "naruto uzumaki"
+    ]
+  },
+  {
+    "id": 22,
+    "emoji": "⚡ 👁️ 🗡️",
+    "category": "Naruto",
+    "answers": [
+      "ساسكي",
+      "ساسكي اوتشيها",
+      "sasuke",
+      "sasuke uchiha"
+    ]
+  },
+  {
+    "id": 23,
+    "emoji": "🌸 👊 💉",
+    "category": "Naruto",
+    "answers": [
+      "ساكورا",
+      "ساكورا هارونو",
+      "sakura",
+      "sakura haruno"
+    ]
+  },
+  {
+    "id": 24,
+    "emoji": "📖 ⚡ 😷",
+    "category": "Naruto",
+    "answers": [
+      "كاكاشي",
+      "كاكاشي هاتاكي",
+      "kakashi",
+      "kakashi hatake"
+    ]
+  },
+  {
+    "id": 25,
+    "emoji": "👁️‍🗨️ 🐦‍⬛ 🔥",
+    "category": "Naruto",
+    "answers": [
+      "ايتاتشي",
+      "ايتاتشي اوتشيها",
+      "itachi",
+      "itachi uchiha"
+    ]
+  },
+  {
+    "id": 26,
+    "emoji": "☁️ 🔥 🐸",
+    "category": "Naruto",
+    "answers": [
+      "جيرايا",
+      "jiraiya"
+    ]
+  },
+  {
+    "id": 27,
+    "emoji": "🐍 🧪 😈",
+    "category": "Naruto",
+    "answers": [
+      "اوروتشيمارو",
+      "orochimaru"
+    ]
+  },
+  {
+    "id": 28,
+    "emoji": "💀 ☁️ 👀",
+    "category": "Naruto",
+    "answers": [
+      "باين",
+      "pain",
+      "ناغاتو",
+      "nagato"
+    ]
+  },
+  {
+    "id": 29,
+    "emoji": "🌀 😷 👁️",
+    "category": "Naruto",
+    "answers": [
+      "اوبيتو",
+      "اوبيتو اوتشيها",
+      "obito",
+      "obito uchiha"
+    ]
+  },
+  {
+    "id": 30,
+    "emoji": "🌙 👁️ 👑",
+    "category": "Naruto",
+    "answers": [
+      "مادارا",
+      "مادارا اوتشيها",
+      "madara",
+      "madara uchiha"
+    ]
+  },
+  {
+    "id": 31,
+    "emoji": "🧠 ☁️ ♟️",
+    "category": "Naruto",
+    "answers": [
+      "شيكامارو",
+      "شيكامارو نارا",
+      "shikamaru",
+      "shikamaru nara"
+    ]
+  },
+  {
+    "id": 32,
+    "emoji": "🐶 👃 🍃",
+    "category": "Naruto",
+    "answers": [
+      "كيبا",
+      "كيبا اينوزوكا",
+      "kiba",
+      "kiba inuzuka"
+    ]
+  },
+  {
+    "id": 33,
+    "emoji": "👁️ 🕷️ 🌸",
+    "category": "Naruto",
+    "answers": [
+      "هيناتا",
+      "هيناتا هيوغا",
+      "hinata",
+      "hinata hyuga"
+    ]
+  },
+  {
+    "id": 34,
+    "emoji": "🐞 🕶️ 🔍",
+    "category": "Naruto",
+    "answers": [
+      "شينو",
+      "شينو ابورامي",
+      "shino",
+      "shino aburame"
+    ]
+  },
+  {
+    "id": 35,
+    "emoji": "🌪️ 🏖️ 🦝",
+    "category": "Naruto",
+    "answers": [
+      "غارا",
+      "gaara"
+    ]
+  },
+  {
+    "id": 36,
+    "emoji": "⚡ 🐝 🎤",
+    "category": "Naruto",
+    "answers": [
+      "كيلر بي",
+      "killer bee"
+    ]
+  },
+  {
+    "id": 37,
+    "emoji": "🔥 🧓 🍃",
+    "category": "Naruto",
+    "answers": [
+      "هيروزن",
+      "هيروزن ساروتوبي",
+      "hiruzen",
+      "hiruzen sarutobi"
+    ]
+  },
+  {
+    "id": 38,
+    "emoji": "⚡ 🟡 🏃",
+    "category": "Naruto",
+    "answers": [
+      "ميناتو",
+      "ميناتو ناميكازي",
+      "minato",
+      "minato namikaze"
+    ]
+  },
+  {
+    "id": 39,
+    "emoji": "💪 🟢 🦵",
+    "category": "Naruto",
+    "answers": [
+      "روك لي",
+      "rock lee"
+    ]
+  },
+  {
+    "id": 40,
+    "emoji": "💚 🍶 👊",
+    "category": "Naruto",
+    "answers": [
+      "تسونادي",
+      "tsunade"
+    ]
+  },
+  {
+    "id": 41,
+    "emoji": "🍎 📓 ⚖️",
+    "category": "Death Note",
+    "answers": [
+      "لايت",
+      "لايت ياغامي",
+      "light",
+      "light yagami"
+    ]
+  },
+  {
+    "id": 42,
+    "emoji": "🍰 🕵️‍♂️ 📖",
+    "category": "Death Note",
+    "answers": [
+      "ال",
+      "l",
+      "lawliet"
+    ]
+  },
+  {
+    "id": 43,
+    "emoji": "🍎 😈 🪽",
+    "category": "Death Note",
+    "answers": [
+      "ريوك",
+      "ryuk"
+    ]
+  },
+  {
+    "id": 44,
+    "emoji": "🎤 📓 ❤️",
+    "category": "Death Note",
+    "answers": [
+      "ميسا",
+      "ميسا اماني",
+      "misa",
+      "misa amane"
+    ]
+  },
+  {
+    "id": 45,
+    "emoji": "🕵️ 📺 📚",
+    "category": "Death Note",
+    "answers": [
+      "نير",
+      "near"
+    ]
+  },
+  {
+    "id": 46,
+    "emoji": "🍫 🕵️ 🧩",
+    "category": "Death Note",
+    "answers": [
+      "ميلو",
+      "mello"
+    ]
+  },
+  {
+    "id": 47,
+    "emoji": "⚔️ 👹 ☀️",
+    "category": "Demon Slayer",
+    "answers": [
+      "تانجيرو",
+      "تانجيرو كامادو",
+      "tanjiro",
+      "tanjiro kamado"
+    ]
+  },
+  {
+    "id": 48,
+    "emoji": "⚡ 😴 ⚔️",
+    "category": "Demon Slayer",
+    "answers": [
+      "زينيتسو",
+      "zenitsu",
+      "zenitsu agatsuma"
+    ]
+  },
+  {
+    "id": 49,
+    "emoji": "🐗 ⚔️ 💪",
+    "category": "Demon Slayer",
+    "answers": [
+      "اينوسكي",
+      "inosuke",
+      "inosuke hashibira"
+    ]
+  },
+  {
+    "id": 50,
+    "emoji": "🩷 👹 👧",
+    "category": "Demon Slayer",
+    "answers": [
+      "نيزوكو",
+      "nezuko",
+      "nezuko kamado"
+    ]
+  },
+  {
+    "id": 51,
+    "emoji": "💧 🌊 👑",
+    "category": "Demon Slayer",
+    "answers": [
+      "جيو",
+      "جيو توميوكا",
+      "giyu",
+      "giyu tomioka"
+    ]
+  },
+  {
+    "id": 52,
+    "emoji": "🔥 ⚔️ ❤️",
+    "category": "Demon Slayer",
+    "answers": [
+      "رينغوكو",
+      "كيوجورو رينغوكو",
+      "rengoku",
+      "kyojuro rengoku"
+    ]
+  },
+  {
+    "id": 53,
+    "emoji": "🦋 💜 ☠️",
+    "category": "Demon Slayer",
+    "answers": [
+      "شينوبو",
+      "شينوبو كوتشو",
+      "shinobu",
+      "shinobu kocho"
+    ]
+  },
+  {
+    "id": 54,
+    "emoji": "🌫️ ⚔️ 😶",
+    "category": "Demon Slayer",
+    "answers": [
+      "مويتشيرو",
+      "muichiro",
+      "muichiro tokito"
+    ]
+  },
+  {
+    "id": 55,
+    "emoji": "💪 💎 ⚔️",
+    "category": "Demon Slayer",
+    "answers": [
+      "تينغين",
+      "تينغين اوزوي",
+      "tengen",
+      "tengen uzui"
+    ]
+  },
+  {
+    "id": 56,
+    "emoji": "🌸 ❤️ ⚔️",
+    "category": "Demon Slayer",
+    "answers": [
+      "ميتسوري",
+      "mitsuri",
+      "mitsuri kanroji"
+    ]
+  },
+  {
+    "id": 57,
+    "emoji": "🐍 ⚔️ 👁️",
+    "category": "Demon Slayer",
+    "answers": [
+      "اوباناي",
+      "obanai",
+      "obanai iguro"
+    ]
+  },
+  {
+    "id": 58,
+    "emoji": "🪨 🙏 ⚔️",
+    "category": "Demon Slayer",
+    "answers": [
+      "جيومي",
+      "gyomei",
+      "gyomei himejima"
+    ]
+  },
+  {
+    "id": 59,
+    "emoji": "🌙 👹 ⚔️",
+    "category": "Demon Slayer",
+    "answers": [
+      "كوكوشيبو",
+      "kokushibo"
+    ]
+  },
+  {
+    "id": 60,
+    "emoji": "🎩 👹 🩸",
+    "category": "Demon Slayer",
+    "answers": [
+      "موزان",
+      "موزان كيبوتسوجي",
+      "muzan",
+      "muzan kibutsuji"
+    ]
+  },
+  {
+    "id": 61,
+    "emoji": "👊 🦸‍♂️ 😐",
+    "category": "One Punch Man",
+    "answers": [
+      "سايتاما",
+      "saitama"
+    ]
+  },
+  {
+    "id": 62,
+    "emoji": "🤖 ⚡ 🦸",
+    "category": "One Punch Man",
+    "answers": [
+      "جينوس",
+      "genos"
+    ]
+  },
+  {
+    "id": 63,
+    "emoji": "🌪️ 👵 🧠",
+    "category": "One Punch Man",
+    "answers": [
+      "تاتسوماكي",
+      "tatsumaki"
+    ]
+  },
+  {
+    "id": 64,
+    "emoji": "🦇 ⚔️ 🖤",
+    "category": "One Punch Man",
+    "answers": [
+      "سونيك",
+      "speed o sound sonic",
+      "sonic"
+    ]
+  },
+  {
+    "id": 65,
+    "emoji": "🚴‍♂️ 🦸 😅",
+    "category": "One Punch Man",
+    "answers": [
+      "مومين رايدر",
+      "mumen rider"
+    ]
+  },
+  {
+    "id": 66,
+    "emoji": "👒 🎓 🧪",
+    "category": "Dr. Stone",
+    "answers": [
+      "سينكو",
+      "سينكو ايشيغامي",
+      "senku",
+      "senku ishigami"
+    ]
+  },
+  {
+    "id": 67,
+    "emoji": "💪 🦁 🌲",
+    "category": "Dr. Stone",
+    "answers": [
+      "تسوكاسا",
+      "tsukasa",
+      "tsukasa shishio"
+    ]
+  },
+  {
+    "id": 68,
+    "emoji": "⚔️ 🍜 😎",
+    "category": "Dr. Stone",
+    "answers": [
+      "جين",
+      "جين اساغيري",
+      "gen",
+      "gen asagiri"
+    ]
+  },
+  {
+    "id": 69,
+    "emoji": "🛡️ 💪 🌾",
+    "category": "Dr. Stone",
+    "answers": [
+      "كروم",
+      "chrome"
+    ]
+  },
+  {
+    "id": 70,
+    "emoji": "🧵 👘 🏹",
+    "category": "Dr. Stone",
+    "answers": [
+      "كوهكو",
+      "kohaku"
+    ]
+  },
+  {
+    "id": 71,
+    "emoji": "👻 💯 ⚡",
+    "category": "Mob Psycho 100",
+    "answers": [
+      "موب",
+      "شيغيو كاغياما",
+      "mob",
+      "shigeo kageyama"
+    ]
+  },
+  {
+    "id": 72,
+    "emoji": "🎩 😂 👻",
+    "category": "Mob Psycho 100",
+    "answers": [
+      "ريغن",
+      "reigen",
+      "reigen arataka"
+    ]
+  },
+  {
+    "id": 73,
+    "emoji": "🌱 👦 ⚡",
+    "category": "Mob Psycho 100",
+    "answers": [
+      "ريتسو",
+      "ritsu",
+      "ritsu kageyama"
+    ]
+  },
+  {
+    "id": 74,
+    "emoji": "😈 👁️ 💥",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "يوجي",
+      "يوجي ايتادوري",
+      "yuji",
+      "yuji itadori"
+    ]
+  },
+  {
+    "id": 75,
+    "emoji": "👁️‍🗨️ ⚪ 😎",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "غوجو",
+      "ساتورو غوجو",
+      "gojo",
+      "satoru gojo"
+    ]
+  },
+  {
+    "id": 76,
+    "emoji": "🐺 ⚫ 👤",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "ميغومي",
+      "ميغومي فوشيغورو",
+      "megumi",
+      "megumi fushiguro"
+    ]
+  },
+  {
+    "id": 77,
+    "emoji": "🔨 🧡 💥",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "نوبارا",
+      "نوبارا كوغيساكي",
+      "nobara",
+      "nobara kugisaki"
+    ]
+  },
+  {
+    "id": 78,
+    "emoji": "👑 😈 ✋",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "سوكونا",
+      "ريومن سوكونا",
+      "sukuna",
+      "ryomen sukuna"
+    ]
+  },
+  {
+    "id": 79,
+    "emoji": "🌋 😈 🔥",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "جوغو",
+      "jogo"
+    ]
+  },
+  {
+    "id": 80,
+    "emoji": "🧠 😈 🪡",
+    "category": "Jujutsu Kaisen",
+    "answers": [
+      "كينجاكو",
+      "kenjaku"
+    ]
+  },
+  {
+    "id": 81,
+    "emoji": "⚔️ 👹 🍊",
+    "category": "Bleach",
+    "answers": [
+      "ايتشيغو",
+      "ايتشيغو كوروساكي",
+      "ichigo",
+      "ichigo kurosaki"
+    ]
+  },
+  {
+    "id": 82,
+    "emoji": "❄️ ⚔️ 👧",
+    "category": "Bleach",
+    "answers": [
+      "روكيا",
+      "روكيا كوتشيكي",
+      "rukia",
+      "rukia kuchiki"
+    ]
+  },
+  {
+    "id": 83,
+    "emoji": "🌸 ⚔️ 👑",
+    "category": "Bleach",
+    "answers": [
+      "بياكويا",
+      "byakuya",
+      "byakuya kuchiki"
+    ]
+  },
+  {
+    "id": 84,
+    "emoji": "🧢 ⚔️ 😏",
+    "category": "Bleach",
+    "answers": [
+      "اوراهارا",
+      "kisuke urahara",
+      "urahara"
+    ]
+  },
+  {
+    "id": 85,
+    "emoji": "👓 📖 🧠",
+    "category": "Bleach",
+    "answers": [
+      "ايزن",
+      "سوسكي ايزن",
+      "aizen",
+      "sosuke aizen"
+    ]
+  },
+  {
+    "id": 86,
+    "emoji": "🐺 ⚔️ 💀",
+    "category": "Bleach",
+    "answers": [
+      "توشيرو",
+      "hitsugaya",
+      "toshiro hitsugaya"
+    ]
+  },
+  {
+    "id": 87,
+    "emoji": "🏐 👑 🧡",
+    "category": "Haikyuu",
+    "answers": [
+      "هيناتا",
+      "شويو هيناتا",
+      "hinata",
+      "shoyo hinata"
+    ]
+  },
+  {
+    "id": 88,
+    "emoji": "🏐 🐦‍⬛ 😐",
+    "category": "Haikyuu",
+    "answers": [
+      "كاغياما",
+      "توبيو كاغياما",
+      "kageyama",
+      "tobio kageyama"
+    ]
+  },
+  {
+    "id": 89,
+    "emoji": "🏐 😼 👑",
+    "category": "Haikyuu",
+    "answers": [
+      "كوزومي كينما",
+      "كينما",
+      "kenma",
+      "kozume kenma"
+    ]
+  },
+  {
+    "id": 90,
+    "emoji": "🏐 🦉 ⭐",
+    "category": "Haikyuu",
+    "answers": [
+      "بوكوتو",
+      "bokuto",
+      "kotaro bokuto"
+    ]
+  },
+  {
+    "id": 91,
+    "emoji": "⚽ 👑 🧩",
+    "category": "Blue Lock",
+    "answers": [
+      "ايساغي",
+      "يويتشي ايساغي",
+      "isagi",
+      "yoichi isagi"
+    ]
+  },
+  {
+    "id": 92,
+    "emoji": "⚽ 😈 💜",
+    "category": "Blue Lock",
+    "answers": [
+      "رين",
+      "ايتوشي رين",
+      "rin",
+      "itoshi rin"
+    ]
+  },
+  {
+    "id": 93,
+    "emoji": "⚽ 👑 🐆",
+    "category": "Blue Lock",
+    "answers": [
+      "بارو",
+      "شوئي بارو",
+      "barou",
+      "shoei barou"
+    ]
+  },
+  {
+    "id": 94,
+    "emoji": "⚽ ⚡ 😎",
+    "category": "Blue Lock",
+    "answers": [
+      "باتشيرا",
+      "meguru bachira",
+      "bachira"
+    ]
+  },
+  {
+    "id": 95,
+    "emoji": "🧛 🔫 🩸",
+    "category": "Hellsing",
+    "answers": [
+      "الوكارد",
+      "alucard"
+    ]
+  },
+  {
+    "id": 96,
+    "emoji": "👑 💀 🎮",
+    "category": "Overlord",
+    "answers": [
+      "اينز",
+      "اينز اوول غاون",
+      "ainz",
+      "ainz ooal gown"
+    ]
+  },
+  {
+    "id": 97,
+    "emoji": "🦴 💜 👑",
+    "category": "Overlord",
+    "answers": [
+      "البيدو",
+      "albedo"
+    ]
+  },
+  {
+    "id": 98,
+    "emoji": "🎮 ♟️ 👑",
+    "category": "No Game No Life",
+    "answers": [
+      "سورا",
+      "sora"
+    ]
+  },
+  {
+    "id": 99,
+    "emoji": "🎮 👧 ♟️",
+    "category": "No Game No Life",
+    "answers": [
+      "شيرو",
+      "shiro"
+    ]
+  },
+  {
+    "id": 100,
+    "emoji": "🗡️ 👹 ❤️",
+    "category": "Akame ga Kill",
+    "answers": [
+      "اكامي",
+      "akame"
+    ]
+  },
+  {
+    "id": 101,
+    "emoji": "🐉 💥 🟠",
+    "category": "Dragon Ball",
+    "answers": [
+      "غوكو",
+      "سون غوكو",
+      "goku",
+      "son goku"
+    ]
+  },
+  {
+    "id": 102,
+    "emoji": "👑 🐒 ⚡",
+    "category": "Dragon Ball",
+    "answers": [
+      "فيجيتا",
+      "vegeta"
+    ]
+  },
+  {
+    "id": 103,
+    "emoji": "🟣 😈 🧬",
+    "category": "Dragon Ball",
+    "answers": [
+      "فريزا",
+      "freeza",
+      "frieza"
+    ]
+  },
+  {
+    "id": 104,
+    "emoji": "🟢 🧪 😈",
+    "category": "Dragon Ball",
+    "answers": [
+      "سيل",
+      "cell"
+    ]
+  },
+  {
+    "id": 105,
+    "emoji": "🍬 😈 🩷",
+    "category": "Dragon Ball",
+    "answers": [
+      "ماجين بو",
+      "majin buu",
+      "buu"
+    ]
+  },
+  {
+    "id": 106,
+    "emoji": "🟢 👽 🛡️",
+    "category": "Dragon Ball",
+    "answers": [
+      "بيكولو",
+      "piccolo"
+    ]
+  },
+  {
+    "id": 107,
+    "emoji": "⚔️ 💜 👦",
+    "category": "Dragon Ball",
+    "answers": [
+      "ترانكس",
+      "trunks"
+    ]
+  },
+  {
+    "id": 108,
+    "emoji": "⚡ 😡 🟡",
+    "category": "Dragon Ball",
+    "answers": [
+      "غوهان",
+      "سون غوهان",
+      "gohan",
+      "son gohan"
+    ]
+  },
+  {
+    "id": 109,
+    "emoji": "🐱 👑 💀",
+    "category": "Dragon Ball",
+    "answers": [
+      "بيروس",
+      "beerus"
+    ]
+  },
+  {
+    "id": 110,
+    "emoji": "🥤 😇 ⚡",
+    "category": "Dragon Ball",
+    "answers": [
+      "ويس",
+      "whis"
+    ]
+  },
+  {
+    "id": 111,
+    "emoji": "🗝️ 🧱 ⚔️",
+    "category": "Attack on Titan",
+    "answers": [
+      "ايرين",
+      "ايرين ييغر",
+      "eren",
+      "eren yeager"
+    ]
+  },
+  {
+    "id": 112,
+    "emoji": "🧣 ⚔️ ❤️",
+    "category": "Attack on Titan",
+    "answers": [
+      "ميكاسا",
+      "mikasa",
+      "mikasa ackerman"
+    ]
+  },
+  {
+    "id": 113,
+    "emoji": "📚 ⚔️ 🧠",
+    "category": "Attack on Titan",
+    "answers": [
+      "ارمين",
+      "armin",
+      "armin arlert"
+    ]
+  },
+  {
+    "id": 114,
+    "emoji": "🧹 ⚔️ 😐",
+    "category": "Attack on Titan",
+    "answers": [
+      "ليفاي",
+      "ليفاي اكرمان",
+      "levi",
+      "levi ackerman"
+    ]
+  },
+  {
+    "id": 115,
+    "emoji": "🦍 🪨 😈",
+    "category": "Attack on Titan",
+    "answers": [
+      "زيك",
+      "زيك ييغر",
+      "zeke",
+      "zeke yeager"
+    ]
+  },
+  {
+    "id": 116,
+    "emoji": "💪 🛡️ 😤",
+    "category": "Attack on Titan",
+    "answers": [
+      "راينر",
+      "reiner",
+      "reiner braun"
+    ]
+  },
+  {
+    "id": 117,
+    "emoji": "⚡ 👧 💥",
+    "category": "Attack on Titan",
+    "answers": [
+      "آني",
+      "annie",
+      "annie leonhart"
+    ]
+  },
+  {
+    "id": 118,
+    "emoji": "🔥 👁️ 🧠",
+    "category": "Attack on Titan",
+    "answers": [
+      "اروين",
+      "erwin",
+      "erwin smith"
+    ]
+  },
+  {
+    "id": 119,
+    "emoji": "🥔 😂 ⚔️",
+    "category": "Attack on Titan",
+    "answers": [
+      "ساشا",
+      "sasha",
+      "sasha braus"
+    ]
+  },
+  {
+    "id": 120,
+    "emoji": "🐴 ⚔️ 😎",
+    "category": "Attack on Titan",
+    "answers": [
+      "جان",
+      "jean",
+      "jean kirstein"
+    ]
+  },
+  {
+    "id": 121,
+    "emoji": "🎣 ⚡ 👦",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "غون",
+      "غون فريكس",
+      "gon",
+      "gon freecss"
+    ]
+  },
+  {
+    "id": 122,
+    "emoji": "⚡ 🛹 😎",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "كيلوا",
+      "كيلوا زولديك",
+      "killua",
+      "killua zoldyck"
+    ]
+  },
+  {
+    "id": 123,
+    "emoji": "🎩 🃏 ❤️",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "هيسوكا",
+      "hisoka"
+    ]
+  },
+  {
+    "id": 124,
+    "emoji": "📖 ⛓️ 👁️",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "كورابيكا",
+      "kurapika"
+    ]
+  },
+  {
+    "id": 125,
+    "emoji": "💼 📱 🧠",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "ليوريو",
+      "leorio"
+    ]
+  },
+  {
+    "id": 126,
+    "emoji": "👑 🐜 😈",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "ميرويم",
+      "meruem"
+    ]
+  },
+  {
+    "id": 127,
+    "emoji": "🎻 😢 🐜",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "كوموغي",
+      "komugi"
+    ]
+  },
+  {
+    "id": 128,
+    "emoji": "🕷️ 👑 📖",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "كرولو",
+      "كرولو لوسيلفر",
+      "chrollo",
+      "chrollo lucilfer"
+    ]
+  },
+  {
+    "id": 129,
+    "emoji": "💣 🐜 😈",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "يوبي",
+      "youpi",
+      "menthuthuyoupi"
+    ]
+  },
+  {
+    "id": 130,
+    "emoji": "🐱 🐜 ⚡",
+    "category": "Hunter x Hunter",
+    "answers": [
+      "نيفيربيتو",
+      "pitou",
+      "neferpitou"
+    ]
+  },
+  {
+    "id": 131,
+    "emoji": "🤖 ⚔️ 👦",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "الفونس",
+      "alphonse",
+      "alphonse elric"
+    ]
+  },
+  {
+    "id": 132,
+    "emoji": "🦾 🧪 📖",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "ادوارد",
+      "ادوارد إلريك",
+      "edward",
+      "edward elric"
+    ]
+  },
+  {
+    "id": 133,
+    "emoji": "🔥 🧤 🪖",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "روي موستانغ",
+      "mustang",
+      "roy mustang"
+    ]
+  },
+  {
+    "id": 134,
+    "emoji": "🐶 👧 😭",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "نينا تاكر",
+      "nina tucker"
+    ]
+  },
+  {
+    "id": 135,
+    "emoji": "👁️ 😈 ☀️",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "برايد",
+      "pride"
+    ]
+  },
+  {
+    "id": 136,
+    "emoji": "😴 😈 🍴",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "غلوتوني",
+      "gluttony"
+    ]
+  },
+  {
+    "id": 137,
+    "emoji": "🕷️ 😈 📚",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "انفي",
+      "envy"
+    ]
+  },
+  {
+    "id": 138,
+    "emoji": "💪 😈 ⚔️",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "راث",
+      "wrath",
+      "king bradley"
+    ]
+  },
+  {
+    "id": 139,
+    "emoji": "❄️ 🧠 👓",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "وينري",
+      "winry"
+    ]
+  },
+  {
+    "id": 140,
+    "emoji": "🧪 👨‍👩‍👦 📖",
+    "category": "Fullmetal Alchemist",
+    "answers": [
+      "هوهنهايم",
+      "hohenheim",
+      "van hohenheim"
+    ]
+  },
+  {
+    "id": 141,
+    "emoji": "😷 👁️ 🩸",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "كانيكي",
+      "كانيكي كين",
+      "kaneki",
+      "ken kaneki"
+    ]
+  },
+  {
+    "id": 142,
+    "emoji": "☕ 💜 👧",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "توكا",
+      "touka",
+      "touka kirishima"
+    ]
+  },
+  {
+    "id": 143,
+    "emoji": "🎭 😈 ☕",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "اوتا",
+      "uta"
+    ]
+  },
+  {
+    "id": 144,
+    "emoji": "🍽️ 😈 🩸",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "ريزي",
+      "rize",
+      "rize kamishiro"
+    ]
+  },
+  {
+    "id": 145,
+    "emoji": "🧠 👓 ⚔️",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "اريما",
+      "kishou arima",
+      "arima"
+    ]
+  },
+  {
+    "id": 146,
+    "emoji": "👨‍🍳 ☕ 🕊️",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "يوشيمورا",
+      "yoshimura"
+    ]
+  },
+  {
+    "id": 147,
+    "emoji": "🎭 🦉 😈",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "ايتو",
+      "eto",
+      "eto yoshimura"
+    ]
+  },
+  {
+    "id": 148,
+    "emoji": "💐 🩸 😢",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "هيدي",
+      "hide",
+      "hideyoshi nagachika"
+    ]
+  },
+  {
+    "id": 149,
+    "emoji": "⚔️ 🕊️ 👓",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "امون",
+      "amon",
+      "koutarou amon"
+    ]
+  },
+  {
+    "id": 150,
+    "emoji": "😈 👁️ 👑",
+    "category": "Tokyo Ghoul",
+    "answers": [
+      "فوروطا",
+      "furuta",
+      "nimura furuta"
+    ]
+  },
+  {
+    "id": 151,
+    "emoji": "🧹 👦 ⚔️",
+    "category": "Black Clover",
+    "answers": [
+      "استا",
+      "asta"
+    ]
+  },
+  {
+    "id": 152,
+    "emoji": "📖 🍀 ⚡",
+    "category": "Black Clover",
+    "answers": [
+      "يونو",
+      "yuno"
+    ]
+  },
+  {
+    "id": 153,
+    "emoji": "🌹 👑 🔥",
+    "category": "Black Clover",
+    "answers": [
+      "فويغوليون",
+      "fuegoleon"
+    ]
+  },
+  {
+    "id": 154,
+    "emoji": "🐂 ⚔️ 😎",
+    "category": "Black Clover",
+    "answers": [
+      "يامي",
+      "يامي سوكيهيرو",
+      "yami",
+      "yami sukehiro"
+    ]
+  },
+  {
+    "id": 155,
+    "emoji": "🦅 🌬️ 👸",
+    "category": "Black Clover",
+    "answers": [
+      "نويل",
+      "noelle",
+      "noelle silva"
+    ]
+  },
+  {
+    "id": 156,
+    "emoji": "😴 ☁️ ⚡",
+    "category": "Black Clover",
+    "answers": [
+      "شارمي",
+      "charmy"
+    ]
+  },
+  {
+    "id": 157,
+    "emoji": "🧵 😈 👑",
+    "category": "Black Clover",
+    "answers": [
+      "فانيكا",
+      "vanica"
+    ]
+  },
+  {
+    "id": 158,
+    "emoji": "🦴 😈 ⚔️",
+    "category": "Black Clover",
+    "answers": [
+      "دانتي",
+      "dante zogratis",
+      "dante"
+    ]
+  },
+  {
+    "id": 159,
+    "emoji": "🌌 😈 👁️",
+    "category": "Black Clover",
+    "answers": [
+      "زينون",
+      "zenon"
+    ]
+  },
+  {
+    "id": 160,
+    "emoji": "📖 👑 ⚖️",
+    "category": "Black Clover",
+    "answers": [
+      "يوليوس",
+      "julius novachrono",
+      "julius"
+    ]
+  },
+  {
+    "id": 161,
+    "emoji": "🪚 😈 🩸",
+    "category": "Chainsaw Man",
+    "answers": [
+      "دينجي",
+      "denji"
+    ]
+  },
+  {
+    "id": 162,
+    "emoji": "🐶 ❤️ 🪚",
+    "category": "Chainsaw Man",
+    "answers": [
+      "بوتشيتا",
+      "pochita"
+    ]
+  },
+  {
+    "id": 163,
+    "emoji": "🎯 🩸 👧",
+    "category": "Chainsaw Man",
+    "answers": [
+      "باور",
+      "power"
+    ]
+  },
+  {
+    "id": 164,
+    "emoji": "👁️ ❤️ 😈",
+    "category": "Chainsaw Man",
+    "answers": [
+      "ماكيما",
+      "makima"
+    ]
+  },
+  {
+    "id": 165,
+    "emoji": "🗡️ 😈 👦",
+    "category": "Chainsaw Man",
+    "answers": [
+      "اكي",
+      "aki hayakawa",
+      "aki"
+    ]
+  },
+  {
+    "id": 166,
+    "emoji": "🦊 😈 🤝",
+    "category": "Chainsaw Man",
+    "answers": [
+      "هيمينو",
+      "himeno"
+    ]
+  },
+  {
+    "id": 167,
+    "emoji": "🐙 😈 👓",
+    "category": "Chainsaw Man",
+    "answers": [
+      "كوبيني",
+      "kobeni"
+    ]
+  },
+  {
+    "id": 168,
+    "emoji": "💣 ❤️ 😈",
+    "category": "Chainsaw Man",
+    "answers": [
+      "ريزي",
+      "reze"
+    ]
+  },
+  {
+    "id": 169,
+    "emoji": "🧠 😈 👑",
+    "category": "Chainsaw Man",
+    "answers": [
+      "فامي",
+      "fami"
+    ]
+  },
+  {
+    "id": 170,
+    "emoji": "⚔️ 😈 🔥",
+    "category": "Chainsaw Man",
+    "answers": [
+      "كوانشي",
+      "quanxi"
+    ]
+  },
+  {
+    "id": 171,
+    "emoji": "🕵️ 👨‍👩‍👧 🥜",
+    "category": "Spy x Family",
+    "answers": [
+      "لويد فورجر",
+      "لويد",
+      "loid",
+      "loid forger"
+    ]
+  },
+  {
+    "id": 172,
+    "emoji": "🥜 😆 🔮",
+    "category": "Spy x Family",
+    "answers": [
+      "انيا",
+      "anya",
+      "anya forger"
+    ]
+  },
+  {
+    "id": 173,
+    "emoji": "🌹 🗡️ 👩",
+    "category": "Spy x Family",
+    "answers": [
+      "يور",
+      "yor",
+      "yor forger"
+    ]
+  },
+  {
+    "id": 174,
+    "emoji": "🐶 🔮 🐾",
+    "category": "Spy x Family",
+    "answers": [
+      "بوند",
+      "bond"
+    ]
+  },
+  {
+    "id": 175,
+    "emoji": "🏫 😠 👧",
+    "category": "Spy x Family",
+    "answers": [
+      "بيكي",
+      "becky"
+    ]
+  },
+  {
+    "id": 176,
+    "emoji": "👑 🏫 😤",
+    "category": "Spy x Family",
+    "answers": [
+      "داميان",
+      "damian desmond",
+      "damian"
+    ]
+  },
+  {
+    "id": 177,
+    "emoji": "🎩 🕵️ 👴",
+    "category": "Spy x Family",
+    "answers": [
+      "هينري هندرسون",
+      "henry henderson"
+    ]
+  },
+  {
+    "id": 178,
+    "emoji": "📰 🕵️ 👓",
+    "category": "Spy x Family",
+    "answers": [
+      "فرانكي",
+      "franky franklin"
+    ]
+  },
+  {
+    "id": 179,
+    "emoji": "🏛️ 👑 🧠",
+    "category": "Spy x Family",
+    "answers": [
+      "دونوفان ديسموند",
+      "donovan desmond"
+    ]
+  },
+  {
+    "id": 180,
+    "emoji": "🦅 🕵️ ⚡",
+    "category": "Spy x Family",
+    "answers": [
+      "فيونا فروست",
+      "fiona frost"
+    ]
+  },
+  {
+    "id": 181,
+    "emoji": "🗡️ 👑 ⚔️",
+    "category": "Sword Art Online",
+    "answers": [
+      "كيريتو",
+      "kirito",
+      "kazuto kirigaya"
+    ]
+  },
+  {
+    "id": 182,
+    "emoji": "⚡ 🌸 🗡️",
+    "category": "Sword Art Online",
+    "answers": [
+      "اسونا",
+      "asuna",
+      "asuna yuuki"
+    ]
+  },
+  {
+    "id": 183,
+    "emoji": "🐉 🎯 🏹",
+    "category": "Sword Art Online",
+    "answers": [
+      "سينون",
+      "sinon",
+      "shino asada"
+    ]
+  },
+  {
+    "id": 184,
+    "emoji": "👑 😈 🏰",
+    "category": "Sword Art Online",
+    "answers": [
+      "هيثكليف",
+      "heathcliff",
+      "kayaba akihiko"
+    ]
+  },
+  {
+    "id": 185,
+    "emoji": "⚔️ ❤️ 👧",
+    "category": "Sword Art Online",
+    "answers": [
+      "ليفا",
+      "leafa",
+      "suguha kirigaya"
+    ]
+  },
+  {
+    "id": 186,
+    "emoji": "🔨 ⚙️ 👩",
+    "category": "Sword Art Online",
+    "answers": [
+      "ليزبيث",
+      "lisbeth"
+    ]
+  },
+  {
+    "id": 187,
+    "emoji": "🐱 ✨ 🪄",
+    "category": "Sword Art Online",
+    "answers": [
+      "سيليكا",
+      "silica"
+    ]
+  },
+  {
+    "id": 188,
+    "emoji": "📚 👓 🧠",
+    "category": "Sword Art Online",
+    "answers": [
+      "يوي",
+      "yui"
+    ]
+  },
+  {
+    "id": 189,
+    "emoji": "⚔️ 🤖 👦",
+    "category": "Sword Art Online",
+    "answers": [
+      "ايوجيو",
+      "eugeo"
+    ]
+  },
+  {
+    "id": 190,
+    "emoji": "👑 ❄️ ⚔️",
+    "category": "Sword Art Online",
+    "answers": [
+      "اليس",
+      "alice",
+      "alice zuberg"
+    ]
+  },
+  {
+    "id": 191,
+    "emoji": "👁️ 👑 ♟️",
+    "category": "Code Geass",
+    "answers": [
+      "لولوش",
+      "لولوش لامبروج",
+      "lelouch",
+      "lelouch lamperouge"
+    ]
+  },
+  {
+    "id": 192,
+    "emoji": "🟣 ⚔️ 👩",
+    "category": "Code Geass",
+    "answers": [
+      "سي سي",
+      "cc",
+      "c.c."
+    ]
+  },
+  {
+    "id": 193,
+    "emoji": "🤖 👸 ⚔️",
+    "category": "Code Geass",
+    "answers": [
+      "كالين",
+      "kallen"
+    ]
+  },
+  {
+    "id": 194,
+    "emoji": "👑 ⚔️ 😎",
+    "category": "Code Geass",
+    "answers": [
+      "سوزاكو",
+      "suzaku"
+    ]
+  },
+  {
+    "id": 195,
+    "emoji": "🎭 👑 🖤",
+    "category": "Code Geass",
+    "answers": [
+      "زيرو",
+      "zero"
+    ]
+  },
+  {
+    "id": 196,
+    "emoji": "🏰 👸 🌸",
+    "category": "Code Geass",
+    "answers": [
+      "نانالي",
+      "nunnally"
+    ]
+  },
+  {
+    "id": 197,
+    "emoji": "👑 ⚔️ 🧠",
+    "category": "Code Geass",
+    "answers": [
+      "شنايزل",
+      "schneizel"
+    ]
+  },
+  {
+    "id": 198,
+    "emoji": "🎩 😈 👑",
+    "category": "Code Geass",
+    "answers": [
+      "تشارلز",
+      "charles zi britannia"
+    ]
+  },
+  {
+    "id": 199,
+    "emoji": "🌹 👩‍🎓 ❤️",
+    "category": "Code Geass",
+    "answers": [
+      "شيرلي",
+      "shirley"
+    ]
+  },
+  {
+    "id": 200,
+    "emoji": "📚 👓 🎓",
+    "category": "Code Geass",
+    "answers": [
+      "ميلي",
+      "milly ashford"
+    ]
+  },
+  {
+    "id": 201,
+    "emoji": "⏳ 🔬 🍌",
+    "category": "Steins;Gate",
+    "answers": [
+      "اوكابي",
+      "اوكابي رينتارو",
+      "okabe",
+      "rintarou okabe"
+    ]
+  },
+  {
+    "id": 202,
+    "emoji": "🧪 👩‍🔬 ⏰",
+    "category": "Steins;Gate",
+    "answers": [
+      "كوريسو",
+      "ماكيسي كوريسو",
+      "kurisu",
+      "kurisu makise"
+    ]
+  },
+  {
+    "id": 203,
+    "emoji": "🍌 💻 😎",
+    "category": "Steins;Gate",
+    "answers": [
+      "دارو",
+      "daru",
+      "itaru hashida"
+    ]
+  },
+  {
+    "id": 204,
+    "emoji": "⌚ 👧 💙",
+    "category": "Steins;Gate",
+    "answers": [
+      "مايورِي",
+      "مايوري شينا",
+      "mayuri",
+      "mayuri shiina"
+    ]
+  },
+  {
+    "id": 205,
+    "emoji": "📱 ⏳ 👧",
+    "category": "Steins;Gate",
+    "answers": [
+      "سوزوها",
+      "suzuha",
+      "suzuha amane"
+    ]
+  },
+  {
+    "id": 206,
+    "emoji": "🧠 🤖 ⚔️",
+    "category": "Neon Genesis Evangelion",
+    "answers": [
+      "شينجي",
+      "شينجي ايكاري",
+      "shinji",
+      "shinji ikari"
+    ]
+  },
+  {
+    "id": 207,
+    "emoji": "🔴 🤖 😐",
+    "category": "Neon Genesis Evangelion",
+    "answers": [
+      "ري ايانامي",
+      "ري",
+      "rei",
+      "rei ayanami"
+    ]
+  },
+  {
+    "id": 208,
+    "emoji": "🟠 🤖 😏",
+    "category": "Neon Genesis Evangelion",
+    "answers": [
+      "اسوكا",
+      "اسوكا لانغلي",
+      "asuka",
+      "asuka langley"
+    ]
+  },
+  {
+    "id": 209,
+    "emoji": "🐧 🍺 👩",
+    "category": "Neon Genesis Evangelion",
+    "answers": [
+      "ميساتو",
+      "misato",
+      "misato katsuragi"
+    ]
+  },
+  {
+    "id": 210,
+    "emoji": "👓 🧠 🤖",
+    "category": "Neon Genesis Evangelion",
+    "answers": [
+      "غيندو",
+      "gendo",
+      "gendo ikari"
+    ]
+  },
+  {
+    "id": 211,
+    "emoji": "⚓ ⚔️ 👑",
+    "category": "Vinland Saga",
+    "answers": [
+      "ثورفين",
+      "thorfinn"
+    ]
+  },
+  {
+    "id": 212,
+    "emoji": "🗡️ 😈 👨",
+    "category": "Vinland Saga",
+    "answers": [
+      "اسكيلاد",
+      "askeladd"
+    ]
+  },
+  {
+    "id": 213,
+    "emoji": "👑 ❄️ ⚔️",
+    "category": "Vinland Saga",
+    "answers": [
+      "كانوت",
+      "canute"
+    ]
+  },
+  {
+    "id": 214,
+    "emoji": "💪 ⚓ 🧔",
+    "category": "Vinland Saga",
+    "answers": [
+      "ثورز",
+      "thors"
+    ]
+  },
+  {
+    "id": 215,
+    "emoji": "🪓 😡 ⚔️",
+    "category": "Vinland Saga",
+    "answers": [
+      "ثوركيل",
+      "thorkell"
+    ]
+  },
+  {
+    "id": 216,
+    "emoji": "👑 ⚔️ 🧩",
+    "category": "Tokyo Revengers",
+    "answers": [
+      "تاكيميتشي",
+      "takemichi",
+      "takemichi hanagaki"
+    ]
+  },
+  {
+    "id": 217,
+    "emoji": "🏍️ 😈 👑",
+    "category": "Tokyo Revengers",
+    "answers": [
+      "مايكي",
+      "mikey",
+      "manjiro sano"
+    ]
+  },
+  {
+    "id": 218,
+    "emoji": "🐉 🏍️ 🔥",
+    "category": "Tokyo Revengers",
+    "answers": [
+      "دراكن",
+      "draken",
+      "ken ryuguji"
+    ]
+  },
+  {
+    "id": 219,
+    "emoji": "🎴 🧠 😈",
+    "category": "Tokyo Revengers",
+    "answers": [
+      "كيساكي",
+      "kisaki",
+      "tetta kisaki"
+    ]
+  },
+  {
+    "id": 220,
+    "emoji": "🐯 ⚔️ 😎",
+    "category": "Tokyo Revengers",
+    "answers": [
+      "باجي",
+      "baji",
+      "keisuke baji"
+    ]
+  },
+  {
+    "id": 221,
+    "emoji": "🎹 ❄️ 🧠",
+    "category": "Your Lie in April",
+    "answers": [
+      "كوسي",
+      "كوسي اريما",
+      "kousei",
+      "kousei arima"
+    ]
+  },
+  {
+    "id": 222,
+    "emoji": "🎻 🌸 ☀️",
+    "category": "Your Lie in April",
+    "answers": [
+      "كاوري",
+      "kaori",
+      "kaori miyazono"
+    ]
+  },
+  {
+    "id": 223,
+    "emoji": "📚 ❤️ 👧",
+    "category": "Your Lie in April",
+    "answers": [
+      "تسوباكي",
+      "tsubaki"
+    ]
+  },
+  {
+    "id": 224,
+    "emoji": "⚽ 😐 👦",
+    "category": "Your Lie in April",
+    "answers": [
+      "واتاري",
+      "watari"
+    ]
+  },
+  {
+    "id": 225,
+    "emoji": "🧠 🎹 👩",
+    "category": "Your Lie in April",
+    "answers": [
+      "ايمي",
+      "emi igawa"
+    ]
+  },
+  {
+    "id": 226,
+    "emoji": "👑 🏫 📖",
+    "category": "Classroom of the Elite",
+    "answers": [
+      "ايانوكوجي",
+      "ayanokoji",
+      "kiyotaka ayanokoji"
+    ]
+  },
+  {
+    "id": 227,
+    "emoji": "🧠 👧 ♟️",
+    "category": "Classroom of the Elite",
+    "answers": [
+      "هوريكيتا",
+      "horikita",
+      "suzune horikita"
+    ]
+  },
+  {
+    "id": 228,
+    "emoji": "😇 🎀 📚",
+    "category": "Classroom of the Elite",
+    "answers": [
+      "كي",
+      "kei karuizawa",
+      "kei"
+    ]
+  },
+  {
+    "id": 229,
+    "emoji": "👑 😈 🧠",
+    "category": "Classroom of the Elite",
+    "answers": [
+      "ريوين",
+      "ryuen",
+      "kakeru ryuen"
+    ]
+  },
+  {
+    "id": 230,
+    "emoji": "♟️ 👓 👑",
+    "category": "Classroom of the Elite",
+    "answers": [
+      "ساكاياناغي",
+      "arisu sakayanagi"
+    ]
+  },
+  {
+    "id": 231,
+    "emoji": "🗡️ 💀 👑",
+    "category": "Solo Leveling",
+    "answers": [
+      "سونغ جين وو",
+      "جين وو",
+      "sung jinwoo",
+      "jinwoo"
+    ]
+  },
+  {
+    "id": 232,
+    "emoji": "🖤 👑 👻",
+    "category": "Solo Leveling",
+    "answers": [
+      "ايغريس",
+      "igris"
+    ]
+  },
+  {
+    "id": 233,
+    "emoji": "🐜 👑 💪",
+    "category": "Solo Leveling",
+    "answers": [
+      "بيرو",
+      "beru"
+    ]
+  },
+  {
+    "id": 234,
+    "emoji": "❄️ ⚔️ 👧",
+    "category": "Solo Leveling",
+    "answers": [
+      "تشا هاي ان",
+      "cha hae in"
+    ]
+  },
+  {
+    "id": 235,
+    "emoji": "🐉 🔥 👑",
+    "category": "Solo Leveling",
+    "answers": [
+      "ليو جينغ",
+      "liu zhigang"
+    ]
+  },
+  {
+    "id": 236,
+    "emoji": "🧙‍♀️ 📖 🌿",
+    "category": "Frieren",
+    "answers": [
+      "فريرن",
+      "frieren"
+    ]
+  },
+  {
+    "id": 237,
+    "emoji": "🪓 💪 😎",
+    "category": "Frieren",
+    "answers": [
+      "ستارك",
+      "stark"
+    ]
+  },
+  {
+    "id": 238,
+    "emoji": "🪄 🌸 👧",
+    "category": "Frieren",
+    "answers": [
+      "فيرن",
+      "fern"
+    ]
+  },
+  {
+    "id": 239,
+    "emoji": "⚔️ 👑 🌟",
+    "category": "Frieren",
+    "answers": [
+      "هيميل",
+      "himmel"
+    ]
+  },
+  {
+    "id": 240,
+    "emoji": "🍺 🧔 ⛪",
+    "category": "Frieren",
+    "answers": [
+      "هايتر",
+      "heiter"
+    ]
+  },
+  {
+    "id": 241,
+    "emoji": "💪 🪄 😂",
+    "category": "Mashle",
+    "answers": [
+      "ماش",
+      "mash",
+      "mash burnedead"
+    ]
+  },
+  {
+    "id": 242,
+    "emoji": "💰 🪄 😎",
+    "category": "Mashle",
+    "answers": [
+      "فين",
+      "finn ames",
+      "finn"
+    ]
+  },
+  {
+    "id": 243,
+    "emoji": "⚡ 🪄 👑",
+    "category": "Mashle",
+    "answers": [
+      "لانس",
+      "lance crown"
+    ]
+  },
+  {
+    "id": 244,
+    "emoji": "🎀 🪄 👧",
+    "category": "Mashle",
+    "answers": [
+      "ليمون",
+      "lemon irvine"
+    ]
+  },
+  {
+    "id": 245,
+    "emoji": "😈 🪄 👑",
+    "category": "Mashle",
+    "answers": [
+      "اينوسنت زيرو",
+      "innocent zero"
+    ]
+  },
+  {
+    "id": 246,
+    "emoji": "🐯 📚 👊",
+    "category": "Bungou Stray Dogs",
+    "answers": [
+      "اتسوشي",
+      "atsushi",
+      "atsushi nakajima"
+    ]
+  },
+  {
+    "id": 247,
+    "emoji": "📖 😈 🎩",
+    "category": "Bungou Stray Dogs",
+    "answers": [
+      "دازاي",
+      "osamu dazai",
+      "dazai"
+    ]
+  },
+  {
+    "id": 248,
+    "emoji": "🕵️ 👓 📚",
+    "category": "Bungou Stray Dogs",
+    "answers": [
+      "رانبو",
+      "ranpo",
+      "ranpo edogawa"
+    ]
+  },
+  {
+    "id": 249,
+    "emoji": "🩺 ❄️ 👩",
+    "category": "Bungou Stray Dogs",
+    "answers": [
+      "ياسانـو",
+      "yosano",
+      "akiko yosano"
+    ]
+  },
+  {
+    "id": 250,
+    "emoji": "🔥 🧥 😈",
+    "category": "Bungou Stray Dogs",
+    "answers": [
+      "تشويا",
+      "chuuya",
+      "chuuya nakahara"
+    ]
+  },
+  {
+    "id": 251,
+    "emoji": "🧞‍♂️ 🏰 👑",
+    "category": "Magi",
+    "answers": [
+      "علاء الدين",
+      "aladdin"
+    ]
+  },
+  {
+    "id": 252,
+    "emoji": "🗡️ 👑 🏜️",
+    "category": "Magi",
+    "answers": [
+      "علي بابا",
+      "alibaba",
+      "alibaba saluja"
+    ]
+  },
+  {
+    "id": 253,
+    "emoji": "💃 🔥 👸",
+    "category": "Magi",
+    "answers": [
+      "مورجيانا",
+      "morgiana"
+    ]
+  },
+  {
+    "id": 254,
+    "emoji": "⚡ 👑 🏰",
+    "category": "Magi",
+    "answers": [
+      "سندباد",
+      "sinbad"
+    ]
+  },
+  {
+    "id": 255,
+    "emoji": "📚 😈 🧠",
+    "category": "Magi",
+    "answers": [
+      "جودال",
+      "judar"
+    ]
+  },
+  {
+    "id": 256,
+    "emoji": "🐉 ⚔️ 👑",
+    "category": "The Seven Deadly Sins",
+    "answers": [
+      "ميليوداس",
+      "meliodas"
+    ]
+  },
+  {
+    "id": 257,
+    "emoji": "🪽 👸 💛",
+    "category": "The Seven Deadly Sins",
+    "answers": [
+      "اليزابيث",
+      "elizabeth"
+    ]
+  },
+  {
+    "id": 258,
+    "emoji": "🦊 🍷 😏",
+    "category": "The Seven Deadly Sins",
+    "answers": [
+      "بان",
+      "ban"
+    ]
+  },
+  {
+    "id": 259,
+    "emoji": "💪 🌞 🪓",
+    "category": "The Seven Deadly Sins",
+    "answers": [
+      "اسكانور",
+      "escanor"
+    ]
+  },
+  {
+    "id": 260,
+    "emoji": "👑 🧚‍♀️ 🌿",
+    "category": "The Seven Deadly Sins",
+    "answers": [
+      "كينغ",
+      "king"
+    ]
+  },
+  {
+    "id": 261,
+    "emoji": "👹 🧠 ✋",
+    "category": "Parasyte",
+    "answers": [
+      "شينيتشي",
+      "shinichi",
+      "shinichi izumi"
+    ]
+  },
+  {
+    "id": 262,
+    "emoji": "👁️ ✋ 😈",
+    "category": "Parasyte",
+    "answers": [
+      "ميغي",
+      "migi"
+    ]
+  },
+  {
+    "id": 263,
+    "emoji": "🎓 ❤️ 👧",
+    "category": "Parasyte",
+    "answers": [
+      "موراتو",
+      "murano",
+      "satomi murano"
+    ]
+  },
+  {
+    "id": 264,
+    "emoji": "😈 👩 🧠",
+    "category": "Parasyte",
+    "answers": [
+      "ريكو",
+      "ryoko tamiya"
+    ]
+  },
+  {
+    "id": 265,
+    "emoji": "🪓 😈 💪",
+    "category": "Parasyte",
+    "answers": [
+      "غوتو",
+      "goto"
+    ]
+  },
+  {
+    "id": 266,
+    "emoji": "⏳ 👦 🔍",
+    "category": "Erased",
+    "answers": [
+      "ساتورو",
+      "satoru",
+      "satoru fujinuma"
+    ]
+  },
+  {
+    "id": 267,
+    "emoji": "👧 ❄️ 😢",
+    "category": "Erased",
+    "answers": [
+      "كايو",
+      "kayo",
+      "kayo hinazuki"
+    ]
+  },
+  {
+    "id": 268,
+    "emoji": "🏫 😈 👨",
+    "category": "Erased",
+    "answers": [
+      "ياشيرو",
+      "gaku yashiro",
+      "yashiro"
+    ]
+  },
+  {
+    "id": 269,
+    "emoji": "🍕 🚚 👩",
+    "category": "Erased",
+    "answers": [
+      "ايري",
+      "airi katagiri",
+      "airi"
+    ]
+  },
+  {
+    "id": 270,
+    "emoji": "👩 ❤️ 👦",
+    "category": "Erased",
+    "answers": [
+      "ساشيكو",
+      "sachiko fujinuma"
+    ]
+  },
+  {
+    "id": 271,
+    "emoji": "🦖 👊 🧹",
+    "category": "Kaiju No. 8",
+    "answers": [
+      "كافكا",
+      "kafka hibino",
+      "kafka"
+    ]
+  },
+  {
+    "id": 272,
+    "emoji": "⚔️ 👧 👑",
+    "category": "Kaiju No. 8",
+    "answers": [
+      "مينا",
+      "mina ashiro",
+      "mina"
+    ]
+  },
+  {
+    "id": 273,
+    "emoji": "🎯 😎 🔫",
+    "category": "Kaiju No. 8",
+    "answers": [
+      "رينو",
+      "reno ichikawa",
+      "reno"
+    ]
+  },
+  {
+    "id": 274,
+    "emoji": "🪓 👧 💪",
+    "category": "Kaiju No. 8",
+    "answers": [
+      "كيكورو",
+      "kikoru shinomiya",
+      "kikoru"
+    ]
+  },
+  {
+    "id": 275,
+    "emoji": "👓 👑 🛡️",
+    "category": "Kaiju No. 8",
+    "answers": [
+      "ايساو",
+      "isao shinomiya"
+    ]
+  },
+  {
+    "id": 276,
+    "emoji": "🏀 🔥 😎",
+    "category": "Kuroko no Basket",
+    "answers": [
+      "كاغامي",
+      "taiga kagami",
+      "kagami"
+    ]
+  },
+  {
+    "id": 277,
+    "emoji": "👻 🏀 🎯",
+    "category": "Kuroko no Basket",
+    "answers": [
+      "كوروكو",
+      "tetsuya kuroko",
+      "kuroko"
+    ]
+  },
+  {
+    "id": 278,
+    "emoji": "♠️ 🏀 😏",
+    "category": "Kuroko no Basket",
+    "answers": [
+      "اوميني",
+      "aomine",
+      "daiki aomine"
+    ]
+  },
+  {
+    "id": 279,
+    "emoji": "⭐ 🏀 👑",
+    "category": "Kuroko no Basket",
+    "answers": [
+      "اكاشي",
+      "akashi",
+      "seijuro akashi"
+    ]
+  },
+  {
+    "id": 280,
+    "emoji": "🍀 🏀 😄",
+    "category": "Kuroko no Basket",
+    "answers": [
+      "ميدوريما",
+      "midorima",
+      "shintaro midorima"
+    ]
+  },
+  {
+    "id": 281,
+    "emoji": "💥 👦 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "ديكو",
+      "ايزوكو ميدوريا",
+      "deku",
+      "izuku midoriya"
+    ]
+  },
+  {
+    "id": 282,
+    "emoji": "💣 😡 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "باكوغو",
+      "bakugo",
+      "katsuki bakugo"
+    ]
+  },
+  {
+    "id": 283,
+    "emoji": "❄️🔥 😐 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "تودوروكي",
+      "shoto todoroki",
+      "todoroki"
+    ]
+  },
+  {
+    "id": 284,
+    "emoji": "💪 👑 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "المايت",
+      "all might"
+    ]
+  },
+  {
+    "id": 285,
+    "emoji": "🦅 👑 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "هوكس",
+      "hawks"
+    ]
+  },
+  {
+    "id": 286,
+    "emoji": "🔥 😈 ✋",
+    "category": "My Hero Academia",
+    "answers": [
+      "دابي",
+      "dabi"
+    ]
+  },
+  {
+    "id": 287,
+    "emoji": "🖐️ 😈 💀",
+    "category": "My Hero Academia",
+    "answers": [
+      "شيغاراكي",
+      "shigaraki",
+      "tomura shigaraki"
+    ]
+  },
+  {
+    "id": 288,
+    "emoji": "👑 😈 🧠",
+    "category": "My Hero Academia",
+    "answers": [
+      "اول فور ون",
+      "all for one"
+    ]
+  },
+  {
+    "id": 289,
+    "emoji": "🐸 👧 🦸",
+    "category": "My Hero Academia",
+    "answers": [
+      "تسويو",
+      "tsuyu asui",
+      "tsuyu"
+    ]
+  },
+  {
+    "id": 290,
+    "emoji": "🎧 ⚡ 👧",
+    "category": "My Hero Academia",
+    "answers": [
+      "جيرو",
+      "kyoka jiro",
+      "jiro"
+    ]
+  },
+  {
+    "id": 291,
+    "emoji": "👻 🔥 📖",
+    "category": "Fire Force",
+    "answers": [
+      "شينرا",
+      "shinra kusakabe",
+      "shinra"
+    ]
+  },
+  {
+    "id": 292,
+    "emoji": "⚔️ 👩 🔥",
+    "category": "Fire Force",
+    "answers": [
+      "ماكي",
+      "maki oze",
+      "maki"
+    ]
+  },
+  {
+    "id": 293,
+    "emoji": "🔥 👑 ⛪",
+    "category": "Fire Force",
+    "answers": [
+      "بيني مارو",
+      "benimaru"
+    ]
+  },
+  {
+    "id": 294,
+    "emoji": "😺 🔥 👧",
+    "category": "Fire Force",
+    "answers": [
+      "تاماكي",
+      "tamaki kotatsu",
+      "tamaki"
+    ]
+  },
+  {
+    "id": 295,
+    "emoji": "🔥 👁️ 😈",
+    "category": "Fire Force",
+    "answers": [
+      "شو",
+      "sho kusakabe",
+      "sho"
+    ]
+  },
+  {
+    "id": 296,
+    "emoji": "🏹 👧 🌾",
+    "category": "The Promised Neverland",
+    "answers": [
+      "ايما",
+      "emma"
+    ]
+  },
+  {
+    "id": 297,
+    "emoji": "📚 🧠 👦",
+    "category": "The Promised Neverland",
+    "answers": [
+      "نورمان",
+      "norman"
+    ]
+  },
+  {
+    "id": 298,
+    "emoji": "🔍 😐 👦",
+    "category": "The Promised Neverland",
+    "answers": [
+      "راي",
+      "ray"
+    ]
+  },
+  {
+    "id": 299,
+    "emoji": "👩 🏠 😈",
+    "category": "The Promised Neverland",
+    "answers": [
+      "ايزابيلا",
+      "isabella"
+    ]
+  },
+  {
+    "id": 300,
+    "emoji": "📖 🦉 😈",
+    "category": "The Promised Neverland",
+    "answers": [
+      "فيل",
+      "phil"
+    ]
+  },
+  {
+    "id": 301,
+    "emoji": "🐙 🎓 😂",
+    "category": "Assassination Classroom",
+    "answers": [
+      "كورو سينسي",
+      "كوروسينسي",
+      "koro sensei",
+      "korosensei"
+    ]
+  },
+  {
+    "id": 302,
+    "emoji": "🔫 👦 🎓",
+    "category": "Assassination Classroom",
+    "answers": [
+      "ناغيسا",
+      "nagisa",
+      "nagisa shiota"
+    ]
+  },
+  {
+    "id": 303,
+    "emoji": "🔪 😈 👦",
+    "category": "Assassination Classroom",
+    "answers": [
+      "كارما",
+      "karma",
+      "karma akabane"
+    ]
+  },
+  {
+    "id": 304,
+    "emoji": "📚 👧 🎯",
+    "category": "Assassination Classroom",
+    "answers": [
+      "كايدي",
+      "kaede kayano",
+      "kaede"
+    ]
+  },
+  {
+    "id": 305,
+    "emoji": "⚔️ 👩 🎓",
+    "category": "Assassination Classroom",
+    "answers": [
+      "ايرينا",
+      "irina jelavic",
+      "irina"
+    ]
+  },
+  {
+    "id": 306,
+    "emoji": "🍓 ⚔️ 😂",
+    "category": "Gintama",
+    "answers": [
+      "جينتوكي",
+      "gintoki",
+      "gintoki sakata"
+    ]
+  },
+  {
+    "id": 307,
+    "emoji": "👓 📚 😠",
+    "category": "Gintama",
+    "answers": [
+      "شينباتشي",
+      "shinpachi"
+    ]
+  },
+  {
+    "id": 308,
+    "emoji": "☂️ 👧 😈",
+    "category": "Gintama",
+    "answers": [
+      "كاغورا",
+      "kagura"
+    ]
+  },
+  {
+    "id": 309,
+    "emoji": "🚬 😎 👮",
+    "category": "Gintama",
+    "answers": [
+      "هيجيكاتا",
+      "hijikata",
+      "toshiro hijikata"
+    ]
+  },
+  {
+    "id": 310,
+    "emoji": "👮 🗡️ 😴",
+    "category": "Gintama",
+    "answers": [
+      "اوكيتا",
+      "sougo okita",
+      "okita"
+    ]
+  },
+  {
+    "id": 311,
+    "emoji": "🔥 😈 🎹",
+    "category": "Re:Zero",
+    "answers": [
+      "سوبارو",
+      "natsuki subaru",
+      "subaru"
+    ]
+  },
+  {
+    "id": 312,
+    "emoji": "❄️ 👸 🪄",
+    "category": "Re:Zero",
+    "answers": [
+      "ايميليا",
+      "emilia"
+    ]
+  },
+  {
+    "id": 313,
+    "emoji": "🩷 🪓 👧",
+    "category": "Re:Zero",
+    "answers": [
+      "رام",
+      "ram"
+    ]
+  },
+  {
+    "id": 314,
+    "emoji": "💙 🪓 👧",
+    "category": "Re:Zero",
+    "answers": [
+      "ريم",
+      "rem"
+    ]
+  },
+  {
+    "id": 315,
+    "emoji": "📚 🪄 😈",
+    "category": "Re:Zero",
+    "answers": [
+      "بياتريس",
+      "beatrice"
+    ]
+  },
+  {
+    "id": 316,
+    "emoji": "🎭 🃏 👑",
+    "category": "JoJo's Bizarre Adventure",
+    "answers": [
+      "جوتارو",
+      "jotaro",
+      "jotaro kujo"
+    ]
+  },
+  {
+    "id": 317,
+    "emoji": "⭐ 😎 🤜",
+    "category": "JoJo's Bizarre Adventure",
+    "answers": [
+      "ستار بلاتينوم",
+      "star platinum"
+    ]
+  },
+  {
+    "id": 318,
+    "emoji": "😈 🟡 👑",
+    "category": "JoJo's Bizarre Adventure",
+    "answers": [
+      "ديو",
+      "dio",
+      "dio brando"
+    ]
+  },
+  {
+    "id": 319,
+    "emoji": "☀️ 🏃 👑",
+    "category": "JoJo's Bizarre Adventure",
+    "answers": [
+      "جوزيف",
+      "joseph joestar",
+      "joseph"
+    ]
+  },
+  {
+    "id": 320,
+    "emoji": "💎 👦 😎",
+    "category": "JoJo's Bizarre Adventure",
+    "answers": [
+      "جوسكي",
+      "josuke",
+      "josuke higashikata"
+    ]
+  },
+  {
+    "id": 321,
+    "emoji": "🔥 🧣 🐉",
+    "category": "Fairy Tail",
+    "answers": [
+      "ناتسو",
+      "natsu",
+      "natsu dragneel"
+    ]
+  },
+  {
+    "id": 322,
+    "emoji": "🔑 🪄 👧",
+    "category": "Fairy Tail",
+    "answers": [
+      "لوسي",
+      "lucy",
+      "lucy heartfilia"
+    ]
+  },
+  {
+    "id": 323,
+    "emoji": "❄️ ⚔️ 😎",
+    "category": "Fairy Tail",
+    "answers": [
+      "غراي",
+      "gray",
+      "gray fullbuster"
+    ]
+  },
+  {
+    "id": 324,
+    "emoji": "⚔️ ❤️ 👸",
+    "category": "Fairy Tail",
+    "answers": [
+      "ايرزا",
+      "erza",
+      "erza scarlet"
+    ]
+  },
+  {
+    "id": 325,
+    "emoji": "🐱 🪽 🔥",
+    "category": "Fairy Tail",
+    "answers": [
+      "هابي",
+      "happy"
+    ]
+  },
+  {
+    "id": 326,
+    "emoji": "👑 ⚔️ 🏹",
+    "category": "Akame ga Kill",
+    "answers": [
+      "تاتسومي",
+      "tatsumi"
+    ]
+  },
+  {
+    "id": 327,
+    "emoji": "🔫 😎 👧",
+    "category": "Akame ga Kill",
+    "answers": [
+      "ماين",
+      "mine"
+    ]
+  },
+  {
+    "id": 328,
+    "emoji": "🧵 👁️ 👑",
+    "category": "Akame ga Kill",
+    "answers": [
+      "ناجيندا",
+      "najenda"
+    ]
+  },
+  {
+    "id": 329,
+    "emoji": "🦁 💪 😈",
+    "category": "Akame ga Kill",
+    "answers": [
+      "ليوني",
+      "leone"
+    ]
+  },
+  {
+    "id": 330,
+    "emoji": "👓 ⚔️ 💚",
+    "category": "Akame ga Kill",
+    "answers": [
+      "لابوك",
+      "lubbock"
+    ]
+  },
+  {
+    "id": 331,
+    "emoji": "⛩️ 🗡️ 😎",
+    "category": "Noragami",
+    "answers": [
+      "ياتو",
+      "yato"
+    ]
+  },
+  {
+    "id": 332,
+    "emoji": "🌸 👧 👻",
+    "category": "Noragami",
+    "answers": [
+      "هييوري",
+      "hiyori iki",
+      "hiyori"
+    ]
+  },
+  {
+    "id": 333,
+    "emoji": "⚔️ 👦 ❄️",
+    "category": "Noragami",
+    "answers": [
+      "يوكيني",
+      "yukine"
+    ]
+  },
+  {
+    "id": 334,
+    "emoji": "😈 👁️ 🟣",
+    "category": "Noragami",
+    "answers": [
+      "بيشامون",
+      "bishamon"
+    ]
+  },
+  {
+    "id": 335,
+    "emoji": "🦊 🪄 😎",
+    "category": "Noragami",
+    "answers": [
+      "كوفوكو",
+      "kofuku"
+    ]
+  },
+  {
+    "id": 336,
+    "emoji": "🔫 🧠 👮",
+    "category": "Psycho-Pass",
+    "answers": [
+      "شينيا كوغامي",
+      "kogami",
+      "shinya kogami"
+    ]
+  },
+  {
+    "id": 337,
+    "emoji": "👩 👮 📊",
+    "category": "Psycho-Pass",
+    "answers": [
+      "اكاني",
+      "akane",
+      "akane tsunemori"
+    ]
+  },
+  {
+    "id": 338,
+    "emoji": "🧠 😈 📖",
+    "category": "Psycho-Pass",
+    "answers": [
+      "ماكيشيما",
+      "makishima",
+      "shogo makishima"
+    ]
+  },
+  {
+    "id": 339,
+    "emoji": "👓 👮 ⚖️",
+    "category": "Psycho-Pass",
+    "answers": [
+      "جينوزا",
+      "ginoza"
+    ]
+  },
+  {
+    "id": 340,
+    "emoji": "🤖 ⚖️ 👁️",
+    "category": "Psycho-Pass",
+    "answers": [
+      "سيبيل",
+      "sibyl system",
+      "sibyl"
+    ]
+  },
+  {
+    "id": 341,
+    "emoji": "👹 ⚔️ 🩸",
+    "category": "Bleach",
+    "answers": [
+      "كينباتشي",
+      "zaraki kenpachi",
+      "kenpachi"
+    ]
+  },
+  {
+    "id": 342,
+    "emoji": "🌸 👩 ⚔️",
+    "category": "Bleach",
+    "answers": [
+      "اوريهيمي",
+      "orihime",
+      "orihime inoue"
+    ]
+  },
+  {
+    "id": 343,
+    "emoji": "🏹 👓 ⚔️",
+    "category": "Bleach",
+    "answers": [
+      "اوريو",
+      "uryu",
+      "uryu ishida"
+    ]
+  },
+  {
+    "id": 344,
+    "emoji": "🐱 👧 ⚔️",
+    "category": "Bleach",
+    "answers": [
+      "يورويتشي",
+      "yoruichi"
+    ]
+  },
+  {
+    "id": 345,
+    "emoji": "😈 👑 ⚔️",
+    "category": "Bleach",
+    "answers": [
+      "يواخ",
+      "yhwach"
+    ]
+  },
+  {
+    "id": 346,
+    "emoji": "🦅 ⚔️ 👑",
+    "category": "Boruto",
+    "answers": [
+      "بوروتو",
+      "boruto",
+      "boruto uzumaki"
+    ]
+  },
+  {
+    "id": 347,
+    "emoji": "⚡ 👧 🧠",
+    "category": "Boruto",
+    "answers": [
+      "سارادا",
+      "sarada",
+      "sarada uchiha"
+    ]
+  },
+  {
+    "id": 348,
+    "emoji": "🌙 👦 😐",
+    "category": "Boruto",
+    "answers": [
+      "ميتسوكي",
+      "mitsuki"
+    ]
+  },
+  {
+    "id": 349,
+    "emoji": "👁️ 😈 🏹",
+    "category": "Boruto",
+    "answers": [
+      "كاواكي",
+      "kawaki"
+    ]
+  },
+  {
+    "id": 350,
+    "emoji": "👑 🌙 😈",
+    "category": "Boruto",
+    "answers": [
+      "موموشيكي",
+      "momoshiki"
+    ]
+  },
+  {
+    "id": 351,
+    "emoji": "👑 🎲 🎮",
+    "category": "No Game No Life",
+    "answers": [
+      "ستيف",
+      "steph",
+      "stephanie dola"
+    ]
+  },
+  {
+    "id": 352,
+    "emoji": "🪽 🎮 😈",
+    "category": "No Game No Life",
+    "answers": [
+      "جيبريل",
+      "jibril"
+    ]
+  },
+  {
+    "id": 353,
+    "emoji": "👑 🦊 🎲",
+    "category": "No Game No Life",
+    "answers": [
+      "ايزونا",
+      "izuna"
+    ]
+  },
+  {
+    "id": 354,
+    "emoji": "🎮 👑 🧠",
+    "category": "No Game No Life",
+    "answers": [
+      "تيت",
+      "tet"
+    ]
+  },
+  {
+    "id": 355,
+    "emoji": "🧠 ♟️ 👩",
+    "category": "No Game No Life",
+    "answers": [
+      "كورامي",
+      "kurami"
+    ]
+  },
+  {
+    "id": 356,
+    "emoji": "☠️ 👑 🏴‍☠️",
+    "category": "One Piece",
+    "answers": [
+      "غول دي روجر",
+      "روجر",
+      "gol d roger",
+      "roger"
+    ]
+  },
+  {
+    "id": 357,
+    "emoji": "🟥 👨‍🦰 ⚔️",
+    "category": "One Piece",
+    "answers": [
+      "شانكس",
+      "shanks"
+    ]
+  },
+  {
+    "id": 358,
+    "emoji": "🌋 🔥 ☠️",
+    "category": "One Piece",
+    "answers": [
+      "اكاينو",
+      "sakazuki",
+      "akainu"
+    ]
+  },
+  {
+    "id": 359,
+    "emoji": "❄️ 🚲 😴",
+    "category": "One Piece",
+    "answers": [
+      "اوكيجي",
+      "aokiji",
+      "kuzan"
+    ]
+  },
+  {
+    "id": 360,
+    "emoji": "⚡ 👓 💛",
+    "category": "One Piece",
+    "answers": [
+      "كيزارو",
+      "kizaru",
+      "borsalino"
+    ]
+  },
+  {
+    "id": 361,
+    "emoji": "🎩 ⚫ 🌑",
+    "category": "One Piece",
+    "answers": [
+      "اللحية السوداء",
+      "بلاك بيرد",
+      "blackbeard",
+      "marshall d teach"
+    ]
+  },
+  {
+    "id": 362,
+    "emoji": "👻 👑 🩷",
+    "category": "One Piece",
+    "answers": [
+      "بيرونا",
+      "perona"
+    ]
+  },
+  {
+    "id": 363,
+    "emoji": "🦁 ⚔️ 👑",
+    "category": "One Piece",
+    "answers": [
+      "شيكي",
+      "shiki"
+    ]
+  },
+  {
+    "id": 364,
+    "emoji": "🧸 🏴‍☠️ 🪡",
+    "category": "One Piece",
+    "answers": [
+      "بارثولوميو كوما",
+      "كوما",
+      "bartholomew kuma",
+      "kuma"
+    ]
+  },
+  {
+    "id": 365,
+    "emoji": "🦩 👑 💰",
+    "category": "One Piece",
+    "answers": [
+      "تريبول",
+      "trebol"
+    ]
+  },
+  {
+    "id": 366,
+    "emoji": "🧠 🎮 👦",
+    "category": "Sword Art Online",
+    "answers": [
+      "كلاين",
+      "klein"
+    ]
+  },
+  {
+    "id": 367,
+    "emoji": "🔨 ⚔️ 👧",
+    "category": "Sword Art Online",
+    "answers": [
+      "ليزبيث",
+      "lisbeth"
+    ]
+  },
+  {
+    "id": 368,
+    "emoji": "🐉 ⚔️ 😈",
+    "category": "Sword Art Online",
+    "answers": [
+      "يوجين",
+      "eugene"
+    ]
+  },
+  {
+    "id": 369,
+    "emoji": "👑 🤖 🌍",
+    "category": "Sword Art Online",
+    "answers": [
+      "غابرييل ميلر",
+      "gabriel miller"
+    ]
+  },
+  {
+    "id": 370,
+    "emoji": "🪄 ⚔️ ❄️",
+    "category": "Sword Art Online",
+    "answers": [
+      "سينون",
+      "sinon"
+    ]
+  },
+  {
+    "id": 371,
+    "emoji": "⚔️ 🏰 👑",
+    "category": "Overlord",
+    "answers": [
+      "شالتير",
+      "shalltear"
+    ]
+  },
+  {
+    "id": 372,
+    "emoji": "🦎 👑 ⚔️",
+    "category": "Overlord",
+    "answers": [
+      "كوكيوتس",
+      "cocytus"
+    ]
+  },
+  {
+    "id": 373,
+    "emoji": "🤖 👑 🧠",
+    "category": "Overlord",
+    "answers": [
+      "ديميورغ",
+      "demiurge"
+    ]
+  },
+  {
+    "id": 374,
+    "emoji": "🐺 👧 😈",
+    "category": "Overlord",
+    "answers": [
+      "اورا",
+      "aura bella fiore"
+    ]
+  },
+  {
+    "id": 375,
+    "emoji": "🌳 👦 🏹",
+    "category": "Overlord",
+    "answers": [
+      "ماري",
+      "mare bello fiore"
+    ]
+  },
+  {
+    "id": 376,
+    "emoji": "🎻 😈 👑",
+    "category": "Black Butler",
+    "answers": [
+      "سيباستيان",
+      "sebastian michaelis"
+    ]
+  },
+  {
+    "id": 377,
+    "emoji": "👑 🎩 👦",
+    "category": "Black Butler",
+    "answers": [
+      "سيل",
+      "ciel phantomhive"
+    ]
+  },
+  {
+    "id": 378,
+    "emoji": "🕷️ 🎪 😈",
+    "category": "Black Butler",
+    "answers": [
+      "جوكر",
+      "joker"
+    ]
+  },
+  {
+    "id": 379,
+    "emoji": "🔪 😈 👓",
+    "category": "Black Butler",
+    "answers": [
+      "غريل",
+      "grell sutcliff"
+    ]
+  },
+  {
+    "id": 380,
+    "emoji": "☠️ 📚 👑",
+    "category": "Black Butler",
+    "answers": [
+      "اندرتيكر",
+      "undertaker"
+    ]
+  },
+  {
+    "id": 381,
+    "emoji": "🪄 👧 🐉",
+    "category": "Miss Kobayashi's Dragon Maid",
+    "answers": [
+      "تورو",
+      "tohru"
+    ]
+  },
+  {
+    "id": 382,
+    "emoji": "💻 👩 ☕",
+    "category": "Miss Kobayashi's Dragon Maid",
+    "answers": [
+      "كوباياشي",
+      "kobayashi"
+    ]
+  },
+  {
+    "id": 383,
+    "emoji": "🐉 👧 😴",
+    "category": "Miss Kobayashi's Dragon Maid",
+    "answers": [
+      "كانا",
+      "kanna kamui",
+      "kanna"
+    ]
+  },
+  {
+    "id": 384,
+    "emoji": "🔥 🐉 👑",
+    "category": "Miss Kobayashi's Dragon Maid",
+    "answers": [
+      "ايلولو",
+      "ilulu"
+    ]
+  },
+  {
+    "id": 385,
+    "emoji": "💧 🐉 👩",
+    "category": "Miss Kobayashi's Dragon Maid",
+    "answers": [
+      "الما",
+      "elma"
+    ]
+  },
+  {
+    "id": 386,
+    "emoji": "🧛 👧 🩸",
+    "category": "Call of the Night",
+    "answers": [
+      "نازونا",
+      "nazuna nanakusa",
+      "nazuna"
+    ]
+  },
+  {
+    "id": 387,
+    "emoji": "🌙 👦 😴",
+    "category": "Call of the Night",
+    "answers": [
+      "كو",
+      "kou yamori",
+      "kou"
+    ]
+  },
+  {
+    "id": 388,
+    "emoji": "🕵️ 👩 🌙",
+    "category": "Call of the Night",
+    "answers": [
+      "انكو",
+      "anko uguisu",
+      "anko"
+    ]
+  },
+  {
+    "id": 389,
+    "emoji": "🧛 👩 👑",
+    "category": "Call of the Night",
+    "answers": [
+      "سيري",
+      "seri kikyo"
+    ]
+  },
+  {
+    "id": 390,
+    "emoji": "💜 🌙 👧",
+    "category": "Call of the Night",
+    "answers": [
+      "اكيرا",
+      "akira asai"
+    ]
+  },
+  {
+    "id": 391,
+    "emoji": "🎸 👧 🌸",
+    "category": "Bocchi the Rock!",
+    "answers": [
+      "بوتشي",
+      "bocchi",
+      "hitori gotoh"
+    ]
+  },
+  {
+    "id": 392,
+    "emoji": "🥁 😎 🎵",
+    "category": "Bocchi the Rock!",
+    "answers": [
+      "نيجيكا",
+      "nijika"
+    ]
+  },
+  {
+    "id": 393,
+    "emoji": "🎸 🔵 😐",
+    "category": "Bocchi the Rock!",
+    "answers": [
+      "ريو",
+      "ryo yamada",
+      "ryo"
+    ]
+  },
+  {
+    "id": 394,
+    "emoji": "🎤 ❤️ 🔥",
+    "category": "Bocchi the Rock!",
+    "answers": [
+      "كيتا",
+      "kita ikuyo",
+      "kita"
+    ]
+  },
+  {
+    "id": 395,
+    "emoji": "🎸 👧 👑",
+    "category": "Bocchi the Rock!",
+    "answers": [
+      "سيكا",
+      "seika"
+    ]
+  },
+  {
+    "id": 396,
+    "emoji": "👹 ⚔️ 🔥",
+    "category": "Blue Exorcist",
+    "answers": [
+      "رين اوكومورا",
+      "rin okumura",
+      "rin"
+    ]
+  },
+  {
+    "id": 397,
+    "emoji": "📚 ⚔️ 👦",
+    "category": "Blue Exorcist",
+    "answers": [
+      "يوكيو",
+      "yukio okumura",
+      "yukio"
+    ]
+  },
+  {
+    "id": 398,
+    "emoji": "🪄 👧 😇",
+    "category": "Blue Exorcist",
+    "answers": [
+      "شييمي",
+      "shiemi"
+    ]
+  },
+  {
+    "id": 399,
+    "emoji": "⚔️ 👩 😎",
+    "category": "Blue Exorcist",
+    "answers": [
+      "شورا",
+      "shura kirigakure"
+    ]
+  },
+  {
+    "id": 400,
+    "emoji": "👑 😈 🔥",
+    "category": "Blue Exorcist",
+    "answers": [
+      "ساتان",
+      "satan"
+    ]
+  },
+  {
+    "id": 401,
+    "emoji": "🧙‍♂️ 🏰 👑",
+    "category": "That Time I Got Reincarnated as a Slime",
+    "answers": [
+      "ريمورو",
+      "ريمورو تيمبيست",
+      "rimuru",
+      "rimuru tempest"
+    ]
+  },
+  {
+    "id": 402,
+    "emoji": "🐉 ⚫ 😈",
+    "category": "That Time I Got Reincarnated as a Slime",
+    "answers": [
+      "فيلدورا",
+      "veldora"
+    ]
+  },
+  {
+    "id": 403,
+    "emoji": "🗡️ 💙 👹",
+    "category": "That Time I Got Reincarnated as a Slime",
+    "answers": [
+      "شونا",
+      "shuna"
+    ]
+  },
+  {
+    "id": 404,
+    "emoji": "🔥 👹 😎",
+    "category": "That Time I Got Reincarnated as a Slime",
+    "answers": [
+      "بيني مارو",
+      "benimaru"
+    ]
+  },
+  {
+    "id": 405,
+    "emoji": "🕷️ 👑 😈",
+    "category": "That Time I Got Reincarnated as a Slime",
+    "answers": [
+      "راميريس",
+      "ramiris"
+    ]
+  },
+  {
+    "id": 406,
+    "emoji": "🕸️ 🕷️ 👧",
+    "category": "So I'm a Spider, So What?",
+    "answers": [
+      "كوموكو",
+      "kumoko"
+    ]
+  },
+  {
+    "id": 407,
+    "emoji": "👑 🐉 ⚔️",
+    "category": "So I'm a Spider, So What?",
+    "answers": [
+      "ايريل",
+      "ariel"
+    ]
+  },
+  {
+    "id": 408,
+    "emoji": "🧛 ⚔️ 👑",
+    "category": "So I'm a Spider, So What?",
+    "answers": [
+      "صوفيا",
+      "sophia"
+    ]
+  },
+  {
+    "id": 409,
+    "emoji": "🪄 😎 👦",
+    "category": "So I'm a Spider, So What?",
+    "answers": [
+      "شون",
+      "shun"
+    ]
+  },
+  {
+    "id": 410,
+    "emoji": "🐉 👩 🪄",
+    "category": "So I'm a Spider, So What?",
+    "answers": [
+      "فيي",
+      "fei"
+    ]
+  },
+  {
+    "id": 411,
+    "emoji": "🏹 👑 🧝",
+    "category": "The Rising of the Shield Hero",
+    "answers": [
+      "ناوفومي",
+      "naofumi",
+      "naofumi iwatani"
+    ]
+  },
+  {
+    "id": 412,
+    "emoji": "🦝 ⚔️ ❤️",
+    "category": "The Rising of the Shield Hero",
+    "answers": [
+      "رافتاليا",
+      "raphtalia"
+    ]
+  },
+  {
+    "id": 413,
+    "emoji": "🐦 👼 ⚡",
+    "category": "The Rising of the Shield Hero",
+    "answers": [
+      "فيلو",
+      "filo"
+    ]
+  },
+  {
+    "id": 414,
+    "emoji": "👑 😈 👧",
+    "category": "The Rising of the Shield Hero",
+    "answers": [
+      "مالتي",
+      "malty"
+    ]
+  },
+  {
+    "id": 415,
+    "emoji": "🛡️ 👑 👩",
+    "category": "The Rising of the Shield Hero",
+    "answers": [
+      "ميريلومارك",
+      "mirellia"
+    ]
+  },
+  {
+    "id": 416,
+    "emoji": "📖 👑 🦸",
+    "category": "The Misfit of Demon King Academy",
+    "answers": [
+      "انوس",
+      "anos voldigoad",
+      "anos"
+    ]
+  },
+  {
+    "id": 417,
+    "emoji": "🎵 👧 ❤️",
+    "category": "The Misfit of Demon King Academy",
+    "answers": [
+      "ميشا",
+      "misha necron",
+      "misha"
+    ]
+  },
+  {
+    "id": 418,
+    "emoji": "🔥 👧 😎",
+    "category": "The Misfit of Demon King Academy",
+    "answers": [
+      "ساشا",
+      "sasha necron",
+      "sasha"
+    ]
+  },
+  {
+    "id": 419,
+    "emoji": "⚔️ 👑 😈",
+    "category": "The Misfit of Demon King Academy",
+    "answers": [
+      "شين",
+      "shin reglia",
+      "shin"
+    ]
+  },
+  {
+    "id": 420,
+    "emoji": "🪄 👩 👑",
+    "category": "The Misfit of Demon King Academy",
+    "answers": [
+      "ايلينور",
+      "eleanor"
+    ]
+  },
+  {
+    "id": 421,
+    "emoji": "🦇 👑 🌙",
+    "category": "The Eminence in Shadow",
+    "answers": [
+      "سيد كاغينو",
+      "cid kagenou",
+      "cid",
+      "shadow"
+    ]
+  },
+  {
+    "id": 422,
+    "emoji": "🗡️ 💙 👧",
+    "category": "The Eminence in Shadow",
+    "answers": [
+      "الفا",
+      "alpha"
+    ]
+  },
+  {
+    "id": 423,
+    "emoji": "⚔️ ❤️ 👧",
+    "category": "The Eminence in Shadow",
+    "answers": [
+      "بيتا",
+      "beta"
+    ]
+  },
+  {
+    "id": 424,
+    "emoji": "🐺 ⚡ 👧",
+    "category": "The Eminence in Shadow",
+    "answers": [
+      "دلتا",
+      "delta"
+    ]
+  },
+  {
+    "id": 425,
+    "emoji": "👑 🩸 😈",
+    "category": "The Eminence in Shadow",
+    "answers": [
+      "روز اوريانا",
+      "rose oriana"
+    ]
+  },
+  {
+    "id": 426,
+    "emoji": "👑 🦇 🩸",
+    "category": "Seraph of the End",
+    "answers": [
+      "يويتشيرو",
+      "yuichiro",
+      "yuichiro hyakuya"
+    ]
+  },
+  {
+    "id": 427,
+    "emoji": "⚔️ 👓 😎",
+    "category": "Seraph of the End",
+    "answers": [
+      "غورين",
+      "guren"
+    ]
+  },
+  {
+    "id": 428,
+    "emoji": "🧛 👑 👦",
+    "category": "Seraph of the End",
+    "answers": [
+      "ميكا",
+      "mika",
+      "mikaela hyakuya"
+    ]
+  },
+  {
+    "id": 429,
+    "emoji": "🪄 👧 💚",
+    "category": "Seraph of the End",
+    "answers": [
+      "شينوا",
+      "shinoa"
+    ]
+  },
+  {
+    "id": 430,
+    "emoji": "👑 🧛 😈",
+    "category": "Seraph of the End",
+    "answers": [
+      "فيريد",
+      "ferid"
+    ]
+  },
+  {
+    "id": 431,
+    "emoji": "🎮 👑 ⚔️",
+    "category": "Log Horizon",
+    "answers": [
+      "شيرو",
+      "shiroe"
+    ]
+  },
+  {
+    "id": 432,
+    "emoji": "🗡️ 😎 👧",
+    "category": "Log Horizon",
+    "answers": [
+      "اكاتسوكي",
+      "akatsuki"
+    ]
+  },
+  {
+    "id": 433,
+    "emoji": "💪 🛡️ 👦",
+    "category": "Log Horizon",
+    "answers": [
+      "ناوتسوغو",
+      "naotsugu"
+    ]
+  },
+  {
+    "id": 434,
+    "emoji": "🍵 👧 🪄",
+    "category": "Log Horizon",
+    "answers": [
+      "مينوري",
+      "minori"
+    ]
+  },
+  {
+    "id": 435,
+    "emoji": "👓 ⚖️ 👑",
+    "category": "Log Horizon",
+    "answers": [
+      "كرستي",
+      "krusty"
+    ]
+  },
+  {
+    "id": 436,
+    "emoji": "🧛 ⚔️ 👑",
+    "category": "Castlevania",
+    "answers": [
+      "الوكارد",
+      "alucard"
+    ]
+  },
+  {
+    "id": 437,
+    "emoji": "🪄 🧔 ⚔️",
+    "category": "Castlevania",
+    "answers": [
+      "تريفور",
+      "trevor belmont",
+      "trevor"
+    ]
+  },
+  {
+    "id": 438,
+    "emoji": "📖 🪄 👧",
+    "category": "Castlevania",
+    "answers": [
+      "سايفا",
+      "sypha"
+    ]
+  },
+  {
+    "id": 439,
+    "emoji": "🧛 👑 😈",
+    "category": "Castlevania",
+    "answers": [
+      "دراكولا",
+      "dracula"
+    ]
+  },
+  {
+    "id": 440,
+    "emoji": "⚔️ 🧛 👩",
+    "category": "Castlevania",
+    "answers": [
+      "لينور",
+      "lenore"
+    ]
+  },
+  {
+    "id": 441,
+    "emoji": "👻 🏫 😎",
+    "category": "Toilet-Bound Hanako-kun",
+    "answers": [
+      "هاناكو",
+      "hanako"
+    ]
+  },
+  {
+    "id": 442,
+    "emoji": "📚 👧 🌸",
+    "category": "Toilet-Bound Hanako-kun",
+    "answers": [
+      "نيني",
+      "nene yashiro",
+      "nene"
+    ]
+  },
+  {
+    "id": 443,
+    "emoji": "📷 👦 👻",
+    "category": "Toilet-Bound Hanako-kun",
+    "answers": [
+      "كو",
+      "kou minamoto",
+      "kou"
+    ]
+  },
+  {
+    "id": 444,
+    "emoji": "⚡ 👑 🪄",
+    "category": "Toilet-Bound Hanako-kun",
+    "answers": [
+      "تيرو",
+      "teru minamoto"
+    ]
+  },
+  {
+    "id": 445,
+    "emoji": "🌙 👻 👦",
+    "category": "Toilet-Bound Hanako-kun",
+    "answers": [
+      "تسوكاسا",
+      "tsukasa yugi"
+    ]
+  },
+  {
+    "id": 446,
+    "emoji": "👑 🧠 ⚽",
+    "category": "Inazuma Eleven",
+    "answers": [
+      "اندو",
+      "endou mamoru",
+      "endou"
+    ]
+  },
+  {
+    "id": 447,
+    "emoji": "🔥 ⚽ 😎",
+    "category": "Inazuma Eleven",
+    "answers": [
+      "غوينجي",
+      "gouenji",
+      "shuuya gouenji"
+    ]
+  },
+  {
+    "id": 448,
+    "emoji": "❄️ ⚽ 👦",
+    "category": "Inazuma Eleven",
+    "answers": [
+      "فوبوكي",
+      "fubuki",
+      "shirou fubuki"
+    ]
+  },
+  {
+    "id": 449,
+    "emoji": "⚡ ⚽ 👑",
+    "category": "Inazuma Eleven",
+    "answers": [
+      "كيدو",
+      "kidou",
+      "yuuto kidou"
+    ]
+  },
+  {
+    "id": 450,
+    "emoji": "🧤 ⚽ 🛡️",
+    "category": "Inazuma Eleven",
+    "answers": [
+      "روكوكو",
+      "rococo"
+    ]
+  },
+  {
+    "id": 451,
+    "emoji": "🎯 🃏 👦",
+    "category": "Yu-Gi-Oh!",
+    "answers": [
+      "يوغي",
+      "yugi",
+      "yugi muto"
+    ]
+  },
+  {
+    "id": 452,
+    "emoji": "🐉 🃏 🔥",
+    "category": "Yu-Gi-Oh!",
+    "answers": [
+      "كايبا",
+      "seto kaiba",
+      "kaiba"
+    ]
+  },
+  {
+    "id": 453,
+    "emoji": "🎩 🃏 😈",
+    "category": "Yu-Gi-Oh!",
+    "answers": [
+      "ماريك",
+      "marik"
+    ]
+  },
+  {
+    "id": 454,
+    "emoji": "🧙 🃏 👑",
+    "category": "Yu-Gi-Oh!",
+    "answers": [
+      "اتيم",
+      "atem"
+    ]
+  },
+  {
+    "id": 455,
+    "emoji": "⚡ 🃏 😎",
+    "category": "Yu-Gi-Oh!",
+    "answers": [
+      "جوي",
+      "joey wheeler",
+      "joey"
+    ]
+  },
+  {
+    "id": 456,
+    "emoji": "🏹 👑 🧝‍♀️",
+    "category": "Record of Lodoss War",
+    "answers": [
+      "ديدليت",
+      "deedlit"
+    ]
+  },
+  {
+    "id": 457,
+    "emoji": "⚔️ 👦 👑",
+    "category": "Record of Lodoss War",
+    "answers": [
+      "بارن",
+      "parn"
+    ]
+  },
+  {
+    "id": 458,
+    "emoji": "🪄 🧙‍♂️ 📖",
+    "category": "Record of Lodoss War",
+    "answers": [
+      "سلاين",
+      "slayn"
+    ]
+  },
+  {
+    "id": 459,
+    "emoji": "🛡️ 💪 👦",
+    "category": "Record of Lodoss War",
+    "answers": [
+      "جيم",
+      "ghim"
+    ]
+  },
+  {
+    "id": 460,
+    "emoji": "👑 😈 ⚔️",
+    "category": "Record of Lodoss War",
+    "answers": [
+      "اشرام",
+      "ashram"
+    ]
+  },
+  {
+    "id": 461,
+    "emoji": "🌊 🏴‍☠️ 👸",
+    "category": "One Piece",
+    "answers": [
+      "شيراهوشي",
+      "shirahoshi"
+    ]
+  },
+  {
+    "id": 462,
+    "emoji": "🐆 😈 🩸",
+    "category": "One Piece",
+    "answers": [
+      "روب لوتشي",
+      "rob lucci",
+      "lucci"
+    ]
+  },
+  {
+    "id": 463,
+    "emoji": "🐘 🦣 👑",
+    "category": "One Piece",
+    "answers": [
+      "جاك",
+      "jack"
+    ]
+  },
+  {
+    "id": 464,
+    "emoji": "🔥 🦖 👑",
+    "category": "One Piece",
+    "answers": [
+      "كينغ",
+      "king"
+    ]
+  },
+  {
+    "id": 465,
+    "emoji": "⚙️ 🦕 👓",
+    "category": "One Piece",
+    "answers": [
+      "كوين",
+      "queen"
+    ]
+  },
+  {
+    "id": 466,
+    "emoji": "🌸 👧 👑",
+    "category": "One Piece",
+    "answers": [
+      "ياماتو",
+      "yamato"
+    ]
+  },
+  {
+    "id": 467,
+    "emoji": "👻 🧸 🩷",
+    "category": "One Piece",
+    "answers": [
+      "بيرونا",
+      "perona"
+    ]
+  },
+  {
+    "id": 468,
+    "emoji": "🕯️ 💀 ☠️",
+    "category": "One Piece",
+    "answers": [
+      "جيكو موريا",
+      "moria",
+      "gecko moria"
+    ]
+  },
+  {
+    "id": 469,
+    "emoji": "🦈 ⚔️ 😎",
+    "category": "One Piece",
+    "answers": [
+      "ارلونغ",
+      "arlong"
+    ]
+  },
+  {
+    "id": 470,
+    "emoji": "🐊 💨 👑",
+    "category": "One Piece",
+    "answers": [
+      "كروكودايل",
+      "crocodile"
+    ]
+  },
+  {
+    "id": 471,
+    "emoji": "⚡ 👊 🟡",
+    "category": "Dragon Ball",
+    "answers": [
+      "غوتين",
+      "goten"
+    ]
+  },
+  {
+    "id": 472,
+    "emoji": "⚔️ 🟣 😎",
+    "category": "Dragon Ball",
+    "answers": [
+      "غوتينكس",
+      "gotenks"
+    ]
+  },
+  {
+    "id": 473,
+    "emoji": "👧 🧪 🟡",
+    "category": "Dragon Ball",
+    "answers": [
+      "بولما",
+      "bulma"
+    ]
+  },
+  {
+    "id": 474,
+    "emoji": "🐢 👴 📚",
+    "category": "Dragon Ball",
+    "answers": [
+      "ماستر روشي",
+      "roshi",
+      "master roshi"
+    ]
+  },
+  {
+    "id": 475,
+    "emoji": "👑 🧒 🌍",
+    "category": "Dragon Ball",
+    "answers": [
+      "ديندي",
+      "dende"
+    ]
+  },
+  {
+    "id": 476,
+    "emoji": "😈 👑 🩷",
+    "category": "Dragon Ball",
+    "answers": [
+      "كيد بو",
+      "kid buu"
+    ]
+  },
+  {
+    "id": 477,
+    "emoji": "🧪 🤖 💀",
+    "category": "Dragon Ball",
+    "answers": [
+      "اندرويد 18",
+      "android 18",
+      "18"
+    ]
+  },
+  {
+    "id": 478,
+    "emoji": "🤖 😈 🧪",
+    "category": "Dragon Ball",
+    "answers": [
+      "اندرويد 17",
+      "android 17",
+      "17"
+    ]
+  },
+  {
+    "id": 479,
+    "emoji": "⚡ 👑 🟣",
+    "category": "Dragon Ball",
+    "answers": [
+      "كابا",
+      "cabba"
+    ]
+  },
+  {
+    "id": 480,
+    "emoji": "🧠 👑 🏆",
+    "category": "Dragon Ball",
+    "answers": [
+      "جيرين",
+      "jiren"
+    ]
+  },
+  {
+    "id": 481,
+    "emoji": "⚔️ 🏹 🧝",
+    "category": "The Lord of the Rings",
+    "answers": [
+      "ليغولاس",
+      "legolas"
+    ]
+  },
+  {
+    "id": 482,
+    "emoji": "💍 🧙‍♂️ ⚪",
+    "category": "The Lord of the Rings",
+    "answers": [
+      "غاندالف",
+      "gandalf"
+    ]
+  },
+  {
+    "id": 483,
+    "emoji": "💍 👦 🏃",
+    "category": "The Lord of the Rings",
+    "answers": [
+      "فرودو",
+      "frodo"
+    ]
+  },
+  {
+    "id": 484,
+    "emoji": "🪓 💪 😎",
+    "category": "The Lord of the Rings",
+    "answers": [
+      "غيملي",
+      "gimli"
+    ]
+  },
+  {
+    "id": 485,
+    "emoji": "👑 ⚔️ 🌟",
+    "category": "The Lord of the Rings",
+    "answers": [
+      "اراغورن",
+      "aragorn"
+    ]
+  },
+  {
+    "id": 486,
+    "emoji": "🎩 🐰 🪄",
+    "category": "Alice in Wonderland",
+    "answers": [
+      "القبعاتي المجنون",
+      "mad hatter"
+    ]
+  },
+  {
+    "id": 487,
+    "emoji": "🐇 ⏰ 🤍",
+    "category": "Alice in Wonderland",
+    "answers": [
+      "الارنب الابيض",
+      "white rabbit"
+    ]
+  },
+  {
+    "id": 488,
+    "emoji": "👸 ❤️ 👑",
+    "category": "Alice in Wonderland",
+    "answers": [
+      "ملكة القلوب",
+      "queen of hearts"
+    ]
+  },
+  {
+    "id": 489,
+    "emoji": "😺 🌙 👻",
+    "category": "Alice in Wonderland",
+    "answers": [
+      "قط تشيشاير",
+      "cheshire cat"
+    ]
+  },
+  {
+    "id": 490,
+    "emoji": "👧 🐇 🫖",
+    "category": "Alice in Wonderland",
+    "answers": [
+      "اليس",
+      "alice"
+    ]
+  },
+  {
+    "id": 491,
+    "emoji": "🎭 👑 🌍",
+    "category": "Code Geass",
+    "answers": [
+      "جيريميا",
+      "jeremiah gottwald"
+    ]
+  },
+  {
+    "id": 492,
+    "emoji": "⚔️ 👸 💜",
+    "category": "Code Geass",
+    "answers": [
+      "كورنيليا",
+      "cornelia"
+    ]
+  },
+  {
+    "id": 493,
+    "emoji": "🧠 👑 🟢",
+    "category": "Code Geass",
+    "answers": [
+      "لويد اسبلوند",
+      "lloyd asplund"
+    ]
+  },
+  {
+    "id": 494,
+    "emoji": "🎓 ❤️ 👑",
+    "category": "Code Geass",
+    "answers": [
+      "يوفيميا",
+      "euphemia"
+    ]
+  },
+  {
+    "id": 495,
+    "emoji": "⚙️ 🤖 👧",
+    "category": "Code Geass",
+    "answers": [
+      "راكشاتا",
+      "rakshata"
+    ]
+  },
+  {
+    "id": 496,
+    "emoji": "🎤 🌟 👧",
+    "category": "Oshi no Ko",
+    "answers": [
+      "اي",
+      "ai hoshino",
+      "ai"
+    ]
+  },
+  {
+    "id": 497,
+    "emoji": "👁️ 🎭 👦",
+    "category": "Oshi no Ko",
+    "answers": [
+      "اكوا",
+      "aqua hoshino",
+      "aqua"
+    ]
+  },
+  {
+    "id": 498,
+    "emoji": "🎤 ❤️ 👧",
+    "category": "Oshi no Ko",
+    "answers": [
+      "روبي",
+      "ruby hoshino",
+      "ruby"
+    ]
+  },
+  {
+    "id": 499,
+    "emoji": "🎬 🌟 👧",
+    "category": "Oshi no Ko",
+    "answers": [
+      "كانا",
+      "kana arima",
+      "kana"
+    ]
+  },
+  {
+    "id": 500,
+    "emoji": "🎭 😇 👧",
+    "category": "Oshi no Ko",
+    "answers": [
+      "اكاني",
+      "akane kurokawa",
+      "akane"
+    ]
+  }
+]
