@@ -19,9 +19,16 @@
  * قائمة أسماء (slugs) كل الألعاب المسجّلة فعليًا في المشروع حاليًا.
  * هذا الثابت هو "مصدر الحقيقة الوحيد" لمعرفة أي الألعاب متاحة.
  */
-export const GAME_REGISTRY = ["quiz", "true-false", "riddles", "eye", "emoji"] as const;
+export const GAME_REGISTRY = [
+  "quiz",
+  "true-false",
+  "riddles",
+  "eye",
+  "emoji",
+  "character-guess",
+] as const;
 
-/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji"). */
+/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji" و"character-guess"). */
 export type GameSlug = (typeof GAME_REGISTRY)[number];
 
 /**
