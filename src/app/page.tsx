@@ -34,6 +34,11 @@ export default function HomePage() {
         <li><code>GET /api/games/riddles/all</code></li>
         <li><code>GET /api/games/riddles/count</code></li>
         <li><code>GET /api/games/riddles/:id</code></li>
+        <li><code>GET /api/games/eye/random</code></li>
+        <li><code>GET /api/games/eye/random-exclude</code></li>
+        <li><code>GET /api/games/eye/all</code></li>
+        <li><code>GET /api/games/eye/count</code></li>
+        <li><code>GET /api/games/eye/:id</code></li>
       </ul>
     </main>
   );
