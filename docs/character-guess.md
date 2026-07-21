@@ -1,8 +1,8 @@
 # لعبة خمن الشخصية (Character Guess) — توثيق كامل
 
-هذا الملف يوثّق لعبة "خمن الشخصية" بالتفصيل: بنية البيانات، كل الـ endpoints المتاحة، أمثلة الطلبات والاستجابات، نظام الـ `id`، آلية منع التكرار (`random-exclude`)، آلية منع الغش في `random`، تكامل جاهز مع بوتات واتساب (Baileys)، والتحقق من إجابة المستخدم، وحالات الأخطاء.
+هذا الملف يوثّق لعبة "خمن الشخصية" بالتفصيل: بنية البيانات، كل الـ endpoints المتاحة، أمثلة الطلبات والاستجابات، نظام الـ `id`، آلية منع التكرار (`random-exclude`)، تكامل جاهز مع بوتات واتساب (Baileys)، والتحقق من إجابة المستخدم، وحالات الأخطاء.
 
-هذه اللعبة مبنية بنفس بنية لعبة [عين](./eye.md) في نظام الـ `id` (مخزَّن مسبقًا في الملف، وليس مولَّدًا بالترتيب كما في الكويز)، لكنها **تختلف عن كل الألعاب الأخرى في نقطة واحدة مهمة جدًا**: استجابة `/random` و`/random-exclude` **لا ترجعان `answers` إطلاقًا** لمنع الغش (راجع [منع الغش](#منع-الغش-في-random) بالأسفل).
+هذه اللعبة مبنية بنفس بنية لعبة [عين](./eye.md) بالضبط: نفس الـ endpoints، نفس شكل الاستجابة، ونظام `id` مخزَّن مسبقًا في الملف (وليس مولَّدًا بالترتيب كما في الكويز)، وترجع `answers` كاملة في كل endpoint بدون استثناء - إذا كنتِ مطّلعة على توثيق "عين" أو "إيموجي"، هذا الملف سيبدو مألوفًا جدًا.
 
 ---
 
@@ -11,7 +11,6 @@
 - [وصف اللعبة](#وصف-اللعبة)
 - [بنية البيانات](#بنية-البيانات)
 - [نظام الـ id](#نظام-الـ-id)
-- [منع الغش في random](#منع-الغش-في-random)
 - [الـ Endpoints](#الـ-endpoints)
   - [GET /api/games/character-guess/random](#get-apigamescharacter-guessrandom)
   - [GET /api/games/character-guess/random-exclude](#get-apigamescharacter-guessrandom-exclude)
@@ -45,7 +44,7 @@ src/data/character-guess/questions.json
 
 عبارة عن مصفوفة JSON تحتوي حاليًا **400 سؤال**.
 
-شكل كل سؤال **كاملًا** (كما يظهر في استجابتي `/all` و`/:id`):
+شكل كل سؤال كما يظهر في **كل** استجابات الـ API (بدون أي استثناء):
 
 ```json
 {
@@ -59,7 +58,7 @@ src/data/character-guess/questions.json
 |---|---|---|
 | `id` | `number` | معرّف فريد وثابت، **مخزَّن مسبقًا داخل questions.json نفسه** (وليس مولَّدًا وقت التحميل). انظر [نظام الـ id](#نظام-الـ-id) بالأسفل. |
 | `question` | `string` | وصف الشخصية المطلوب تخمينها (يدعم العربية وUTF-8 بالكامل). |
-| `answers` | `string[]` | كل الإجابات المقبولة لهذا الوصف. مصفوفة نصوص دائمًا، وليست نصًا مفردًا. |
+| `answers` | `string[]` | كل الإجابات المقبولة لهذا الوصف. مصفوفة نصوص دائمًا، وليست نصًا مفردًا. **تُرجَع في كل endpoint بما فيها `random` و`random-exclude`** - على عكس بعض ألعاب التخمين الأخرى، لا يوجد إخفاء للإجابات هنا. |
 
 أي سجل ناقص فيه `id` (رقم صحيح موجب فريد) أو `question` أو `answers` (مصفوفة نصوص غير فارغة) يُتجاهل تلقائيًا وقت التحميل ولن يظهر في أي endpoint - دون أن يوقف الـ API بالكامل. لو اتكرر نفس الـ `id` بين سؤالين، أول سؤال بيفوز والباقي بيتجاهل مع تحذير في الـ logs.
 
@@ -69,25 +68,8 @@ src/data/character-guess/questions.json
 
 - الـ `id` **رقم صحيح موجب فريد**، **مخزَّن مسبقًا وصراحة داخل كل سؤال في `questions.json` نفسه** - تمامًا مثل لعبة [عين](./eye.md)، وعلى عكس الكويز حيث يُولَّد تلقائيًا حسب الترتيب وقت التحميل.
 - عند إضافة أسئلة جديدة يدويًا للملف، **لازم تدي كل سؤال جديد `id` فريدًا لم يُستخدم من قبل** (عادة: أكبر `id` موجود حاليًا + 1). الـ API يتحقق فقط أن كل `id` رقم صحيح موجب وفريد؛ لا يولّد أي `id` بنفسه.
-- هذا الاستقرار أساسي لأن `id` هو المعرّف الذي تعتمد عليه بوتات الواتساب في نظام منع التكرار (anti-repeat عبر `random-exclude`)، وأيضًا للتحقق من إجابة اللاعب عبر `/:id` بعد استلام سؤال من `/random`.
+- هذا الاستقرار أساسي لأن `id` هو المعرّف الذي تعتمد عليه بوتات الواتساب في نظام منع التكرار (anti-repeat عبر `random-exclude`).
 - لو اتكرر نفس الـ `id` بين سؤالين في الملف بالخطأ، أول سؤال بترتيب الظهور يفوز، والباقي يُتجاهل مع تحذير في الـ logs (`console.warn`).
-
----
-
-## منع الغش في random
-
-هذه اللعبة **الوحيدة في المشروع حاليًا** التي تُخفي `answers` عمدًا من استجابتي `/random` و`/random-exclude`. السبب: لو رجعت الإجابات الصحيحة مع نفس الاستجابة التي يعرضها البوت للاعب، سيكون بإمكان أي لاعب فضولي فتح رابط الـ API مباشرة ورؤية الحل قبل التخمين.
-
-لذلك:
-
-- `GET /random` و`GET /random-exclude` يرجعان فقط `{ id, question }` **بدون** `answers`.
-- `GET /:id` و`GET /all` يرجعان السؤال **كاملًا مع answers** - هذان الـ endpoint مخصَّصان للبوت نفسه (وليس للاعب)، ليستخدمهما في التحقق من إجابة اللاعب بعد إرسالها.
-
-**سير العمل الصحيح للبوت:**
-
-1. البوت يطلب `GET /random-exclude?ids=...` ويحصل على `{ id, question }` فقط.
-2. البوت يعرض `question` للاعب ويطلب إجابته.
-3. عند استلام إجابة اللاعب، البوت يطلب `GET /:id` (بنفس الـ `id` الذي حصل عليه في الخطوة 1) للحصول على `answers` الكاملة، ثم يقارن إجابة اللاعب معها محليًا.
 
 ---
 
@@ -95,7 +77,7 @@ src/data/character-guess/questions.json
 
 ### `GET /api/games/character-guess/random`
 
-ترجع سؤالًا عشوائيًا واحدًا **بدون answers** (لمنع الغش).
+ترجع سؤالًا عشوائيًا واحدًا **مع answers كاملة**.
 
 **مثال الطلب:**
 
@@ -110,7 +92,8 @@ curl https://raygumo-api.vercel.app/api/games/character-guess/random
   "success": true,
   "data": {
     "id": 52,
-    "question": "أمير شعب محارب فخور، بدأ كعدو ثم أصبح من أعظم المدافعين عن الأرض."
+    "question": "أمير شعب محارب فخور، بدأ كعدو ثم أصبح من أعظم المدافعين عن الأرض.",
+    "answers": ["غوكو", "سون غوكو", "goku", "son goku"]
   }
 }
 ```
@@ -119,7 +102,7 @@ curl https://raygumo-api.vercel.app/api/games/character-guess/random
 
 ### `GET /api/games/character-guess/random-exclude`
 
-ترجع سؤالًا عشوائيًا واحدًا **بدون answers**، مع استثناء أي `id` موجود ضمن قائمة معامل الاستعلام `ids` (مفصولة بفواصل). هذا هو آلية منع التكرار (anti-repeat) في اللعبة.
+ترجع سؤالًا عشوائيًا واحدًا **مع answers كاملة**، مع استثناء أي `id` موجود ضمن قائمة معامل الاستعلام `ids` (مفصولة بفواصل). هذا هو آلية منع التكرار (anti-repeat) في اللعبة.
 
 `GET /api/games/character-guess/random-exclude?ids=1,2,3`
 
@@ -136,7 +119,8 @@ curl "https://raygumo-api.vercel.app/api/games/character-guess/random-exclude?id
   "success": true,
   "data": {
     "id": 90,
-    "question": "..."
+    "question": "...",
+    "answers": ["..."]
   }
 }
 ```
@@ -168,7 +152,7 @@ curl https://raygumo-api.vercel.app/api/games/character-guess/count
 
 ### `GET /api/games/character-guess/:id`
 
-ترجع سؤالًا واحدًا محددًا بالضبط عبر رقمه (`id`)، **مع answers كاملة**. يستخدمه البوت للتحقق من إجابة اللاعب بعد إرسالها.
+ترجع سؤالًا واحدًا محددًا بالضبط عبر رقمه (`id`)، مع `answers` كاملة.
 
 **مثال الطلب:**
 
@@ -203,7 +187,7 @@ curl https://raygumo-api.vercel.app/api/games/character-guess/15
 
 ### `GET /api/games/character-guess/all`
 
-ترجع كل الأسئلة **مع answers كاملة** كمصفوفة واحدة. مفيدة لأدوات إدارة المحتوى أو اختبارات المطوّر - غير مخصَّصة للاستخدام المباشر من اللاعب.
+ترجع كل الأسئلة مع `answers` كاملة كمصفوفة واحدة.
 
 **مثال الطلب:**
 
@@ -252,12 +236,12 @@ curl https://raygumo-api.vercel.app/api/games/character-guess/all
 
 ## تكامل Baileys جاهز للنسخ
 
-مثال لأمر بوت واتساب (Baileys) بسيط للعبة "خمن الشخصية" مع تتبّع الأسئلة المستخدمة لكل مجموعة ومنع الغش:
+مثال لأمر بوت واتساب (Baileys) بسيط للعبة "خمن الشخصية" مع تتبّع الأسئلة المستخدمة لكل مجموعة:
 
 ```javascript
 // حالة داخل الذاكرة لكل مجموعة: قائمة id الأسئلة المستخدمة + السؤال الحالي
 const usedIdsByGroup = new Map(); // groupId -> number[]
-const activeQuestionByGroup = new Map(); // groupId -> { id, question }
+const activeQuestionByGroup = new Map(); // groupId -> { id, question, answers }
 
 const API_BASE = "https://raygumo-api.vercel.app/api/games/character-guess";
 
@@ -274,27 +258,19 @@ async function startCharacterGuess(groupId) {
     return startCharacterGuess(groupId);
   }
 
-  const { id, question } = json.data;
+  const { id, question, answers } = json.data;
   usedIdsByGroup.set(groupId, [...usedIds, id]);
-  activeQuestionByGroup.set(groupId, { id, question });
+  activeQuestionByGroup.set(groupId, { id, question, answers });
 
   return `خمن الشخصية:\n\n${question}`;
 }
 
-async function checkAnswer(groupId, playerAnswer) {
+function checkAnswer(groupId, playerAnswer) {
   const active = activeQuestionByGroup.get(groupId);
   if (!active) return null;
 
-  const res = await fetch(`${API_BASE}/${active.id}`);
-  const json = await res.json();
-  if (!json.success) return null;
-
   const normalized = playerAnswer.trim().toLowerCase();
-  const isCorrect = json.data.answers.some(
-    (a) => a.trim().toLowerCase() === normalized
-  );
-
-  return isCorrect;
+  return active.answers.some((a) => a.trim().toLowerCase() === normalized);
 }
 ```
 
@@ -312,11 +288,10 @@ async function checkAnswer(groupId, playerAnswer) {
 
 ## التحقق من إجابة المستخدم
 
-الـ API لا يتحقق من إجابة اللاعب - هذا كله مسؤولية البوت. الخطوات المقترحة:
+الـ API لا يتحقق من إجابة اللاعب - هذا كله مسؤولية البوت. بما أن `answers` ترجع كاملة مع كل استجابة، يمكن للبوت الاحتفاظ بها محليًا فور استلام السؤال (لا حاجة لطلب إضافي عند التحقق):
 
-1. البوت يطلب `/random` أو `/random-exclude` ويحصل على `{ id, question }` فقط (بدون `answers`).
-2. عند استلام إجابة اللاعب، البوت يطلب `/:id` بنفس الـ `id` للحصول على `answers` الكاملة.
-3. يُقارن نص إجابة اللاعب (بعد `trim()` وتحويله لحروف صغيرة) مع كل عنصر في `answers` (بعد نفس المعالجة) للتحقق من التطابق.
+1. البوت يطلب `/random` أو `/random-exclude` ويحصل على `{ id, question, answers }` كاملة، ويحفظها في حالته الخاصة بالمجموعة/المستخدم.
+2. عند استلام إجابة اللاعب، يُقارن نصها (بعد `trim()` وتحويله لحروف صغيرة) مع كل عنصر في `answers` المحفوظة محليًا (بعد نفس المعالجة) للتحقق من التطابق.
 
 ---
 
