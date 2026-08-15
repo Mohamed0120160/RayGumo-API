@@ -27,9 +27,10 @@ export const GAME_REGISTRY = [
   "emoji",
   "character-guess",
   "sort",
+  "flags",
 ] as const;
 
-/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji" و"character-guess" و"sort"). */
+/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji" و"character-guess" و"sort" و"flags"). */
 export type GameSlug = (typeof GAME_REGISTRY)[number];
 
 /**
