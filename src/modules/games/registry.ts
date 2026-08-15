@@ -9,7 +9,7 @@
  * عن بعضها. هذا الملف هو "المُبدّل" (dispatcher) الذي يقرر: "بما أن
  * الطلب عن لعبة quiz، إذًا استخدم دوال وحدة الكويز".
  *
- * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "eye" (عين) هي أحدث
+ * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "flags" (أعلام) هي أحدث
  * مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن اعتبارها مرجعًا.
  *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/ أو
  *      true-false/ أو riddles/.
@@ -28,6 +28,7 @@ import * as eye from "./eye";
 import * as emoji from "./emoji";
 import * as characterGuess from "./character-guess";
 import * as sort from "./sort";
+import * as flags from "./flags";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -70,6 +71,8 @@ export async function getRandomItem(slug: string) {
       return characterGuess.getRandomQuestion();
     case "sort":
       return sort.getRandomSortQuestion();
+    case "flags":
+      return flags.getRandomFlagItem();
   }
 }
 
@@ -94,6 +97,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return characterGuess.getRandomQuestionExcluding(excludeIds);
     case "sort":
       return sort.getRandomSortQuestionExcluding(excludeIds);
+    case "flags":
+      return flags.getRandomFlagItemExcluding(excludeIds);
   }
 }
 
@@ -115,6 +120,8 @@ export async function getAllItems(slug: string) {
       return characterGuess.getAllQuestions();
     case "sort":
       return sort.getAllSortQuestions();
+    case "flags":
+      return flags.getAllFlagItems();
   }
 }
 
@@ -136,6 +143,8 @@ export async function getItemById(slug: string, id: number) {
       return characterGuess.getQuestionById(id);
     case "sort":
       return sort.getSortQuestionById(id);
+    case "flags":
+      return flags.getFlagItemById(id);
   }
 }
 
@@ -157,6 +166,8 @@ export async function getItemCount(slug: string) {
       return characterGuess.getQuestionCount();
     case "sort":
       return sort.getSortQuestionCount();
+    case "flags":
+      return flags.getFlagItemCount();
   }
 }
 
