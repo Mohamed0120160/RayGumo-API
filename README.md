@@ -9,7 +9,7 @@ RayGumo API هو **مزوّد محتوى فقط** — هو **لا** يدير ح�
 لا حاجة لقاعدة بيانات. كل المحتوى موجود في ملف JSON داخل المشروع نفسه.
 
 > 🤖 **مبرمج بوت واتساب وعايز تستخدم الـ API بسرعة؟**
-> روحي مباشرة لمجلد [`docs/`](./docs/) — فيه دليل استخدام كامل لكل لعبة على حدة ([`docs/quiz.md`](./docs/quiz.md)، [`docs/true-false.md`](./docs/true-false.md)، [`docs/riddles.md`](./docs/riddles.md)، [`docs/eye.md`](./docs/eye.md)، [`docs/emoji.md`](./docs/emoji.md)، و[`docs/sort.md`](./docs/sort.md))، فيه بس الـ endpoints وأمثلة Baileys الجاهزة للنسخ، من غير أي تفاصيل معمارية داخلية. هذا الملف (`README.md`) للمطوّرين اللي بيشتغلوا على المشروع نفسه.
+> روحي مباشرة لمجلد [`docs/`](./docs/) — فيه دليل استخدام كامل لكل لعبة على حدة ([`docs/quiz.md`](./docs/quiz.md)، [`docs/true-false.md`](./docs/true-false.md)، [`docs/riddles.md`](./docs/riddles.md)، [`docs/eye.md`](./docs/eye.md)، [`docs/emoji.md`](./docs/emoji.md)، [`docs/sort.md`](./docs/sort.md)، و[`docs/flags.md`](./docs/flags.md))، فيه بس الـ endpoints وأمثلة Baileys الجاهزة للنسخ، من غير أي تفاصيل معمارية داخلية. هذا الملف (`README.md`) للمطوّرين اللي بيشتغلوا على المشروع نفسه.
 >
 > 📚 **شرح تفصيلي إضافي عن معمارية المشروع** (للمساهمين في الكود) موجود في مجلد [`info/`](./info/).
 
@@ -30,6 +30,7 @@ RayGumo API هو **مزوّد محتوى فقط** — هو **لا** يدير ح�
 - [Eye API (عين)](#eye-api-عين)
 - [Emoji API (إيموجي)](#emoji-api-إيموجي)
 - [Sort API (رتب)](#sort-api-رتب)
+- [Flags API (أعلام)](#flags-api-أعلام)
 - [إضافة لعبة جديدة](#إضافة-لعبة-جديدة)
 - [التعامل مع الأخطاء](#التعامل-مع-الأخطاء)
 - [النشر على Vercel](#النشر-على-vercel)
@@ -87,10 +88,15 @@ src/
 │       │   ├── riddles.types.ts      # نوع Riddle (answers: string[])
 │       │   ├── riddles.validation.ts # isValidRiddle / validateRiddle
 │       │   └── index.ts          # نقطة الدخول العامة للوحدة
-│       └── eye/                  # وحدة لعبة "عين" (مستقلة بذاتها)
-│           ├── eye.service.ts    # getRandomEyeItem / getRandomEyeItemExcluding / getEyeItemById / getAllEyeItems / getEyeItemCount
-│           ├── eye.types.ts      # نوع EyeItem (img, name: string مفرد)
-│           ├── eye.validation.ts # isValidEyeItem / validateEyeItem
+│       ├── eye/                  # وحدة لعبة "عين" (مستقلة بذاتها)
+│       │   ├── eye.service.ts    # getRandomEyeItem / getRandomEyeItemExcluding / getEyeItemById / getAllEyeItems / getEyeItemCount
+│       │   ├── eye.types.ts      # نوع EyeItem (img, name: string مفرد)
+│       │   ├── eye.validation.ts # isValidEyeItem / validateEyeItem
+│       │   └── index.ts          # نقطة الدخول العامة للوحدة
+│       └── flags/                # وحدة لعبة "أعلام" (مستقلة بذاتها)
+│           ├── flags.service.ts    # getRandomFlagItem / getRandomFlagItemExcluding / getFlagItemById / getAllFlagItems / getFlagItemCount
+│           ├── flags.types.ts      # نوع FlagItem (flag, emoji, answers: string[])
+│           ├── flags.validation.ts # isValidFlagItem / validateFlagItem
 │           └── index.ts          # نقطة الدخول العامة للوحدة
 │
 ├── data/
@@ -100,8 +106,10 @@ src/
 │   │   └── questions.json        # محتوى "صح أو خطأ" الفعلي
 │   ├── riddles/
 │   │   └── questions.json        # محتوى الألغاز الفعلي (300 لغز)
-│   └── eye/
-│       └── questions.json        # محتوى "عين" الفعلي (130 عنصرًا)
+│   ├── eye/
+│   │   └── questions.json        # محتوى "عين" الفعلي (130 عنصرًا)
+│   └── flags/
+│       └── questions.json        # محتوى "أعلام" الفعلي (195 دولة)
 │
 ├── lib/
 │   ├── json-db.ts                # طبقة تخزين JSON عامة (تُستخدم من أي وحدة لعبة)
@@ -119,7 +127,8 @@ docs/                              # دليل استخدام الـ API لكل �
 ├── quiz.md
 ├── true-false.md
 ├── riddles.md
-└── eye.md
+├── eye.md
+└── flags.md
 
 info/                              # شرح معماري تفصيلي (للمساهمين في الكود)
 ├── ARCHITECTURE_AR.md
@@ -206,9 +215,9 @@ npm run lint    # تشغيل ESLint
 
 ## مرجع الـ API
 
-كل الـ endpoints الحالية تستخدم اسم اللعبة `[game]`. حاليًا `quiz` و`true-false` و`riddles` و`eye` و`emoji` هي الألعاب الخمس المسجّلة (راجعي `src/types/games.ts`). كل الأمثلة تحت مبنية على `quiz`، لكن نفس الروابط والشكل تنطبق حرفيًا على `true-false` و`riddles` و`eye` و`emoji` (فقط استبدلي `quiz` باسم اللعبة المطلوبة في المسار).
+كل الـ endpoints الحالية تستخدم اسم اللعبة `[game]`. حاليًا `quiz` و`true-false` و`riddles` و`eye` و`emoji` و`character-guess` و`sort` و`flags` هي الألعاب المسجّلة (راجعي `src/types/games.ts`). كل الأمثلة تحت مبنية على `quiz`، لكن نفس الروابط والشكل تنطبق حرفيًا على كل لعبة مسجّلة أخرى (فقط استبدلي `quiz` باسم اللعبة المطلوبة في المسار).
 
-> 🔗 راجعي قسم [Riddles API (ألغاز)](#riddles-api-ألغاز) أو [Eye API (عين)](#eye-api-عين) أو [Emoji API (إيموجي)](#emoji-api-إيموجي) بالأسفل للتفاصيل الكاملة عن كل endpoints هذه الألعاب.
+> 🔗 راجعي قسم [Riddles API (ألغاز)](#riddles-api-ألغاز) أو [Eye API (عين)](#eye-api-عين) أو [Emoji API (إيموجي)](#emoji-api-إيموجي) أو [Sort API (رتب)](#sort-api-رتب) أو [Flags API (أعلام)](#flags-api-أعلام) بالأسفل للتفاصيل الكاملة عن كل endpoints هذه الألعاب.
 
 | المسار (Endpoint) | Method | الوصف |
 |---|---|---|
@@ -912,6 +921,113 @@ curl http://localhost:3000/api/games/sort/419
 نفس نمط باقي الألعاب بالضبط — استخدمي `GET /api/games/sort/random-exclude?ids=1,2,3` بدل `/random` العادي، وتتبّعي أرقام الأسئلة (`id`) المستخدمة لكل مجموعة في البوت نفسه.
 
 لتحديث المحتوى: عدّلي `src/data/sort/questions.json`، اعملي commit، وارفعي (redeploy) — بدون أي تعديل كود.
+
+---
+
+## Flags API (أعلام)
+
+> للتوثيق الكامل والمفصّل لهذه اللعبة (كل الـ endpoints، أمثلة كاملة، تكامل Baileys جاهز، وشرح `random-exclude`) راجعي [`docs/flags.md`](./docs/flags.md).
+
+### وصف اللعبة
+
+لعبة "أعلام" (Flags) تقدّم صورة علم دولة (`flag`) أو إيموجي العلم (`emoji`)، والمطلوب من اللاعب تخمين اسم الدولة. كل دولة قد يكون لها أكثر من صياغة اسم مقبولة، لذلك حقل الإجابة هنا مصفوفة (`answers[]`) — بنفس أسلوب الكويز والألغاز، وليس نصًا مفردًا كما في لعبة عين.
+
+مصدر بيانات "أعلام" موجود في ملف واحد:
+
+```
+src/data/flags/questions.json
+```
+
+عبارة عن مصفوفة JSON فيها 195 دولة. كل عنصر مطابق للـ schema ده:
+
+```json
+{
+  "id": 1,
+  "flag": "https://flagcdn.com/w1280/af.png",
+  "emoji": "🇦🇫",
+  "answers": ["أفغانستان", "افغانستان", "جمهورية أفغانستان الإسلامية"]
+}
+```
+
+- `id` — رقم صحيح موجب فريد. **مخزَّن مسبقًا ومرقّم تسلسليًا (1، 2، 3...) داخل questions.json نفسه** (نفس أسلوب `eye` و`riddles`)، وليس مولَّدًا وقت التحميل. عند إضافة عناصر جديدة يدويًا للملف، لازم يُعطى كل عنصر جديد `id` فريدًا لم يُستخدم من قبل (عادة: أكبر `id` موجود حاليًا + 1).
+- `flag` — رابط صورة علم الدولة المعروضة على اللاعب.
+- `emoji` — إيموجي علم الدولة، مفيد للبوتات اللي عايزة تبعت رسالة نصية بس بدون صورة.
+- `answers` — مصفوفة صياغات الاسم الصحيحة المقبولة. **مصفوفة نصوص دائمًا، مش نص مفرد** (زي `name` في لعبة عين).
+
+أي سجل ناقص فيه `id` أو `flag` أو `emoji` أو `answers` (مصفوفة غير فارغة من نصوص غير فارغة) بيتجاهل تلقائيًا وقت التحميل ومش هيظهر في أي endpoint. لو اتكرر نفس الـ `id` بين عنصرين، أول عنصر بيفوز والباقي بيتجاهل مع تحذير في الـ logs.
+
+### الـ Endpoints
+
+لعبة "أعلام" متاحة على نفس المسار العام المشترك بين كل الألعاب: `/api/games/flags/...`.
+
+| المسار (Endpoint) | Method | الوصف |
+|---|---|---|
+| `/api/games/flags/random` | GET | ترجّع عنصر "أعلام" عشوائيًا واحدًا |
+| `/api/games/flags/random-exclude?ids=1,5,8,20` | GET | ترجّع عنصرًا عشوائيًا واحدًا مع استثناء الـ ids الممرّرة (anti-repeat) |
+| `/api/games/flags/all` | GET | ترجّع كل عناصر "أعلام" |
+| `/api/games/flags/count` | GET | ترجّع العدد الإجمالي للعناصر |
+| `/api/games/flags/:id` | GET | ترجّع عنصرًا واحدًا بواسطة رقمه (id) |
+
+#### `GET /api/games/flags/random`
+
+```bash
+curl http://localhost:3000/api/games/flags/random
+```
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "flag": "https://flagcdn.com/w1280/af.png",
+    "emoji": "🇦🇫",
+    "answers": ["أفغانستان", "افغانستان", "جمهورية أفغانستان الإسلامية"]
+  }
+}
+```
+
+#### `GET /api/games/flags/random-exclude`
+
+```bash
+curl "http://localhost:3000/api/games/flags/random-exclude?ids=1,5,8,20"
+```
+
+لو `ids` غير موجود أو فارغ، السلوك بيبقى مطابق تمامًا لـ `/random`. لو كل العناصر المتاحة استُثنيت، الـ endpoint بيرجّع `404 NOT_FOUND` بدل تكرار عنصر بصمت.
+
+#### `GET /api/games/flags/all`
+
+```bash
+curl http://localhost:3000/api/games/flags/all
+```
+
+ترجّع مصفوفة `questions.json` كاملة (195 دولة) داخل الشكل الموحّد.
+
+#### `GET /api/games/flags/count`
+
+```bash
+curl http://localhost:3000/api/games/flags/count
+```
+
+```json
+{
+  "success": true,
+  "data": { "count": 195 }
+}
+```
+
+#### `GET /api/games/flags/:id`
+
+```bash
+curl http://localhost:3000/api/games/flags/1
+```
+
+أي `id` مفقود/غير صالح بيرجّع `400 BAD_REQUEST`، وأي `id` غير موجود بيرجّع `404 NOT_FOUND`.
+
+### نظام منع التكرار (anti-repeat)
+
+نفس نمط باقي الألعاب بالضبط — استخدمي `GET /api/games/flags/random-exclude?ids=1,2,3` بدل `/random` العادي، وتتبّعي أرقام العناصر (`id`) المستخدمة لكل مجموعة في البوت نفسه.
+
+لتحديث المحتوى: عدّلي `src/data/flags/questions.json`، اعملي commit، وارفعي (redeploy) — بدون أي تعديل كود.
 
 ---
 
