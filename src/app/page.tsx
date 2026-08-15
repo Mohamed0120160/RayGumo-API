@@ -54,6 +54,11 @@ export default function HomePage() {
         <li><code>GET /api/games/sort/all</code></li>
         <li><code>GET /api/games/sort/count</code></li>
         <li><code>GET /api/games/sort/:id</code></li>
+        <li><code>GET /api/games/flags/random</code></li>
+        <li><code>GET /api/games/flags/random-exclude</code></li>
+        <li><code>GET /api/games/flags/all</code></li>
+        <li><code>GET /api/games/flags/count</code></li>
+        <li><code>GET /api/games/flags/:id</code></li>
       </ul>
       <h2>Games</h2>
       <ul>
@@ -74,6 +79,10 @@ export default function HomePage() {
         <li>
           Sort Game (رتب) — see{" "}
           <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/sort.md">docs/sort.md</a>
+        </li>
+        <li>
+          Flags Game (خمّن الدولة من العلم) — see{" "}
+          <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/flags.md">docs/flags.md</a>
         </li>
       </ul>
     </main>
