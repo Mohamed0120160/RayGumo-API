@@ -29,9 +29,10 @@ export const GAME_REGISTRY = [
   "sort",
   "flags",
   "hero-audio",
+  "mlbb-quiz",
 ] as const;
 
-/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji" و"character-guess" و"sort" و"flags" و"hero-audio"). */
+/** نوع يمثل فقط الأسماء المسجّلة فعليًا في GAME_REGISTRY (حاليًا: "quiz" و"true-false" و"riddles" و"eye" و"emoji" و"character-guess" و"sort" و"flags" و"hero-audio" و"mlbb-quiz"). */
 export type GameSlug = (typeof GAME_REGISTRY)[number];
 
 /**
