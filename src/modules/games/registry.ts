@@ -9,8 +9,9 @@
  * عن بعضها. هذا الملف هو "المُبدّل" (dispatcher) الذي يقرر: "بما أن
  * الطلب عن لعبة quiz، إذًا استخدم دوال وحدة الكويز".
  *
- * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "flags" (أعلام) هي أحدث
- * مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن اعتبارها مرجعًا.
+ * لإضافة لعبة جديدة مستقبلًا (مثل anime): وحدة "mlbb-quiz" (كويز
+ * موبايل ليجندز) هي أحدث مثال حي مضاف بهذا الأسلوب بالضبط، ويمكن
+ * اعتبارها مرجعًا.
  *   1. أنشئ وحدة كاملة في src/modules/games/anime/ بنفس نمط quiz/ أو
  *      true-false/ أو riddles/.
  *   2. أضف "anime" في GAME_REGISTRY داخل src/types/games.ts.
@@ -30,6 +31,7 @@ import * as characterGuess from "./character-guess";
 import * as sort from "./sort";
 import * as flags from "./flags";
 import * as heroAudio from "./hero-audio";
+import * as mlbbQuiz from "./mlbb-quiz";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -76,6 +78,8 @@ export async function getRandomItem(slug: string) {
       return flags.getRandomFlagItem();
     case "hero-audio":
       return heroAudio.getRandomQuestion();
+    case "mlbb-quiz":
+      return mlbbQuiz.getRandomMlbbQuizQuestion();
   }
 }
 
@@ -104,6 +108,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return flags.getRandomFlagItemExcluding(excludeIds);
     case "hero-audio":
       return heroAudio.getRandomQuestionExcluding(excludeIds);
+    case "mlbb-quiz":
+      return mlbbQuiz.getRandomMlbbQuizQuestionExcluding(excludeIds);
   }
 }
 
@@ -129,6 +135,8 @@ export async function getAllItems(slug: string) {
       return flags.getAllFlagItems();
     case "hero-audio":
       return heroAudio.getAllQuestions();
+    case "mlbb-quiz":
+      return mlbbQuiz.getAllMlbbQuizQuestions();
   }
 }
 
@@ -154,6 +162,8 @@ export async function getItemById(slug: string, id: number) {
       return flags.getFlagItemById(id);
     case "hero-audio":
       return heroAudio.getQuestionById(id);
+    case "mlbb-quiz":
+      return mlbbQuiz.getMlbbQuizQuestionById(id);
   }
 }
 
@@ -179,6 +189,8 @@ export async function getItemCount(slug: string) {
       return flags.getFlagItemCount();
     case "hero-audio":
       return heroAudio.getQuestionCount();
+    case "mlbb-quiz":
+      return mlbbQuiz.getMlbbQuizQuestionCount();
   }
 }
 
