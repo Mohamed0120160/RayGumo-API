@@ -29,6 +29,7 @@ import * as emoji from "./emoji";
 import * as characterGuess from "./character-guess";
 import * as sort from "./sort";
 import * as flags from "./flags";
+import * as heroAudio from "./hero-audio";
 import { isValidGameSlug, type GameSlug } from "@/types/games";
 
 /** خطأ يُرمى عندما يطلب المستخدم لعبة (slug) غير مسجّلة في GAME_REGISTRY. */
@@ -73,6 +74,8 @@ export async function getRandomItem(slug: string) {
       return sort.getRandomSortQuestion();
     case "flags":
       return flags.getRandomFlagItem();
+    case "hero-audio":
+      return heroAudio.getRandomQuestion();
   }
 }
 
@@ -99,6 +102,8 @@ export async function getRandomItemExcluding(slug: string, excludeIds: number[])
       return sort.getRandomSortQuestionExcluding(excludeIds);
     case "flags":
       return flags.getRandomFlagItemExcluding(excludeIds);
+    case "hero-audio":
+      return heroAudio.getRandomQuestionExcluding(excludeIds);
   }
 }
 
@@ -122,6 +127,8 @@ export async function getAllItems(slug: string) {
       return sort.getAllSortQuestions();
     case "flags":
       return flags.getAllFlagItems();
+    case "hero-audio":
+      return heroAudio.getAllQuestions();
   }
 }
 
@@ -145,6 +152,8 @@ export async function getItemById(slug: string, id: number) {
       return sort.getSortQuestionById(id);
     case "flags":
       return flags.getFlagItemById(id);
+    case "hero-audio":
+      return heroAudio.getQuestionById(id);
   }
 }
 
@@ -168,6 +177,8 @@ export async function getItemCount(slug: string) {
       return sort.getSortQuestionCount();
     case "flags":
       return flags.getFlagItemCount();
+    case "hero-audio":
+      return heroAudio.getQuestionCount();
   }
 }
 
