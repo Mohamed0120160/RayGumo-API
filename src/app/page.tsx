@@ -59,6 +59,11 @@ export default function HomePage() {
         <li><code>GET /api/games/flags/all</code></li>
         <li><code>GET /api/games/flags/count</code></li>
         <li><code>GET /api/games/flags/:id</code></li>
+        <li><code>GET /api/games/hero-audio/random</code></li>
+        <li><code>GET /api/games/hero-audio/random-exclude</code></li>
+        <li><code>GET /api/games/hero-audio/all</code></li>
+        <li><code>GET /api/games/hero-audio/count</code></li>
+        <li><code>GET /api/games/hero-audio/:id</code></li>
       </ul>
       <h2>Games</h2>
       <ul>
@@ -83,6 +88,12 @@ export default function HomePage() {
         <li>
           Flags Game (خمّن الدولة من العلم) — see{" "}
           <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/flags.md">docs/flags.md</a>
+        </li>
+        <li>
+          Hero Audio Game (خمّن البطل من الصوت) — see{" "}
+          <a href="https://github.com/Mohamed0120160/RayGumo-API/blob/main/docs/hero-audio.md">
+            docs/hero-audio.md
+          </a>
         </li>
       </ul>
     </main>
